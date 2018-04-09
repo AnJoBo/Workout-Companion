@@ -21,12 +21,12 @@ public class AuthenticationController {
 		this.userDAO = userDAO;
 	}
 
-	@RequestMapping(path="/login", method=RequestMethod.GET)
+	@RequestMapping(path="/", method=RequestMethod.GET)
 	public String displayLoginForm() {
 		return "login";
 	}
 	
-	@RequestMapping(path="/login", method=RequestMethod.POST)
+	@RequestMapping(path="/login", method=RequestMethod.GET)
 	public String login(@RequestParam String userName, 
 						@RequestParam String password, 
 						@RequestParam(required=false) String destination,
@@ -37,10 +37,11 @@ public class AuthenticationController {
 			if(destination != null && ! destination.isEmpty()) {
 				return "redirect:" + destination;
 			} else {
+				//return "redirect:/userPage";
 				return "redirect:/users/"+userName;
 			}
 		} else {
-			return "redirect:/login";
+			return "redirect:/";
 		}
 	}
 
