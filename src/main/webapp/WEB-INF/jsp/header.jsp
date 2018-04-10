@@ -58,7 +58,7 @@
 							<c:url var="newUserHref" value="/users/new" />
 							<li><a href="${newUserHref}">Sign Up</a></li>
 							<c:url var="loginHref" value="/login" />
-							<li><a href="${loginHref}">Log In</a></li>
+							<li><a href="#">Log In</a></li>
 						</c:when>
 						<c:otherwise>
 							<c:url var="logoutAction" value="/logout" />

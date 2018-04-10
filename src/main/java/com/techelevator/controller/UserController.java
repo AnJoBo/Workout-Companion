@@ -53,14 +53,16 @@ public class UserController {
 		return "userPage";
 	}
 	
-	@RequestMapping(path="/users/{userName}/userUpdate", method=RequestMethod.GET)
-	public String displayUserUpdatePage(HttpSession session) {
+	@RequestMapping(path="/userUpdate/{userName}", method=RequestMethod.GET)
+	public String displayUserUpdatePage() {
 		return "userUpdate";
 	}
 	
-	@RequestMapping(path="/userUpdate", method=RequestMethod.POST)
-	public String userUpdatePage() {
-		//userDAO.updatePassword(userName, password);
-		return "redirect:/";
+	@RequestMapping(path="/userUpdate/{userName}", method=RequestMethod.POST)
+	public String userUpdatePage(@RequestParam String userName, @RequestParam String password,
+								RedirectAttributes flash) {
+		flash.addFlashAttribute("message", "Success!");
+		userDAO.updatePassword(userName, password);
+		return "redirect:/users/userPage";
 	}
 }

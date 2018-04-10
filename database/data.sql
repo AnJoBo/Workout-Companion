@@ -5,5 +5,7 @@
 BEGIN;
 
 -- INSERT statements go here
+INSERT INTO gym (name) VALUES ('SlimGym');
+INSERT INTO gym (name) VALUES ('Elevated Gainz');
 
 COMMIT;
