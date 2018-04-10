@@ -31,12 +31,15 @@ UPDATE PAGE
 <h2>Change Password</h2>
 
 <p id="currentUser">Current User: ${currentUser.userName}</p>
+<c:out value="${currentUser.userName}" />
+
 
 <c:url var="formAction" value="/userUpdate" />
 
 <div class="row">
 	<div class="col-md-5">
 		<form action="${formAction}" method="POST" id="changePasswordForm">
+		<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
 			<div class="form-group">
 				<input type="hidden" name="userName" value="${currentUser.userName}"/>
 				<label for="password">New Password: </label>
