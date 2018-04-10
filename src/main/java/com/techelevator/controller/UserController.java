@@ -1,5 +1,7 @@
 package com.techelevator.controller;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -42,7 +44,7 @@ public class UserController {
 			flash.addFlashAttribute(BindingResult.MODEL_KEY_PREFIX + "user", result);
 			return "redirect:/users/new";
 		}
-		
+			
 		userDAO.saveUser(user.getUserName(), user.getPassword());
 		return "redirect:/";
 	}
@@ -54,13 +56,39 @@ public class UserController {
 	}
 	
 	@RequestMapping(path="/users/{userName}/userUpdate", method=RequestMethod.GET)
-	public String displayUserUpdatePage(HttpSession session) {
+	public String displayUserUpdatePage(@ModelAttribute User u, HttpSession session) {
+		//Map<String, Object> model, @PathVariable String userName
+		//model.put("userName", userName);
 		return "userUpdate";
 	}
 	
+//	@RequestMapping(path="/userUpdate", method=RequestMethod.POST)
+//	public String userUpdatePage(@ModelAttribute("user") User user,
+//								@RequestParam String userName, 
+//								@RequestParam String password, 
+//								BindingResult result, 
+//								RedirectAttributes flash) {
+//		if(result.hasErrors()) {
+//			flash.addFlashAttribute(BindingResult.MODEL_KEY_PREFIX, result);
+//			flash.addAttribute("error", "Something went wrong.");
+//			
+//			return "redirect:/users/{userName}/userUpdate";
+//		} else {
+//			//flash.addFlashAttribute("user", userName);
+//			flash.addFlashAttribute(BindingResult.MODEL_KEY_PREFIX, result);
+//			flash.addFlashAttribute("message", "Update Password Success.");
+//			userDAO.updatePassword(userName, password);
+//			
+//			return "redirect:/users/{userName}/userPage";
+//		}
+//	}
+	
 	@RequestMapping(path="/userUpdate", method=RequestMethod.POST)
-	public String userUpdatePage() {
-		//userDAO.updatePassword(userName, password);
-		return "redirect:/";
-	}
+	public String userUpdatePage(@ModelAttribute User user, @RequestParam String userName, @RequestParam String password, final RedirectAttributes redirectattributes){
+								 
+		
+		userDAO.updatePassword(userName, password);
+		redirectattributes.addFlashAttribute("message", "success");
+			return "redirect:/users/{userName}/userPage";
+}	
 }

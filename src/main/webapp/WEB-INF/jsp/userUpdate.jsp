@@ -31,8 +31,6 @@ UPDATE PAGE
 <h2>Change Password</h2>
 
 <p id="currentUser">Current User: ${currentUser.userName}</p>
-<c:out value="${currentUser.userName}" />
-
 
 <c:url var="formAction" value="/userUpdate" />
 
