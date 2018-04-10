@@ -32,11 +32,11 @@ UPDATE PAGE
 
 <p id="currentUser">Current User: ${currentUser.userName}</p>
 
-<c:url var="formAction" value="/userUpdate" />
+<c:url var="formAction" value="/userUpdate/${currentUser.userName}" />
 
 <div class="row">
 	<div class="col-md-5">
-		<form action="${formAction}" method="POST" id="changePasswordForm">
+		<form action="${formAction}" method="POST">
 		<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
 			<div class="form-group">
 				<input type="hidden" name="userName" value="${currentUser.userName}"/>

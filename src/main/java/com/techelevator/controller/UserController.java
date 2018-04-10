@@ -55,40 +55,15 @@ public class UserController {
 		return "userPage";
 	}
 	
-	@RequestMapping(path="/users/{userName}/userUpdate", method=RequestMethod.GET)
-	public String displayUserUpdatePage(@ModelAttribute User u, HttpSession session) {
-		//Map<String, Object> model, @PathVariable String userName
-		//model.put("userName", userName);
+	@RequestMapping(path="/userUpdate/{userName}", method=RequestMethod.GET)
+	public String displayUserUpdatePage() {
 		return "userUpdate";
 	}
 	
-//	@RequestMapping(path="/userUpdate", method=RequestMethod.POST)
-//	public String userUpdatePage(@ModelAttribute("user") User user,
-//								@RequestParam String userName, 
-//								@RequestParam String password, 
-//								BindingResult result, 
-//								RedirectAttributes flash) {
-//		if(result.hasErrors()) {
-//			flash.addFlashAttribute(BindingResult.MODEL_KEY_PREFIX, result);
-//			flash.addAttribute("error", "Something went wrong.");
-//			
-//			return "redirect:/users/{userName}/userUpdate";
-//		} else {
-//			//flash.addFlashAttribute("user", userName);
-//			flash.addFlashAttribute(BindingResult.MODEL_KEY_PREFIX, result);
-//			flash.addFlashAttribute("message", "Update Password Success.");
-//			userDAO.updatePassword(userName, password);
-//			
-//			return "redirect:/users/{userName}/userPage";
-//		}
-//	}
-	
-	@RequestMapping(path="/userUpdate", method=RequestMethod.POST)
-	public String userUpdatePage(@ModelAttribute User user, @RequestParam String userName, @RequestParam String password, final RedirectAttributes redirectattributes){
-								 
-		
+	@RequestMapping(path="/userUpdate/{userName}", method=RequestMethod.POST)
+	public String updatePassword(@RequestParam String userName, @RequestParam String password, RedirectAttributes flash){
+		flash.addFlashAttribute("message", "success");				 
 		userDAO.updatePassword(userName, password);
-		redirectattributes.addFlashAttribute("message", "success");
-			return "redirect:/users/{userName}/userPage";
-}	
+		return "redirect:/users/userPage";
+	}	
 }
