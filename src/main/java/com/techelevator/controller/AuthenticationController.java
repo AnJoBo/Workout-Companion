@@ -27,7 +27,7 @@ public class AuthenticationController {
 		return "login";
 	}
 	
-	@RequestMapping(path="/login", method=RequestMethod.GET)
+	@RequestMapping(path="/login", method=RequestMethod.POST)
 	public String login(@RequestParam String userName, 
 						@RequestParam String password, 
 						@RequestParam(required=false) String destination,
@@ -38,11 +38,15 @@ public class AuthenticationController {
 			
 			if(destination != null && ! destination.isEmpty()) {
 				return "redirect:" + destination;
-			} else if(user.getRole().equals("admin")) {
+			} 
+			else if(user.getRole().equals("admin")) {
+
 				return "redirect:/admin/dashboard";
+
 			} else if(user.getRole().equals("employee")) {
 				return "redirect:/employee/dashboard";
-			} else {
+			} 
+			else {
 				return "redirect:/users/"+userName;
 			}
 		} else {
