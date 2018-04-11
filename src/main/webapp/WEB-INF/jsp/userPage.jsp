@@ -2,8 +2,8 @@
 
 <c:import url="/WEB-INF/jsp/header.jsp" />
 <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
-<input type="hidden" name="destination" value="${param.destination}"/>
-<h1>USER PAGE</h1>
+<%-- <input type="hidden" name="destination" value="${param.destination}"/>
+ --%><h1>USER PAGE</h1>
 
 <c:out value="${message}" />
 

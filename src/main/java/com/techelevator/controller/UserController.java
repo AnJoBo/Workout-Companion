@@ -77,4 +77,11 @@ public class UserController {
 
 		return "gymCheckInAndOut";
 	}
+
+	
+	@RequestMapping(path = "/homepage/{userName}", method = RequestMethod.GET)
+	public String displayTestHomePage(ModelMap modelHolder, HttpSession session) {
+
+		return "homepage";
+	}
 }
