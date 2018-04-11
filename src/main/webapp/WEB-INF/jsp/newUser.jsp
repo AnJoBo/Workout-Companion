@@ -55,6 +55,14 @@
 				<label for="confirmPassword">Confirm Password: </label>
 				<input type="password" id="confirmPassword" name="confirmPassword" placeHolder="Re-Type Password" class="form-control" />	
 			</div>
+			<div class="form-group">
+				<label for="email">Email: </label>
+				<input type="email" id="email" name="email" placeHolder="Email" class="form-control" />	
+			</div>
+			<div class="form-group">
+				<label for="phone">Confirm Password: </label>
+				<input type="phone" id="phone" name="phone" placeHolder="Phone Number (Optional)" class="form-control" />	
+			</div>
 			<button type="submit" class="btn btn-default">Create User</button>
 		</div>
 		<div class="col-sm-4"></div>

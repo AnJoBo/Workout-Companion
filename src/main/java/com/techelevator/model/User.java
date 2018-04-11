@@ -3,6 +3,9 @@ package com.techelevator.model;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
+
 public class User {
 	private String userName;
 	
@@ -14,6 +17,16 @@ public class User {
 	private String password;
 	
 	private String confirmPassword;
+	
+	private String role;
+	
+	@Email(message="That's not a real e-mail") // If validation fails, this message will be passed
+	@NotBlank
+	private String email;
+	
+	// Validation?
+	private String phone;
+	
 	public String getUserName() {
 		return userName;
 	}
@@ -31,5 +44,23 @@ public class User {
 	}
 	public void setConfirmPassword(String confirmPassword) {
 		this.confirmPassword = confirmPassword;
+	}
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 }

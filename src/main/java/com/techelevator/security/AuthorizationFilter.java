@@ -40,10 +40,17 @@ public class AuthorizationFilter implements Filter {
 			if(sessionUser == null) {
 				redirectToLoginPage(httpRequest, httpResponse);
 			}
-				//httpResponse.sendError(403);
+				//httpResponse.sendError(403); placeholder...
 			
 		}
+		if(urlRequested.contains("/admin/") && !sessionUser.getRole().equals("admin")) {
+			httpResponse.sendError(403);
+		}
+		if(urlRequested.contains("/employee/") && (!sessionUser.getRole().equals("employee") || !sessionUser.getRole().equals("admin"))) {
+			httpResponse.sendError(403);
+		}
 		chain.doFilter(request, response);
+		
 	}
 
 	private void redirectToLoginPage(HttpServletRequest httpRequest, HttpServletResponse httpResponse)
