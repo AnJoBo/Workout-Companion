@@ -60,14 +60,24 @@
 				<input type="email" id="email" name="email" placeHolder="Email" class="form-control" />	
 			</div>
 			<div class="form-group">
-				<label for="phone">Confirm Password: </label>
+				<label for="phone">Phone Number: </label>
 				<input type="phone" id="phone" name="phone" placeHolder="Phone Number (Optional)" class="form-control" />	
 			</div>
 			<div class="form-group">
-				<label for="avatar">Select avatar:</label>
+  				<label for="fitnessGoal">Select Fitness Goal:</label>
+  				<select class="form-control" name="fitnessGoal">
+    					<option value="maintain weight">Maintain Weight</option>
+    					<option value="lose weight">Lose Weight</option>
+    					<option value="gain weight">Gain Weight</option>
+  				</select>
+			</div> 
+			<div class="form-group">
+				<label for="picture">Select avatar:</label>
 				<div>
-  				<label class="radio-inline"><input type="radio" name="maleImg"><img src="../img/maleImg.png" style="height: 100px"></label>
-  				<label class="radio-inline"><input type="radio" name="femaleImg"><img src="../img/femaleImg.png" style="height: 100px"></label>
+  				<label class="radio-inline">
+  					<input type="radio" name="picture" value="maleImg.png"><img src="../img/maleImg.png" style="height: 150px">
+  					<input type="radio" name="picture" value="femaleImg.png"><img src="../img/femaleImg.png" style="height: 150px">
+  				</label>
   				</div>
 			</div>
 			<button type="submit" class="btn btn-default">Create User</button>

@@ -17,6 +17,8 @@ CREATE TABLE app_user (
   role varchar(255) NOT NULL,
   email varchar(255) NOT NULL,
   phone varchar(255),
+  picture varchar(255) NOT NULL,
+  fitness_goal varchar(255) NOT NULL,
   CONSTRAINT pk_app_user PRIMARY KEY (user_id)
 );
 

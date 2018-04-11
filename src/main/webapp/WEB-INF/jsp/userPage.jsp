@@ -7,9 +7,12 @@
 
 <c:out value="${message}" />
 
+<c:url var="userImg" value="/img/${currentUser.picture}" />
+<img src="${userImg}">
 <p>Hello, <c:out value="${currentUser.userName}" /></p>
 <p>Your email: <c:out value="${currentUser.email}" /></p>
 <p>Your phone number: <c:out value="${currentUser.phone}" /></p>
+<p>Fitness Goal: <c:out value="${currentUser.fitnessGoal}"/></p>
 
 <c:url var="userUpdate" value="/userUpdate/${currentUser.userName}" />
 <a href="${userUpdate}"><button>Update Profile</button></a>
