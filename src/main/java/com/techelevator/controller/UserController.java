@@ -44,18 +44,11 @@ public class UserController {
 			flash.addFlashAttribute(BindingResult.MODEL_KEY_PREFIX + "user", result);
 			return "redirect:/users/new";
 		}
-<<<<<<< HEAD
-			
-		userDAO.saveUser(user.getUserName(), user.getPassword());
-=======
-		
 		userDAO.saveUser(user.getUserName(), 
 						user.getPassword(),
 						user.getRole(),
 						user.getEmail(),
 						user.getPhone());
-		
->>>>>>> f60ceb954b9241c164f498f45363ea13006bee7c
 		return "redirect:/";
 	}
 	
@@ -71,18 +64,15 @@ public class UserController {
 	}
 	
 	@RequestMapping(path="/userUpdate/{userName}", method=RequestMethod.POST)
-<<<<<<< HEAD
 	public String updatePassword(@RequestParam String userName, @RequestParam String password, RedirectAttributes flash){
 		flash.addFlashAttribute("message", "success");				 
 		userDAO.updatePassword(userName, password);
 		return "redirect:/users/userPage";
 	}	
-=======
 	public String userUpdatePage(@RequestParam String userName, @RequestParam String password,
 								RedirectAttributes flash) {
 		flash.addFlashAttribute("message", "Success!");
 		userDAO.updatePassword(userName, password);
 		return "redirect:/users/userPage";
 	}
->>>>>>> f60ceb954b9241c164f498f45363ea13006bee7c
 }

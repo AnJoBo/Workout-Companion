@@ -37,12 +37,8 @@ UPDATE PAGE
 <div class="row">
 	<div class="col-md-5">
 		<form action="${formAction}" method="POST">
-<<<<<<< HEAD
-		<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
-=======
 			<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
 			<input type="hidden" name="userName" value="${currentUser.userName}"/>
->>>>>>> f60ceb954b9241c164f498f45363ea13006bee7c
 			<div class="form-group">
 				<label for="password">New Password: </label>
 				<input type="password" id="password" name="password" class="form-control" />	
