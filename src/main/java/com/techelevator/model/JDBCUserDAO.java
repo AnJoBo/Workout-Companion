@@ -24,13 +24,13 @@ public class JDBCUserDAO implements UserDAO {
 	}
 	
 	@Override
-	public void saveUser(String userName, String password) {
+	public void saveUser(String userName, String password, String role, String email, String phone) {
 		byte[] salt = hashMaster.generateRandomSalt();
 		String hashedPassword = hashMaster.computeHash(password, salt);
 		String saltString = new String(Base64.encode(salt));
 		
-		jdbcTemplate.update("INSERT INTO app_user(user_name, password, salt) VALUES (?, ?, ?)",
-				userName, hashedPassword, saltString);
+		jdbcTemplate.update("INSERT INTO app_user(user_name, password, salt, role, email, phone) VALUES (?, ?, ?, ?, ?, ?)",
+				userName, hashedPassword, saltString, "user", email, phone);
 	}
 
 	@Override
@@ -57,7 +57,11 @@ public class JDBCUserDAO implements UserDAO {
 		String saltString = new String(Base64.encode(salt));
 		
 		jdbcTemplate.update("UPDATE app_user SET password = ?, salt = ? WHERE user_name = ?", hashedPassword, saltString, userName);
+<<<<<<< HEAD
 	}  
+=======
+	}
+>>>>>>> f60ceb954b9241c164f498f45363ea13006bee7c
 
 	@Override
 	public Object getUserByUserName(String userName) {
@@ -71,9 +75,17 @@ public class JDBCUserDAO implements UserDAO {
 			thisUser = new User();
 			thisUser.setUserName(user.getString("user_name"));
 			thisUser.setPassword(user.getString("password"));
+			thisUser.setEmail(user.getString("email"));
+			thisUser.setPhone(user.getString("phone"));
 		}
 
 		return thisUser;
+	}
+
+	@Override
+	public void updateUser(String email, String phone) {
+		//TODO Get this current user, check if changes are submitted, update database
+		
 	}
 
 }
