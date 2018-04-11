@@ -60,7 +60,7 @@ public class JDBCUserDAO implements UserDAO {
 	}
 
 	@Override
-	public Object getUserByUserName(String userName) {
+	public User getUserByUserName(String userName) {
 		String sqlSearchForUsername ="SELECT * "+
 		"FROM app_user "+
 		"WHERE UPPER(user_name) = ? ";

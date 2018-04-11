@@ -10,6 +10,6 @@ public interface UserDAO {
 	
 	public void updateUser(String email, String phone);
 
-	public Object getUserByUserName(String userName);
+	public User getUserByUserName(String userName);
 
 }
