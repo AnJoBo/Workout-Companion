@@ -27,9 +27,27 @@ public class User {
 	// Validation?
 	private String phone;
 	
+
+	private String gymCheckInDate;
+	
+	public String getGymCheckInDate() {
+		return gymCheckInDate;
+	}
+	public void setGymCheckInDate(String gymCheckInDate) {
+		this.gymCheckInDate = gymCheckInDate;
+	}
+	public String getGymCheckInOut() {
+		return gymCheckInOut;
+	}
+	public void setGymCheckInOut(String gymCheckInOut) {
+		this.gymCheckInOut = gymCheckInOut;
+	}
+	private String gymCheckInOut;
+
 	private String picture;
 	
 	private String fitnessGoal;
+
 	
 	public String getUserName() {
 		return userName;
