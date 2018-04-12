@@ -41,7 +41,7 @@ public class UserController {
 			flash.addFlashAttribute(BindingResult.MODEL_KEY_PREFIX + "user", result);
 			return "redirect:/users/new";
 		}
-		userDAO.saveUser(user.getUserName(), user.getPassword(), user.getRole(), user.getEmail(), user.getPhone());
+		userDAO.saveUser(user.getUserName(), user.getPassword(), user.getRole(), user.getEmail(), user.getPhone(), user.getPicture(), user.getFitnessGoal());
 		return "redirect:/";
 	}
 
@@ -49,6 +49,12 @@ public class UserController {
 	public String displayUserPage(ModelMap modelHolder, HttpSession session) {
 
 		return "userPage";
+	}
+	
+	@RequestMapping(path = "/login", method = RequestMethod.GET)
+	public String displayLoginPage(ModelMap modelHolder, HttpSession session) {
+
+		return "login";
 	}
 
 	@RequestMapping(path = "/userUpdate/{userName}", method = RequestMethod.GET)

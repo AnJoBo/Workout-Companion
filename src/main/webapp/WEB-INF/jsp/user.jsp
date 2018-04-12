@@ -1,13 +1,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>Profile</title>
+<%@ include file="include/header.jspf"%>
+
+
+<h1>user.jsp</h1>
 
 		
-	</head>
-	<body>
-		<header>
-			<h1>"${user}"</h1>
-		</header>
+<%@ include file="include/footer.jspf"%>
