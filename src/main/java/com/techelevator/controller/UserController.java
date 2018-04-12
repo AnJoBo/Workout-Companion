@@ -57,6 +57,13 @@ public class UserController {
 
 		return "login";
 	}
+	
+	@RequestMapping(path = "/about", method = RequestMethod.GET)
+	public String displayAboutPage(ModelMap modelHolder, HttpSession session) {
+
+		return "about";
+	}
+	
 
 	@RequestMapping(path = "/userUpdate/{userName}", method = RequestMethod.GET)
 	public String displayUserUpdatePage() {
