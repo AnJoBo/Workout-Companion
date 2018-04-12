@@ -69,10 +69,17 @@
 		 <div class="h_menu4"><!-- start h_menu4 -->
 		   <a class="toggleMenu" href="#">Menu</a>
 			 <ul class="nav">
-			   <li class="active"><a href="index.html">Home</a></li>
+			 
+			 <!-- /////////////////////// NAV BUTONS /////////////////////// -->
+			 
+			 <c:url var="homeUrl" value="/login"/>
+			   <li class="active"><a href="${login}">Home</a></li> <!-- "HOME" button redirects to the login page for now -->
 			   
  			   <c:url var="aboutUrl" value="/about"/>
 			   <li><a href="${aboutUrl}">About</a></li>
+			   
+			    <c:url var="checkInUrl" value="/gymCheckInAndOut/{currentUser.userName}"/>
+			   <li><a href="${checkInUrl}">Check In/Out</a></li>
 			   
 			   
 			   <li><a href="trainers.html">Trainers</a></li>
