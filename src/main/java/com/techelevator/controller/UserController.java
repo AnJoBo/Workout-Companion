@@ -77,7 +77,10 @@ public class UserController {
 
 		return "gymCheckInAndOut";
 	}
-
+// need a post for a user to push a button and tell the database to add a begin date, or check to see if it already is there
+	
+	
+	// end of check in stuff
 	
 	@RequestMapping(path = "/homepage/{userName}", method = RequestMethod.GET)
 	public String displayTestHomePage(ModelMap modelHolder, HttpSession session) {

@@ -82,7 +82,12 @@ public class JDBCUserDAO implements UserDAO {
 	@Override
 	public void updateUser(String email, String phone) {
 		//TODO Get this current user, check if changes are submitted, update database
-		
 	}
+	
 
+	@Override
+	public void saveUserCheckInAtGym(String userName, String checkIn ) {
+		 
+			jdbcTemplate.update("INSERT INTO checkin_checkout(user_id, gym_id, check_in) VALUES (?, 1, ?)", userName, checkIn);
+	}
 }
