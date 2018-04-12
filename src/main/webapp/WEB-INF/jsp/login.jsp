@@ -20,8 +20,8 @@
 						feugiat nulla facilisis</p>
 					<div class="button1">
 					<!--  /////////////////////////////////////////////////////////////////////////////////////  register to newUser.jsp? user.jsp? Needs c:url  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
-						
-						<a href="register.html"><input type="submit" name="Submit" 
+						<c:url var="newUserUrl" value="/users/new"/>
+			  		 <a href="${newUser}"><input type="submit" name="Submit" 
 							value="Create an Account"></a>
 					</div>
 					<div class="clear"></div>

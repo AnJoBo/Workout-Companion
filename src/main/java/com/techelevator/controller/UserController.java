@@ -51,6 +51,7 @@ public class UserController {
 		return "userPage";
 	}
 	
+	// Login Page link function****************
 	@RequestMapping(path = "/login", method = RequestMethod.GET)
 	public String displayLoginPage(ModelMap modelHolder, HttpSession session) {
 
