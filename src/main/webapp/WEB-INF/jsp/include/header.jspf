@@ -5,8 +5,8 @@
 <html>
 <head>
 <title>Gym Companion</title>
-<c:url var="bootstrapUrl" value="/css/style.css"/>
-<link href="${bootstrapUrl }" rel='stylesheet' type='text/css' />
+	<c:url var="bootstrapUrl" value="/css/bootstrap.css"/>
+	<link href="${bootstrapUrl }" rel='stylesheet' type='text/css' />
 <!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> -->
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
@@ -62,7 +62,9 @@
 	  <div class="container">
 		 <div class="logo">
 		 <c:url var="logoUrl" value="/images/logo.png"/>
+		 
 			<a href="index.html"><img src="${logoUrl}" alt=""/></a>
+			
 		 </div>
 		 <div class="h_menu4"><!-- start h_menu4 -->
 		   <a class="toggleMenu" href="#">Menu</a>
