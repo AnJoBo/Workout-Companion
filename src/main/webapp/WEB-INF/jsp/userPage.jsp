@@ -5,7 +5,7 @@
 
 <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
 
-<h1>USER PAGE.JSP TEST</h1>
+<h1>USER PAGE.JSP</h1>
 
 <c:out value="${message}" />
 

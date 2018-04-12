@@ -19,7 +19,9 @@
 						vulputate velit esse molestie consequat, vel illum dolore eu
 						feugiat nulla facilisis</p>
 					<div class="button1">
-						<a href="register.html"><input type="submit" name="Submit"
+					<!--  /////////////////////////////////////////////////////////////////////////////////////  register to newUser.jsp? user.jsp? Needs c:url  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+						
+						<a href="register.html"><input type="submit" name="Submit" 
 							value="Create an Account"></a>
 					</div>
 					<div class="clear"></div>

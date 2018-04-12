@@ -3,7 +3,7 @@
 <%@ include file="include/header.jspf"%>
 
 
-<h1>user.jsp TEST</h1>
+<h1>user.jsp</h1>
 
 		
 <%@ include file="include/footer.jspf"%>
