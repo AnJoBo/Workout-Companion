@@ -4,16 +4,16 @@
 
 <html>
 <head>
-<title>Gym Companion | Login</title>
-<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
-<link href="css/style.css" rel='stylesheet' type='text/css' />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Gym Companion</title>
+<c:url var="bootstrapUrl" value="/css/style.css"/>
+<link href="${bootstrapUrl }" rel='stylesheet' type='text/css' />
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> -->
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<script src="js/jquery.min.js"></script>
-<script type="text/javascript">
+<c:url var="cssUrl" value="/css/style.css"/>
+<link href="${cssUrl }" rel='stylesheet' type='text/css' />
+<!-- <script type="text/javascript">
 	$(document).ready(function () {
 	
 		$("form").validate({
@@ -34,7 +34,7 @@
 			errorClass : "error"
 		});
 	});
-</script>
+</script> -->
 </head>
 <body>
   <!-- start header_bottom -->
@@ -61,7 +61,8 @@
     <div class="menu">
 	  <div class="container">
 		 <div class="logo">
-			<a href="index.html"><img src="images/logo.png" alt=""/></a>
+		 <c:url var="logoUrl" value="/images/logo.png"/>
+			<a href="index.html"><img src="${logoUrl}" alt=""/></a>
 		 </div>
 		 <div class="h_menu4"><!-- start h_menu4 -->
 		   <a class="toggleMenu" href="#">Menu</a>
@@ -80,3 +81,4 @@
 	  </div>
 	</div>
 	<!-- end menu -->
+	

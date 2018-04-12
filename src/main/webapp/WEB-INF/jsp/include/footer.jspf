@@ -1,4 +1,16 @@
- <div class="footer-bottom">
+<div class="footer-top">
+		<ul class="twitter_footer">
+			<li><i class="twt_icon"> </i>
+				<p>
+					aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud
+					exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea
+					commodo consequat. Duis autem vel <span class="m_6">2 days
+						ago</span>
+				</p>
+				<div class="clear"></div></li>
+		</ul>
+	</div>
+	<div class="footer-bottom">
 		   <div class="container">
 		 	 <div class="row section group">
 				<div class="col-md-4">
@@ -20,8 +32,8 @@
 					<p class="address">Email : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="m_10">info[at]mycompany.com</span></p>
 				</div>
 				<div class="col-md-4">
+				<h4 class="m_7">Menu</h4>
 					<ul class="list">
-						<h4 class="m_7">Menu</h4>
 						<li><a href="#">About</a></li>
 						<li><a href="#">Trainers</a></li>
 						<li><a href="#">Classes</a></li>
@@ -29,8 +41,8 @@
 						<li><a href="#">Privacy</a></li>
 						<li><a href="#">Contact</a></li>
 					</ul>
+					<h4 class="m_7">Community</h4>
 					<ul class="list1">
-						<h4 class="m_7">Community</h4>
 						<li><a href="#">Blog</a></li>
 						<li><a href="#">Forum</a></li>
 						<li><a href="#">Support</a></li>
@@ -60,5 +72,7 @@
 		   <div class="clear"></div>
 		  </div>
 	   </div>
+	<!--    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<script src="js/jquery.min.js"></script> -->
 </body>
 </html>
