@@ -32,7 +32,7 @@ CREATE TABLE checkin_checkout (
   user_id integer NOT NULL,
   gym_id integer NOT NULL,
   check_in date NOT NULL,
-  check_out date NOT NULL,
+  check_out date,
   CONSTRAINT fk_user_id FOREIGN KEY (user_id) REFERENCES app_user(user_id),
   CONSTRAINT fk_gym_id FOREIGN KEY (gym_id) REFERENCES gym(gym_id)
 );
