@@ -3,6 +3,8 @@
 <%@ include file="include/header.jspf"%>
 
 
+<p>Current user: <c:out value="${currentUser.userName}"/></p>
+
 
 
 <div class="main">

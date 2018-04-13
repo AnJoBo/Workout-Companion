@@ -251,14 +251,21 @@
 			   <%--  <c:url var="loginUrl" value="/login"/>
 			   <li><a href="${loginUrl}">Log In</a></li> --%>
 			  
-			  
-			   <c:if test="${not empty currentUser}">
-			    <c:url var="logOutUrl" value="/"/>
-			   <li><a href="${logOutUrl}">Log Out</a></li>
-			   </c:if>
-			   
-			   
-			 </ul>
+			  <!-- Logout functionality -->
+					<c:if test="${not empty currentUser}">
+						<c:url var="logOutUrl" value="/logout" />
+						<form id="logoutForm" action="${logOutUrl}" method="POST">
+						<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
+						<input type=submit class="btn logout-btn" value="Log Out"/>
+							</form>
+						
+					</c:if>
+					
+					
+					
+
+
+				</ul>
 			  <script type="text/javascript" src="js/nav.js"></script>
 		  </div><!-- end h_menu4 -->
 		 <div class="clear"></div>

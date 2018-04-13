@@ -1679,6 +1679,11 @@ p.right_text2 {
 	float:left;
 	margin-left:20%;
 }
+
+.logout-btn{
+	background:#ff7e00;
+}
+
 .btn4 a {
 	background:#fff;
 	font-size:0.85em;
