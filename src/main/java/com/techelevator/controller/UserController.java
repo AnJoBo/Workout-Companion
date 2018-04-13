@@ -92,7 +92,22 @@ public class UserController {
 		return "gymCheckInAndOut";
 	}
 // need a post for a user to push a button and tell the database to add a begin date, or check to see if it already is there
+	@RequestMapping(path = "/gymCheckInAndOut/{userName}", method = RequestMethod.POST)
+	public String showParkDetailsCelc(HttpSession session,
+			@RequestParam boolean checkIn,  ModelMap modelHolder) {
+		Boolean isChecked = true;
+		if (checkIn == true) {
+			isChecked = true; 
+		} else {
+			isChecked = false;
+		}
+
+//		modelHolder.put("parkCode", parkCode);
+		session.setAttribute("isChecked", isChecked);
+
 	
+	return"redirect:/gymCheckInAndOut";
+} 
 	
 	// end of check in stuff
 	
@@ -100,5 +115,10 @@ public class UserController {
 	public String displayTestHomePage(ModelMap modelHolder, HttpSession session) {
 
 		return "homepage";
+	}
+	
+	@RequestMapping(path="/employee/dashboard", method= RequestMethod.GET)
+	public String displayEmployeeDashboard(ModelMap modelHolder, HttpSession session) {
+return "employeeDashboard"	;
 	}
 }
