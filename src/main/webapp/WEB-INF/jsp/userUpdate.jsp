@@ -10,7 +10,9 @@
 		$("#changePasswordForm").validate({
 			rules : {
 				password : {
-					required : true
+					required : true,
+					minlength: 15,
+					capitals: true,
 				},
 				confirmPassword : {
 					required : true,
@@ -18,6 +20,10 @@
 				}
 			},
 			messages : {
+				password: {
+					minlength: "Password too short, make it at least 15 characters",
+					capitals: "Field must contain a capital letter",
+				},
 				confirmPassword : {
 					equalTo : "Passwords do not match"
 				}
