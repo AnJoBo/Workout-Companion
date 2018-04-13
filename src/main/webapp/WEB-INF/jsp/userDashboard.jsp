@@ -30,21 +30,12 @@
 	<c:out value="${currentUser.fitnessGoal}" />
 </p>
 
-
-<c:url var="userUpdate" value="/users/${currentUser.userName}" />
-<form method="POST" action="${userUpdate}">
-	<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
-	
-
-<c:url var="updateLink" value="/userUpdate/${currentUser.userName}" />
+<c:url var="updateLink" value="/userUpdate/${currentUser.userName}" />	
 <a href="${updateLink}"><button class="btn">Update Info</button></a>
 
-
-	
-	
+<form>
 	<input type="hidden" name="checkInOutDt" value="<%= new java.util.Date() %>" /> 
 	<input type="submit" value="CheckInCheckOut" />
-
 </form>
 <!--  /////////////////////////////////////////////////// TEST PAGE CODE - DELETE BELOW IF THE PAGE IS NOT WORKING ///////////////////////////////////////////////////////////// -->
 
