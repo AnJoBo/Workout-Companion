@@ -102,7 +102,7 @@
 		<hr>
 		
 	<h3>Delete Account</h3>
-		<c:url var="deleteAction" value="/userUpdate/${currentUser.userName}"/>
+		<c:url var="deleteAction" value="/deleteUser/${currentUser.userName}"/>
 		<form action="${deleteAction}" method="POST">
 			<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" /> 
 			<input type="hidden" name="userName" value="${currentUser.userName}" />
@@ -113,4 +113,4 @@
 </div>
 <br>
 
-<c:import url="/WEB-INF/jsp/footer.jsp" />
+<%@ include file="include/footer.jspf" %>

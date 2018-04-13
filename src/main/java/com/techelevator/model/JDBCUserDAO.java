@@ -64,6 +64,11 @@ public class JDBCUserDAO implements UserDAO {
 		jdbcTemplate.update("UPDATE app_user SET user_name = ?, email = ?, phone = ?, picture = ?, fitness_goal = ? WHERE user_name = ?", 
 							newUserName, newEmail, newPhone, newPicture, newFitnessGoal, userName);
 	}
+	
+	@Override
+	public void deleteUser(String userName) {
+		jdbcTemplate.update("DELETE FROM app_user WHERE user_name = ?", userName);
+	}
 
 	@Override
 	public User getUserByUserName(String userName) {
@@ -92,6 +97,5 @@ public class JDBCUserDAO implements UserDAO {
 		 
 			jdbcTemplate.update("INSERT INTO checkin_checkout(user_id, gym_id, check_in) VALUES (?, 1, ?)", userName, checkIn);
 	}
-
 
 }

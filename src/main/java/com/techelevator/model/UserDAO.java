@@ -13,5 +13,7 @@ public interface UserDAO {
 	public User getUserByUserName(String userName);
 
 	public void saveUserCheckInAtGym(String userName, String checkIn);
+	
+	public void deleteUser(String userName);
 
 }

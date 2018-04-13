@@ -96,6 +96,14 @@ public class UserController {
 		session.setAttribute("currentUser", userDAO.getUserByUserName(newUserName));
 		return "redirect:/users/userDashboard";
 	}
+	
+	@RequestMapping(path="/deleteUser/{userName}", method = RequestMethod.POST)
+	public String deleteUser(@RequestParam String userName, ModelMap modelHolder, HttpSession session) {
+		userDAO.deleteUser(userName);
+		modelHolder.remove("currentUser");
+		session.invalidate();
+		return "redirect:/";
+	}
 
 	// check in check out stuff ......
 	@RequestMapping(path = "/gymCheckInAndOut/{userName}", method = RequestMethod.GET)
