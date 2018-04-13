@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -53,6 +54,13 @@ public class UserController {
 		return "userDashboard";
 	}
 	
+	@RequestMapping(path = "/users/{userName}", method = RequestMethod.POST)
+	public String displayUserDashboardAfterPost(@RequestParam String checkInOutDt, HttpSession session) {
+		
+		userDAO.saveUserCheckInAtGym(4, checkInOutDt);
+		return "redirect:/userDashboard";
+	}
+	
 	// Login Page link function****************
 	@RequestMapping(path = "/login", method = RequestMethod.GET)
 	public String displayLoginPage(ModelMap modelHolder, HttpSession session) {
@@ -87,33 +95,7 @@ public class UserController {
 		return "redirect:/users/userDashboard";
 	}
 
-	// check in check out stuff ......
-	@RequestMapping(path = "/gymCheckInAndOut/{userName}", method = RequestMethod.GET)
-	public String displayloginAndOutPage(ModelMap modelHolder, HttpSession session) {
-		
-		return "gymCheckInAndOut";
-	}
-// need a post for a user to push a button and tell the database to add a begin date, or check to see if it already is there
-	@RequestMapping(path = "/gymCheckInAndOut/{userName}", method = RequestMethod.POST)
-	public String showParkDetailsCelc(@RequestParam String userName, HttpSession session,
-			@RequestParam boolean checkIn,  ModelMap modelHolder) {
-		 LocalDate a = LocalDate.now();
-		 a.getDayOfWeek().toString();
-		userDAO.saveUserCheckInAtGym(userName, a);
-//		Boolean isChecked = true;
-//		if (checkIn == true) {
-//			isChecked = true; 
-//		} else {
-//			isChecked = false;
-//		}
-
-		
-//		modelHolder.put("parkCode", parkCode);
-		//session.setAttribute("isChecked", isChecked);
-
 	
-	return"redirect:/gymCheckInAndOut";
-} 
 	
 	// end of check in stuff
 	

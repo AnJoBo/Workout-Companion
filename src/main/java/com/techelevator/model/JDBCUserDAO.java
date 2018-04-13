@@ -10,7 +10,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
-import com.techelevator.model.User;
 import com.techelevator.security.PasswordHasher;
 
 @Component
@@ -90,11 +89,26 @@ public class JDBCUserDAO implements UserDAO {
 	
 
 	@Override
-	public void saveUserCheckInAtGym(String userName, LocalDate checkIn ) {
+	public void saveUserCheckInAtGym(int userId, String checkIn ) {
 		 
-			jdbcTemplate.update("INSERT INTO checkin_checkout(user_id, gym_id, check_in, check_out) VALUES (?, 1, ?, '1111-11-11')", userName, checkIn);
+			jdbcTemplate.update("INSERT INTO checkin_checkout(user_id, gym_id, check_in) VALUES (?, 1, ?)", userId, checkIn);
+	}
+
+	@Override
+	public void saveUserCheckInAtGym2(int userId, LocalDate checkIn) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	
+	@Override
+	public User getUsersIdFromUserName(int username) {
+		String sqlSelectUserId = "SELECT user_id "+
+								"FROM app_user "+
+							     "WHERE user_name = ? ";
+										 
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSelectUserId, username);
+		return (User) results;
+	}
 	
 }

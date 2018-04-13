@@ -16,6 +16,11 @@ public interface UserDAO {
 
 //	public void saveUserCheckInAtGym(String userName, String checkIn);
 
-	void saveUserCheckInAtGym(String userName, LocalDate checkIn);
+
+	void saveUserCheckInAtGym2(int userId, LocalDate checkIn);
+
+	void saveUserCheckInAtGym(int userId, String checkIn);
+
+	int getUsersIdFromUserName(int username);
 
 }
