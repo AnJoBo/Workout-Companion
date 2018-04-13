@@ -130,10 +130,7 @@ public class JDBCUserDAO implements UserDAO {
 	@Override
 	public void saveUserCheckInAtGym(int userId, String checkIn ) {
 
-	public void saveUserCheckInAtGym(String userName, String checkIn ) {
-
-		 
-
+	
 			jdbcTemplate.update("INSERT INTO checkin_checkout(user_id, gym_id, check_in) VALUES (?, 1, ?)", userId, checkIn);
 	}
 
@@ -145,19 +142,7 @@ public class JDBCUserDAO implements UserDAO {
 
 	
 	
-	@Override
-	public User getUsersIdFromUserName(int username) {
-		String sqlSelectUserId = "SELECT user_id "+
-								"FROM app_user "+
-							     "WHERE user_name = ? ";
-										 
-		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSelectUserId, username);
-		return (User) results;
-
-			jdbcTemplate.update("INSERT INTO checkin_checkout(user_id, gym_id, check_in) VALUES (?, 1, ?)", userName, checkIn);
-
-
-	}
+	
 	
 
 

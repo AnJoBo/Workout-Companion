@@ -34,7 +34,7 @@
 <c:url var="userUpdate" value="/users/${currentUser.userName}" />
 <form method="POST" action="${userUpdate}">
 	<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
-	<c:set var="now" value="<%=new java.util.Date()%>" />
+	
 
 <c:url var="updateLink" value="/userUpdate/${currentUser.userName}" />
 <a href="${updateLink}"><button class="btn">Update Info</button></a>
@@ -42,7 +42,7 @@
 
 	
 	
-	<%-- <input type="hidden" name="checkInOutDt" value="<%= new java.util.Date() %>" /> --%>
+	<input type="hidden" name="checkInOutDt" value="<%= new java.util.Date() %>" /> 
 	<input type="submit" value="CheckInCheckOut" />
 
 </form>
