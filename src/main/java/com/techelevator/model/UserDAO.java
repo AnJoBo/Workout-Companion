@@ -17,26 +17,11 @@ public interface UserDAO {
 	public void updateUser(String userName, String newUserName, String newEmail, String newPhone, String newPicture, String newFitnessGoal);
 
 	public User getUserByUserName(String userName);
-
-
-//	public void saveUserCheckInAtGym(String userName, String checkIn);
-
-
-	void saveUserCheckInAtGym2(int userId, LocalDate checkIn);
-
-	void saveUserCheckInAtGym(int userId, String checkIn);
-
-	int getUsersIdFromUserName(int username);
-
-	public void saveUserCheckInAtGym(String userName, String checkIn);
 	
+	public List<User> getAllUsers();
+
+	public void saveUserCheckInAtGym(int userId, String checkIn);
+
 	public void deleteUser(String userName);
-
-
-
-	List<User> getAllUsers();
-
-	void updateUser(String email, String phone);
-
 
 }
