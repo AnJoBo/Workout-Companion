@@ -241,26 +241,28 @@
 			   <li><a href="${checkInUrl}">Check In/Out</a></li>
 			   
 			   
-			   <li><a href="trainers.html">Trainers</a></li>
+			   <!-- <li><a href="trainers.html">Trainers</a></li> -->
+			   
 			   <li><a href="classes.html">Classes</a></li>
 			   
 			   
 			   <li><a href="pricing.html">Pricing</a></li>
+			   
 			   <li><a href="contact.html">Contact</a></li>
 			   
 			   <%--  <c:url var="loginUrl" value="/login"/>
 			   <li><a href="${loginUrl}">Log In</a></li> --%>
 			  
 			  <!-- Logout functionality -->
-					<c:if test="${not empty currentUser}">
+				<li>	
+				<c:if test="${not empty currentUser}">
 						<c:url var="logOutUrl" value="/logout" />
-						<form id="logoutForm" action="${logOutUrl}" method="POST">
-						<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
-						<input type=submit class="btn logout-btn" value="Log Out"/>
+							<form id="logoutForm" action="${logOutUrl}" method="POST">
+								<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
+								<input type=submit class="btn logout-btn a" value="Log Out"/>
 							</form>
-						
-					</c:if>
-					
+						</c:if>
+					</li>
 					
 					
 

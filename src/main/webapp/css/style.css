@@ -1681,7 +1681,20 @@ p.right_text2 {
 }
 
 .logout-btn{
-	background:#ff7e00;
+	color:#fff;
+	margin-left:45px;
+	
+	background:#00BFF0;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+	text-transform:uppercase;
+}
+
+.logout-btn:hover{
+	color:#00BFF0;
+	background:#fff;
+	
 }
 
 .btn4 a {
