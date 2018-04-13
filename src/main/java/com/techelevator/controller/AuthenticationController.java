@@ -14,7 +14,8 @@ import com.techelevator.model.UserDAO;
 
 @Controller
 public class AuthenticationController {
-
+	
+	@Autowired
 	private UserDAO userDAO;
 
 	@Autowired
@@ -40,7 +41,7 @@ public class AuthenticationController {
 				return "redirect:" + destination;
 			} 
 			else if(user.getRole().equals("admin")) {
-
+				//(POST) this redirect is going to a controller which will return a jsp 
 				return "redirect:/admin/dashboard";
 
 			} else if(user.getRole().equals("employee")) {
