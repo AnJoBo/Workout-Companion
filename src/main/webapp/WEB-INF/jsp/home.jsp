@@ -41,7 +41,7 @@
 					<div class="login-title">
 						<h4 class="title">Registered Customers</h4>
 						<div id="loginbox" class="loginbox">
-							<c:url var="formAction" value="/login" />
+							<c:url var="formAction" value="/home" />
 							<form method="POST" action="${formAction}">
 								<input type="hidden" name="destination"
 									value="${param.destination}" /> <input type="hidden"

@@ -13,6 +13,8 @@
 <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
 <c:url var="cssUrl" value="/css/style.css"/>
 <link href="${cssUrl }" rel='stylesheet' type='text/css' />
+
+
 <!-- <script type="text/javascript">
 	$(document).ready(function () {
 	
@@ -34,6 +36,8 @@
 			errorClass : "error"
 		});
 	});
+	
+	
 </script> -->
 </head>
 <body>
@@ -62,8 +66,8 @@
 	  <div class="container">
 		 <div class="logo">
 		 <c:url var="logoUrl" value="/images/logo.png"/>
-		 
-			<a href="index.html"><img src="${logoUrl}" alt=""/></a>
+		 <c:url var="homeUrl" value="/"/>
+			<a href="${homeUrl}"><img src="${logoUrl}" alt=""/></a>
 			
 		 </div>
 		 <div class="h_menu4"><!-- start h_menu4 -->
@@ -72,8 +76,163 @@
 			 
 			 <!-- /////////////////////// NAV BUTONS /////////////////////// -->
 			 
-			 <c:url var="homeUrl" value="/login"/>
-			   <li class="active"><a href="${login}">Home</a></li> <!-- "HOME" button redirects to the login page for now -->
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 <script type="text/javascript">
+
+ 			$(document).ready(function() {
+
+ 				$("time.timeago").timeago();
+
+ 				
+
+ 				$("#logoutLink").click(function(event){
+
+ 					$("#logoutForm").submit();
+
+ 				});
+
+ 				
+
+ 				var pathname = window.location.pathname;
+
+ 				$("nav a[href='"+pathname+"']").parent().addClass("active");
+
+ 				
+
+ 			});
+
+ 			
+<!-- //////////////////////////////////////////////////////////////////////////////////////////////////////// The following is just a copy of the "if you are logged in, show this" code. Its only here to reference ////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+
+
+<%--  			
+
+ 		</script>
+
+ 		
+
+ 	</head>
+
+ 	<body>
+
+ 		<header>
+
+ 			<c:url var="homePageHref" value="/" />
+
+ 			<c:url var="imgSrc" value="/img/logo.png" />
+
+ 			<a href="${homePageHref}"><img src="${imgSrc}" class="img-responsive" /></a>
+
+ 		</header>
+
+ 		<nav class="navbar navbar-default">
+
+ 			<div class="container-fluid">
+
+ 				<ul class="nav navbar-nav">
+
+ 					<c:url var="homePageHref" value="/" />
+
+ 					<li><a href="${homePageHref}">Home</a></li>
+
+ 					<c:if test="${not empty currentUser}">
+
+ 						<c:url var="dashboardHref" value="/users/${currentUser}" />
+
+ 						<li><a href="${dashboardHref}">Private Messages</a></li>
+
+ 						<c:url var="newMessageHref" value="/users/${currentUser}/messages/new" />
+
+ 						<li><a href="${newMessageHref}">New Message</a></li>
+
+ 						<c:url var="sentMessagesHref" value="/users/${currentUser}/messages" />
+
+ 						<li><a href="${sentMessagesHref}">Sent Messages</a></li>
+
+ 						<c:url var="changePasswordHref" value="/users/${currentUser}/changePassword" />
+
+ 						<li><a href="${changePasswordHref}">Change Password</a></li>
+
+ 					</c:if>
+
+ 				</ul>
+
+ 				<ul class="nav navbar-nav navbar-right">
+
+ 					<c:choose>
+
+ 						<c:when test="${empty currentUser}">
+
+ 							<c:url var="newUserHref" value="/users/new" />
+
+ 							<li><a href="${newUserHref}">Sign Up</a></li>
+
+ 							<c:url var="loginHref" value="/login" />
+
+ 							<li><a href="${loginHref}">Log In</a></li>
+
+ 						</c:when>
+
+ 						<c:otherwise>
+
+ 							<c:url var="logoutAction" value="/logout" />
+
+ 							<form id="logoutForm" action="${logoutAction}" method="POST">
+
+ 							<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
+
+ 							</form>
+
+ 							<li><a id="logoutLink" href="#">Log Out</a></li>
+
+ 						</c:otherwise>
+
+ 					</c:choose>
+
+ 				</ul>
+
+ 			</div>
+
+ 		</nav>
+
+ 		<c:if test="${not empty currentUser}">
+
+ 			<p id="currentUser">Current User: ${currentUser}</p>
+
+ 		</c:if>	
+			 
+			  --%>
+			 
+			<!-- //////////////////////////////////////////////////////////////////////////////////////////////////////// End of  reference code ////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+			 
+			 
+			 
+
+			
+			
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 <%-- <c:url var="homeUrl" value="/"/>
+			   <li class="active"><a href="${login}">Home</a></li> <!-- "HOME" button redirects to the login page for now --> --%>
 			   
  			   <c:url var="aboutUrl" value="/about"/>
 			   <li><a href="${aboutUrl}">About</a></li>
@@ -85,11 +244,20 @@
 			   <li><a href="trainers.html">Trainers</a></li>
 			   <li><a href="classes.html">Classes</a></li>
 			   
-			   <c:url var="loginUrl" value="/login"/>
-			   <li><a href="${loginUrl}">Log In</a></li>
 			   
 			   <li><a href="pricing.html">Pricing</a></li>
 			   <li><a href="contact.html">Contact</a></li>
+			   
+			   <%--  <c:url var="loginUrl" value="/login"/>
+			   <li><a href="${loginUrl}">Log In</a></li> --%>
+			  
+			  // Logout function
+			   <c:if test="${not empty currentUser}">
+			    <c:url var="logOutUrl" value="/"/>
+			   <li><a href="${logOutUrl}">Log Out</a></li>
+			   </c:if>
+			   
+			   
 			 </ul>
 			  <script type="text/javascript" src="js/nav.js"></script>
 		  </div><!-- end h_menu4 -->
