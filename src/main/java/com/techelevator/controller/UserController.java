@@ -122,4 +122,9 @@ public class UserController {
 
 		return "homepage";
 	}
+	
+	@RequestMapping(path="/employee/dashboard", method= RequestMethod.GET)
+	public String displayEmployeeDashboard(ModelMap modelHolder, HttpSession session) {
+return "employeeDashboard"	;
+	}
 }
