@@ -24,13 +24,13 @@ public class AuthenticationController {
 	}
 
 	@RequestMapping(path="/", method=RequestMethod.GET)
-	public String displayLoginForm() {
-		return "login";
+	public String displayHomePageLoginForm() {
+		return "home";
 	}
 	
 	
 	
-	@RequestMapping(path="/login", method=RequestMethod.POST)
+	@RequestMapping(path="/home", method=RequestMethod.POST)
 	public String login(@RequestParam String userName, 
 						@RequestParam String password, 
 						@RequestParam(required=false) String destination,
