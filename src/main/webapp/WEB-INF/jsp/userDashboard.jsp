@@ -7,10 +7,12 @@
 
 <h1>USER PAGE.JSP</h1>
 
-<c:out value="${message}" />
+<c:if test="${not empty message}">
+	<div style="display: inline-block; border: 1px solid black;"><c:out value="${message}" /></div>
+</c:if>
 
 <c:url var="userImg" value="/img/${currentUser.picture}" />
-<img src="${userImg}">
+<img src="${userImg}" style="display: block; ">
 <p>
 	Hello,
 	<c:out value="${currentUser.userName}" />
@@ -28,6 +30,8 @@
 	<c:out value="${currentUser.fitnessGoal}" />
 </p>
 
+<c:url var="updateLink" value="/userUpdate/${currentUser.userName}" />
+<a href="${updateLink}"><button class="btn">Update Info</button></a>
 
 
 <!--  /////////////////////////////////////////////////// TEST PAGE CODE - DELETE BELOW IF THE PAGE IS NOT WORKING ///////////////////////////////////////////////////////////// -->
