@@ -50,6 +50,20 @@ public class UserController {
 
 		return "userPage";
 	}
+	
+	// Login Page link function****************
+	@RequestMapping(path = "/login", method = RequestMethod.GET)
+	public String displayLoginPage(ModelMap modelHolder, HttpSession session) {
+
+		return "login";
+	}
+	
+	@RequestMapping(path = "/about", method = RequestMethod.GET)
+	public String displayAboutPage(ModelMap modelHolder, HttpSession session) {
+
+		return "about";
+	}
+	
 
 	@RequestMapping(path = "/userUpdate/{userName}", method = RequestMethod.GET)
 	public String displayUserUpdatePage() {
@@ -77,7 +91,25 @@ public class UserController {
 
 		return "gymCheckInAndOut";
 	}
+// need a post for a user to push a button and tell the database to add a begin date, or check to see if it already is there
+	@RequestMapping(path = "/gymCheckInAndOut/{userName}", method = RequestMethod.POST)
+	public String showParkDetailsCelc(HttpSession session,
+			@RequestParam boolean checkIn,  ModelMap modelHolder) {
+		Boolean isChecked = true;
+		if (checkIn == true) {
+			isChecked = true; 
+		} else {
+			isChecked = false;
+		}
 
+//		modelHolder.put("parkCode", parkCode);
+		session.setAttribute("isChecked", isChecked);
+
+	
+	return"redirect:/gymCheckInAndOut";
+} 
+	
+	// end of check in stuff
 	
 	@RequestMapping(path = "/homepage/{userName}", method = RequestMethod.GET)
 	public String displayTestHomePage(ModelMap modelHolder, HttpSession session) {
