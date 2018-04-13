@@ -14,7 +14,8 @@ import com.techelevator.model.UserDAO;
 
 @Controller
 public class AuthenticationController {
-
+	
+	@Autowired
 	private UserDAO userDAO;
 
 	@Autowired
@@ -23,13 +24,13 @@ public class AuthenticationController {
 	}
 
 	@RequestMapping(path="/", method=RequestMethod.GET)
-	public String displayLoginForm() {
-		return "login";
+	public String displayHomePageLoginForm() {
+		return "home";
 	}
 	
 	
 	
-	@RequestMapping(path="/login", method=RequestMethod.POST)
+	@RequestMapping(path="/home", method=RequestMethod.POST)
 	public String login(@RequestParam String userName, 
 						@RequestParam String password, 
 						@RequestParam(required=false) String destination,
@@ -42,7 +43,7 @@ public class AuthenticationController {
 				return "redirect:" + destination;
 			} 
 			else if(user.getRole().equals("admin")) {
-
+				//(POST) this redirect is going to a controller which will return a jsp 
 				return "redirect:/admin/dashboard";
 
 			} else if(user.getRole().equals("employee")) {

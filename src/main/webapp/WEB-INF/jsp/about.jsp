@@ -9,7 +9,7 @@
 				  <img src="images/pic.png" class="img-responsive" alt=""/> 
 			     </div>
 				 <div class="col-md-7 content_left_text">
-				   <h3>Lorem ipsum dolor sit!</h3>
+				   <h3>Lorem ipsum dolor SWOLL!</h3>
 				   <p>aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
 				 </div>
             </div>
