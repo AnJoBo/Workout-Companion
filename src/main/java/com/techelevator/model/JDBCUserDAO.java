@@ -1,5 +1,7 @@
 package com.techelevator.model;
 
+import java.time.LocalDate;
+
 import javax.sql.DataSource;
 
 import org.bouncycastle.util.encoders.Base64;
@@ -88,8 +90,11 @@ public class JDBCUserDAO implements UserDAO {
 	
 
 	@Override
-	public void saveUserCheckInAtGym(String userName, String checkIn ) {
+	public void saveUserCheckInAtGym(String userName, LocalDate checkIn ) {
 		 
-			jdbcTemplate.update("INSERT INTO checkin_checkout(user_id, gym_id, check_in) VALUES (?, 1, ?)", userName, checkIn);
+			jdbcTemplate.update("INSERT INTO checkin_checkout(user_id, gym_id, check_in, check_out) VALUES (?, 1, ?, '1111-11-11')", userName, checkIn);
 	}
+	
+	
+	
 }

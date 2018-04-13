@@ -1,5 +1,7 @@
 package com.techelevator.controller;
 
+import java.time.LocalDate;
+
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -88,22 +90,26 @@ public class UserController {
 	// check in check out stuff ......
 	@RequestMapping(path = "/gymCheckInAndOut/{userName}", method = RequestMethod.GET)
 	public String displayloginAndOutPage(ModelMap modelHolder, HttpSession session) {
-
+		
 		return "gymCheckInAndOut";
 	}
 // need a post for a user to push a button and tell the database to add a begin date, or check to see if it already is there
 	@RequestMapping(path = "/gymCheckInAndOut/{userName}", method = RequestMethod.POST)
-	public String showParkDetailsCelc(HttpSession session,
+	public String showParkDetailsCelc(@RequestParam String userName, HttpSession session,
 			@RequestParam boolean checkIn,  ModelMap modelHolder) {
-		Boolean isChecked = true;
-		if (checkIn == true) {
-			isChecked = true; 
-		} else {
-			isChecked = false;
-		}
+		 LocalDate a = LocalDate.now();
+		 a.getDayOfWeek().toString();
+		userDAO.saveUserCheckInAtGym(userName, a);
+//		Boolean isChecked = true;
+//		if (checkIn == true) {
+//			isChecked = true; 
+//		} else {
+//			isChecked = false;
+//		}
 
+		
 //		modelHolder.put("parkCode", parkCode);
-		session.setAttribute("isChecked", isChecked);
+		//session.setAttribute("isChecked", isChecked);
 
 	
 	return"redirect:/gymCheckInAndOut";

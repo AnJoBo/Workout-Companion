@@ -32,19 +32,19 @@
 <c:url var="userUpdate"
 	value="/gymCheckInAndOut/${currentUser.userName}" />
 <form method="POST" action="${userUpdate}">
-
-	<label for="pickabutton"> Select Fahrenheit or Celsius</label> <select
-		name="checkIn" id="checkIn">
+	<input type="submit" value="submit" />
 		<c:choose>
-			<c:when test="${checkIn== true}">
-				<input type="password" id="password" name="Check In" />
+			<c:when test="${checkIn == true}">
+				<input type="CheckInButton" id="CheckInButton" name="Check In" />
 				<input type="submit" value="submit" />
 			</c:when>
+			
 		</c:choose>
 		<!-- <option value="true">Check In</option>
 		<option value="false">Check Out</option>
 
 	</select> <input type="submit" value="submit" /> -->
+	
 </form>
 
 
