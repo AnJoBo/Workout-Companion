@@ -48,16 +48,16 @@ public class UserController {
 	}
 
 	@RequestMapping(path = "/users/{userName}", method = RequestMethod.GET)
-	public String displayUserPage(ModelMap modelHolder, HttpSession session) {
+	public String displayUserDashboard(ModelMap modelHolder, HttpSession session) {
 
-		return "userPage";
+		return "userDashboard";
 	}
 	
 	// Login Page link function****************
 	@RequestMapping(path = "/login", method = RequestMethod.GET)
 	public String displayLoginPage(ModelMap modelHolder, HttpSession session) {
 
-		return "login";
+		return "home";
 	}
 	
 	@RequestMapping(path = "/about", method = RequestMethod.GET)
@@ -77,14 +77,14 @@ public class UserController {
 			RedirectAttributes flash) {
 		flash.addFlashAttribute("message", "success");
 		userDAO.updatePassword(userName, password);
-		return "redirect:/users/userPage";
+		return "redirect:/users/userDashboard";
 	}
 
 	public String userUpdatePage(@RequestParam String userName, @RequestParam String password,
 			RedirectAttributes flash) {
 		flash.addFlashAttribute("message", "Success!");
 		userDAO.updatePassword(userName, password);
-		return "redirect:/users/userPage";
+		return "redirect:/users/userDashboard";
 	}
 
 	// check in check out stuff ......
