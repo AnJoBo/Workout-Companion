@@ -8,7 +8,7 @@ public interface UserDAO {
 
 	public void updatePassword(String userName, String password);
 	
-	public void updateUser(String email, String phone);
+	public void updateUser(String userName, String newUserName, String newEmail, String newPhone, String newPicture, String newFitnessGoal);
 
 	public User getUserByUserName(String userName);
 

@@ -51,37 +51,49 @@ public class UserController {
 		return "userDashboard";
 	}
 	
-	// Login Page link function****************
-	@RequestMapping(path = "/login", method = RequestMethod.GET)
-	public String displayLoginPage(ModelMap modelHolder, HttpSession session) {
-
-		return "home";
-	}
-	
 	@RequestMapping(path = "/about", method = RequestMethod.GET)
 	public String displayAboutPage(ModelMap modelHolder, HttpSession session) {
 
 		return "about";
 	}
 	
-
 	@RequestMapping(path = "/userUpdate/{userName}", method = RequestMethod.GET)
 	public String displayUserUpdatePage() {
 		return "userUpdate";
 	}
 
 	@RequestMapping(path = "/userUpdate/{userName}", method = RequestMethod.POST)
-	public String updatePassword(@RequestParam String userName, @RequestParam String password,
-			RedirectAttributes flash) {
-		flash.addFlashAttribute("message", "success");
-		userDAO.updatePassword(userName, password);
-		return "redirect:/users/userDashboard";
-	}
-
-	public String userUpdatePage(@RequestParam String userName, @RequestParam String password,
-			RedirectAttributes flash) {
-		flash.addFlashAttribute("message", "Success!");
-		userDAO.updatePassword(userName, password);
+	public String updateAccount(@RequestParam String userName,
+								@RequestParam(required=false) String newUserName,
+								@RequestParam(required=false) String newEmail,
+								@RequestParam(required=false) String newPhone,
+								@RequestParam(required=false) String newPicture,
+								@RequestParam(required=false) String newFitnessGoal,
+								RedirectAttributes flash,
+								HttpSession session) {
+		
+		User thisUser = new User();
+		thisUser = userDAO.getUserByUserName(userName);
+		
+		if(newUserName.equals("")) {
+			newUserName = thisUser.getUserName();
+		}
+		if(newEmail.equals("")) {
+			newEmail = thisUser.getEmail();
+		}
+		if(newPhone.equals("")) {
+			newPhone = thisUser.getPhone();
+		}
+		//if(newPicture.equals("")) {
+			newPicture = thisUser.getPicture();
+		//}
+		if(newFitnessGoal.equals("")) {
+			newFitnessGoal = thisUser.getFitnessGoal();
+		}
+		
+		flash.addFlashAttribute("message", "Your information has been updated!");
+		userDAO.updateUser(userName, newUserName, newEmail, newPhone, newPicture, newFitnessGoal);
+		session.setAttribute("currentUser", userDAO.getUserByUserName(newUserName));
 		return "redirect:/users/userDashboard";
 	}
 
@@ -110,13 +122,7 @@ public class UserController {
 } 
 	
 	// end of check in stuff
-	
-	@RequestMapping(path = "/homepage/{userName}", method = RequestMethod.GET)
-	public String displayTestHomePage(ModelMap modelHolder, HttpSession session) {
 
-		return "homepage";
-	}
-	
 	@RequestMapping(path="/employee/dashboard", method= RequestMethod.GET)
 	public String displayEmployeeDashboard(ModelMap modelHolder, HttpSession session) {
 return "employeeDashboard"	;

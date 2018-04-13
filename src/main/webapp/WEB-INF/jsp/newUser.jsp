@@ -62,7 +62,7 @@
 			</div>
 			<div class="form-group">
 				<label for="phone">Phone Number: </label>
-				<input type="phone" id="phone" name="phone" placeHolder="Phone Number (Optional)" class="form-control" />	
+				<input type="text" id="phone" name="phone" placeHolder="Phone Number (Optional)" class="form-control" />	
 			</div>
 			<div class="form-group">
   				<label for="fitnessGoal">Select Fitness Goal:</label>
@@ -77,6 +77,8 @@
 				<div>
   				<label class="radio-inline">
   					<input type="radio" name="picture" value="maleImg.png"><img src="../img/maleImg.png" style="height: 150px">
+  				</label>
+  				<label class="radio-inline">
   					<input type="radio" name="picture" value="femaleImg.png"><img src="../img/femaleImg.png" style="height: 150px">
   				</label>
   				</div>
