@@ -23,5 +23,8 @@ public interface UserDAO {
 	public void saveUserCheckInAtGym(int userId, String checkIn);
 
 	public void deleteUser(String userName);
+	
+	public void updateUserRole(String userName, String role);
+	
 
 }

@@ -124,4 +124,9 @@ public class JDBCUserDAO implements UserDAO {
 			jdbcTemplate.update("INSERT INTO checkin_checkout(user_id, gym_id, check_in) VALUES (?, 1, ?)", userId, checkIn);
 	}
 
+	@Override
+	public void updateUserRole(String userName, String role) {
+		jdbcTemplate.update("UPDATE app_user SET role = ? WHERE user_name = ?", role, userName);
+	}
+
 }

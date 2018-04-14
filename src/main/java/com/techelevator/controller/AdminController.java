@@ -28,5 +28,12 @@ public class AdminController {
 		return "adminDashboard";
 	}
 	
+	@RequestMapping(path="/admin/dashboard", method=RequestMethod.POST)
+	public String updateUser(@RequestParam String userName, @RequestParam String role, ModelMap mh) {
+		userDAO.updateUserRole(userName, role);
+		mh.put("allUsers", userDAO.getAllUsers());
+		return "redirect:/adminDashboard";
+	}
+	
 	
 }

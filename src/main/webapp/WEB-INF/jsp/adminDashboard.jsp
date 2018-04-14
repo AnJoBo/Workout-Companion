@@ -18,18 +18,51 @@
 	<th>Email</th>
 	<th>Phone</th>
 	<th>Goal</th>
+	<th>Role</th>
 	</tr>
 	</thead>
 	
 	<c:forEach var="user" items="${allUsers}">
-		<tr>
-		<th><c:out value="${user.userName}"/> </th>
-		<th><c:out value="${user.email}"/> </th>
-		<th><c:out value="${user.phone}"/> </th>
-		<th><c:out value="${user.fitnessGoal}"/> </th>
-		<form></form>
-		</tr>
-	</c:forEach>
+		<c:url var="roleUpdate" value="/admin/dashboard" />
+		<form action="${roleUpdate}" method="POST">
+			<tr>
+				<td><c:out value="${user.userName}"/> </td>
+				<td><c:out value="${user.email}"/> </td>
+				<td><c:out value="${user.phone}"/> </td>
+				<td><c:out value="${user.fitnessGoal}"/> </td>
+				<td>
+					<select class="form-control" name="role" id="roleSelected">
+						<option value="user" ${user.role == "user" ? "selected" : "" }>USER</option>
+						<option value="employee" ${user.role == "employee" ? "selected" : "" }>EMPLOYEE</option>
+						</select>
+						</c:forEach>
+						<button type="submit" onclick="updateSelectedRole()" class="btn btn-default">Update</button>
+					
+<!-- 		 			<script>
+						function updateSelectedRole(){
+							  var xhttp;    
+							  if (str == "") {
+							    document.getElementById("roleSelected").innerHTML = "";
+							    return;
+							  }
+							  xhttp = new XMLHttpRequest();
+							  xhttp.onreadystatechange = function() {
+							    if (this.readyState == 4 && this.status == 200) {
+							      document.getElementById("roleSelected").innerHTML = this.responseText;
+							    }
+							  };
+							  xhttp.open("POST", "getRole.asp?q="+str, true);
+							  xhttp.send();
+							}
+					
+							}
+						}
+					</script>  -->
+				</td>
+				
+			</tr>
+		</form>
+	
 	</table>
 </div>
 
