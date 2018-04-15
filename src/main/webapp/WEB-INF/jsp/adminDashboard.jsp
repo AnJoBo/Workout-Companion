@@ -36,7 +36,8 @@
 						<option value="employee" ${user.role == "employee" ? "selected" : "" }>EMPLOYEE</option>
 						</select>
 						</c:forEach>
-						<button type="submit" onclick="updateSelectedRole()" class="btn btn-default">Update</button>
+						<c:url var="updateLink" value="/${currentUser.role}/dashboard" />	
+						<a href="${updateLink}"><button type="submit" onclick="updateSelectedRole()" class="btn btn-default">Update</button></a>
 					
 <!-- 		 			<script>
 						function updateSelectedRole(){
