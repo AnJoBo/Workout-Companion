@@ -23,7 +23,9 @@ import com.techelevator.model.UserDAO;
 @Controller
 public class UserController {
 
+	@Autowired
 	private UserDAO userDAO;
+	@Autowired
 	private CheckInAndOutDAO checkInDAO;
 
 	@Autowired
@@ -57,24 +59,15 @@ public class UserController {
 	public String displayUserDashboard(ModelMap modelHolder, HttpSession session) {
 		List<CheckInAndOut> LogResults = checkInDAO.getLogOfCheckins();
 		modelHolder.put("LogResults", LogResults);
-		
-		
+	
 		return "userDashboard";
 	}
 
 	@RequestMapping(path = "/users/{userName}", method = RequestMethod.POST)
-
-	public String displayUserDashboardAfterPost(@RequestParam int currentUserId, HttpSession session) {
-	
-		checkInDAO.saveUserCheckInAtGym(currentUserId);
-//      	if(checkInOutDt == null) {
-//      		checkInDAO.saveUserCheckInAtGym(currentUserId, checkInOutDt);
-//      	} else {
-//      		checkInDAO.saveUserCheckOutGym(currentUserId, checkInOutDt);
-//      	}
-//      	
+	public String displayUserDashboardAfterPost(@RequestParam int currentUserId, ModelMap modelHolder, HttpSession session) {		
 		return "redirect:/userDashboard";
-
+		
+//		checkInDAO.checkInUser(currentUserId);
 	}
 
 	@RequestMapping(path = "/about", method = RequestMethod.GET)
