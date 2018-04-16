@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.techelevator.model.User;
 import com.techelevator.model.UserDAO;
 
 @Controller
@@ -29,10 +30,15 @@ public class AdminController {
 	}
 	
 	@RequestMapping(path="/admin/dashboard", method=RequestMethod.POST)
-	public String updateUser(@RequestParam String userName, @RequestParam String role, ModelMap mh) {
+	public String updateUserRole(@RequestParam String userName, @RequestParam String role, ModelMap mh) {
+//		User thisUser = new User();
+//		thisUser = userDAO.getUserByUserName(userName);
+//		if (role.equals("")) {
+//			role = thisUser.getRole();
+//		}
 		userDAO.updateUserRole(userName, role);
 		mh.put("allUsers", userDAO.getAllUsers());
-		return "redirect:/adminDashboard";
+		return "redirect:/admin/dashboard";
 	}
 	
 	
