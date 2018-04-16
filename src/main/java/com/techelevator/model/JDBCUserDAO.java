@@ -1,11 +1,8 @@
 package com.techelevator.model;
 
 
-import java.time.LocalDate;
-
 import java.util.ArrayList;
 import java.util.List;
-
 
 import javax.sql.DataSource;
 
@@ -47,9 +44,7 @@ public class JDBCUserDAO implements UserDAO {
 		String hashedPassword = hashMaster.computeHash(password, salt);
 		String saltString = new String(Base64.encode(salt));
 
-		jdbcTemplate.update(
-				"INSERT INTO app_user(user_name, password, salt, role, email, phone, picture, fitness_goal) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
-				userName, hashedPassword, saltString, "user", email, phone, picture, fitnessGoal);
+		jdbcTemplate.update("INSERT INTO app_user(user_name, password, salt, role, email, phone, picture, fitness_goal) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", userName, hashedPassword, saltString, "user", email, phone, picture, fitnessGoal);
 	}
 
 	@Override
@@ -96,6 +91,7 @@ public class JDBCUserDAO implements UserDAO {
 		User thisUser = null;
 		if (user.next()) {
 			thisUser = new User();
+			thisUser.setUserId(user.getInt("user_id"));
 			thisUser.setUserName(user.getString("user_name"));
 			thisUser.setPassword(user.getString("password"));
 			thisUser.setEmail(user.getString("email"));
@@ -103,6 +99,7 @@ public class JDBCUserDAO implements UserDAO {
 			thisUser.setRole(user.getString("role"));
 			thisUser.setPicture(user.getString("picture"));
 			thisUser.setFitnessGoal(user.getString("fitness_goal"));
+		
 		}
 
 		return thisUser;
@@ -110,18 +107,20 @@ public class JDBCUserDAO implements UserDAO {
 
 	private User MapRowToUser(SqlRowSet row) {
 		User user = new User();
+		user.setUserId(row.getInt("user_id"));
 		user.setUserName(row.getString("user_name"));
 		user.setEmail(row.getString("email"));
 		user.setPhone(row.getString("phone"));
 		user.setFitnessGoal(row.getString("fitness_goal"));
 		user.setRole(row.getString("role"));
+	
 
 		return user;
 	}
 
-	@Override
-	public void saveUserCheckInAtGym(int userId, String checkIn ) {
-			jdbcTemplate.update("INSERT INTO checkin_checkout(user_id, gym_id, check_in) VALUES (?, 1, ?)", userId, checkIn);
-	}
 
+	
+	
+
+	
 }

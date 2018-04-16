@@ -1,6 +1,6 @@
 package com.techelevator.controller;
 
-import java.time.LocalDate;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -10,12 +10,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.techelevator.model.CheckInAndOut;
+import com.techelevator.model.CheckInAndOutDAO;
 import com.techelevator.model.User;
 import com.techelevator.model.UserDAO;
 
@@ -23,10 +24,13 @@ import com.techelevator.model.UserDAO;
 public class UserController {
 
 	private UserDAO userDAO;
+	private CheckInAndOutDAO checkInDAO;
 
 	@Autowired
-	public UserController(UserDAO userDAO) {
+	public UserController(UserDAO userDAO, CheckInAndOutDAO checkInDAO) {
 		this.userDAO = userDAO;
+	    this.checkInDAO = checkInDAO;
+		
 	}
 
 	@RequestMapping(path = "/users/new", method = RequestMethod.GET)
@@ -44,64 +48,78 @@ public class UserController {
 			flash.addFlashAttribute(BindingResult.MODEL_KEY_PREFIX + "user", result);
 			return "redirect:/users/new";
 		}
-		userDAO.saveUser(user.getUserName(), user.getPassword(), user.getRole(), user.getEmail(), user.getPhone(), user.getPicture(), user.getFitnessGoal());
+		userDAO.saveUser(user.getUserName(), user.getPassword(), user.getRole(), user.getEmail(), user.getPhone(),
+				user.getPicture(), user.getFitnessGoal());
 		return "redirect:/";
 	}
 
 	@RequestMapping(path = "/users/{userName}", method = RequestMethod.GET)
 	public String displayUserDashboard(ModelMap modelHolder, HttpSession session) {
-
+		List<CheckInAndOut> LogResults = checkInDAO.getLogOfCheckins();
+		modelHolder.put("LogResults", LogResults);
+		
+		
 		return "userDashboard";
 	}
+
+	@RequestMapping(path = "/users/{userName}", method = RequestMethod.POST)
+
+	public String displayUserDashboardAfterPost(@RequestParam int currentUserId, HttpSession session) {
 	
+		checkInDAO.saveUserCheckInAtGym(currentUserId);
+//      	if(checkInOutDt == null) {
+//      		checkInDAO.saveUserCheckInAtGym(currentUserId, checkInOutDt);
+//      	} else {
+//      		checkInDAO.saveUserCheckOutGym(currentUserId, checkInOutDt);
+//      	}
+//      	
+		return "redirect:/userDashboard";
+
+	}
 
 	@RequestMapping(path = "/about", method = RequestMethod.GET)
 	public String displayAboutPage(ModelMap modelHolder, HttpSession session) {
 
 		return "about";
 	}
-	
+
 	@RequestMapping(path = "/userUpdate/{userName}", method = RequestMethod.GET)
 	public String displayUserUpdatePage() {
 		return "userUpdate";
 	}
 
 	@RequestMapping(path = "/userUpdate/{userName}", method = RequestMethod.POST)
-	public String updateAccount(@RequestParam String userName,
-								@RequestParam(required=false) String newUserName,
-								@RequestParam(required=false) String newEmail,
-								@RequestParam(required=false) String newPhone,
-								@RequestParam(required=false) String newPicture,
-								@RequestParam(required=false) String newFitnessGoal,
-								RedirectAttributes flash,
-								HttpSession session) {
-		
+	public String updateAccount(@RequestParam String userName, @RequestParam(required = false) String newUserName,
+			@RequestParam(required = false) String newEmail, @RequestParam(required = false) String newPhone,
+			@RequestParam(required = false) String newPicture, @RequestParam(required = false) String newFitnessGoal,
+			RedirectAttributes flash, HttpSession session) {
+
 		User thisUser = new User();
 		thisUser = userDAO.getUserByUserName(userName);
-		
-		if(newUserName.equals("")) {
+
+		if (newUserName.equals("")) {
 			newUserName = thisUser.getUserName();
 		}
-		if(newEmail.equals("")) {
+		if (newEmail.equals("")) {
 			newEmail = thisUser.getEmail();
 		}
-		if(newPhone.equals("")) {
+		if (newPhone.equals("")) {
 			newPhone = thisUser.getPhone();
 		}
-		//if(newPicture.equals("")) {
-			newPicture = thisUser.getPicture();
-		//}
-		if(newFitnessGoal.equals("")) {
+		// if(newPicture.equals("")) {
+		newPicture = thisUser.getPicture();
+		// }
+		if (newFitnessGoal.equals("")) {
 			newFitnessGoal = thisUser.getFitnessGoal();
 		}
-		
+
 		flash.addFlashAttribute("message", "Your information has been updated!");
 		userDAO.updateUser(userName, newUserName, newEmail, newPhone, newPicture, newFitnessGoal);
 		session.setAttribute("currentUser", userDAO.getUserByUserName(newUserName));
 		return "redirect:/users/userDashboard";
 	}
-	
-	@RequestMapping(path="/deleteUser/{userName}", method = RequestMethod.POST)
+
+	@RequestMapping(path = "/deleteUser/{userName}", method = RequestMethod.POST)
 	public String deleteUser(@RequestParam String userName, ModelMap modelHolder, HttpSession session) {
 		userDAO.deleteUser(userName);
 		modelHolder.remove("currentUser");
@@ -109,12 +127,10 @@ public class UserController {
 		return "redirect:/";
 	}
 
-	
-	
 	// end of check in stuff
 
-	@RequestMapping(path="/employee/dashboard", method= RequestMethod.GET)
+	@RequestMapping(path = "/employee/dashboard", method = RequestMethod.GET)
 	public String displayEmployeeDashboard(ModelMap modelHolder, HttpSession session) {
-return "employeeDashboard"	;
+		return "employeeDashboard";
 	}
 }

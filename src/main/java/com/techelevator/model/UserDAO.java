@@ -1,8 +1,6 @@
 package com.techelevator.model;
 
 
-import java.time.LocalDate;
-
 import java.util.List;
 
 
@@ -20,8 +18,12 @@ public interface UserDAO {
 	
 	public List<User> getAllUsers();
 
-	public void saveUserCheckInAtGym(int userId, String checkIn);
+	
 
 	public void deleteUser(String userName);
+
+
+
+	
 
 }

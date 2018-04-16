@@ -27,6 +27,8 @@ public class User {
 	// Validation?
 	private String phone;
 	
+	private int UserId;
+	
 
 	private String gymCheckInDate;
 	
@@ -96,5 +98,15 @@ public class User {
 	}
 	public void setFitnessGoal(String fitnessGoal) {
 		this.fitnessGoal = fitnessGoal;
+	}
+	public int getUserId() {
+		return UserId;
+	}
+	public void setUserId(int userId) {
+		UserId = userId;
+	}
+	public void setCheckIn(String string) {
+		
+		
 	}
 }
