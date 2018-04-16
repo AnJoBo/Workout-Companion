@@ -25,4 +25,7 @@ VALUES ('James', 'Jd4Gz2svLEgxxjzgo6fF7A==', 'eW2xShApr2mXBo790L9V7OG45wy/5oD94a
 INSERT INTO gym (name) VALUES ('SlimGym');
 INSERT INTO gym (name) VALUES ('Elevated Gainz');
 
+ INSERT INTO equipment(equipment_name, workout_name, reps,number_of_sets, equipment_image) VALUES ('Flat Bench', 'Bench press', 5, 3, 'benchpress');
+ INSERT INTO equipment(equipment_name, workout_name, reps,number_of_sets, equipment_image) VALUES ('Squat Rack', 'Squats', 5, 3, 'squatrack');
+ INSERT INTO equipment(equipment_name, workout_name, reps,number_of_sets, equipment_image) VALUES ('Pull Up Bar', 'pull ups', 10, 3, 'pullupbar');
 COMMIT;

@@ -37,4 +37,28 @@ CREATE TABLE checkin_checkout (
   CONSTRAINT fk_gym_id FOREIGN KEY (gym_id) REFERENCES gym(gym_id)
 );
 
+CREATE TABLE equipment (
+  equipment_id SERIAL NOT NULL,
+  equipment_name varchar(255) NOT NULL,
+
+  CONSTRAINT pk_equipment_id PRIMARY KEY (equipment_id)
+  CONSTRAINT fk_workout_id FOREIGN KEY (workout_id) REFERENCES workout(workout_id)
+);
+
+ CREATE TABLE workout (
+  workout_id SERIAL NOT NULL, 
+  workout_name varchar(255)  NOT NULL,
+  workout_image varChar(255) NOT NULL, 
+  workout_description varchar(255) NOT NULL
+ );
+
+ CREATE TABLE workout_user(
+  reps varchar(255), 
+  number_of_sets varchar(255),
+
+ CONSTRAINT fk_user_id FOREIGN KEY (user_id) REFERENCES app_user(user_id);
+   CONSTRAINT fk_equipment_id FOREIGN KEY (equipment_id) REFERENCES equipment(fk_equipment_id);
+
+ );
+
 COMMIT;
