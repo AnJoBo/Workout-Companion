@@ -21,6 +21,9 @@ public interface UserDAO {
 	
 
 	public void deleteUser(String userName);
+	
+	public void updateUserRole(String userName, String role);
+	
 
 
 
