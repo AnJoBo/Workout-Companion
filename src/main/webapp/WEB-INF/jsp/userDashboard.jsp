@@ -16,74 +16,74 @@
 	</div>
 </c:if>
 
+<div class="test">
 
-
-<c:out value="${date}" />
-
-
-
-<c:forEach var="LogResults" items="${LogResults}">
-	<p>
-		User Id:
-		<c:out value="${LogResults.userId}" />
-		Gym Number:
-		<c:out value="${LogResults.gymId}" />
-		Check In :
-		<c:out value="${LogResults.checkIn}" />
-		Check Out:
-		<c:out value="${LogResults.checkOut}" />
-	</p>
-</c:forEach>
+	<div class="header-text">
+		<c:out value="${date}" />
 
 
 
-
-<c:url var="userImg" value="/img/${currentUser.picture}" />
-<img src="${userImg}" style="display: block;">
-<p>
-	Hello,
-	<c:out value="${currentUser.userName}" />
-
-</p>
-<p>
-	user id
-	<c:out value="${currentUser.userId}" />
-</p>
-<p>
-	Your email:
-	<c:out value="${currentUser.email}" />
-</p>
-<p>
-	Your phone number:
-	<c:out value="${currentUser.phone}" />
-</p>
-<p>
-	Fitness Goal:
-	<c:out value="${currentUser.fitnessGoal}" />
-</p>
-
-<c:url var="updateLink" value="/userUpdate/${currentUser.userName}" />
-<a href="${updateLink}"><button class="btn">Update Info</button></a>
+		<c:forEach var="LogResults" items="${LogResults}">
+			<p>
+				User Id:
+				<c:out value="${LogResults.userId}" />
+				Gym Number:
+				<c:out value="${LogResults.gymId}" />
+				Check In :
+				<c:out value="${LogResults.checkIn}" />
+				Check Out:
+				<c:out value="${LogResults.checkOut}" />
+			</p>
+		</c:forEach>
 
 
 
-<script type="text/javascript">
-	function change(el) {
-		if (el.value == "Check In")
-			el.value = "Check Out";
+		<div class="header-text h2">
+			<c:url var="userImg" value="/img/${currentUser.picture}" />
+			<img src="${userImg}" style="display: block;">
+			<p>
+				<c:out value="${currentUser.userName}" />
+			</p>
+		</div>
 
-		else
-			el.value = "Check In";
-	}
-</script>
-<c:url var="formAction" value="/users/${currentUser.userName}" />
-<form method="POST" action="${formAction}">
-	<input type="hidden" name="currentUserId" value="${currentUser.userId}" />
-	<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" /> 
-	<input type="submit" value="Check In" onClick="return change(this);" />
+		<div class="user-page-info">
+			<ul class="ul.a">
+				<li>user id <c:out value="${currentUser.userId}" />
+				</li>
+				<li>Your email: <c:out value="${currentUser.email}" />
+				</li>
+				<li>Your phone number: <c:out value="${currentUser.phone}" />
+				</li>
+				<li>Fitness Goal: <c:out value="${currentUser.fitnessGoal}" />
+				</li>
+			</ul>
+			<c:url var="updateLink" value="/userUpdate/${currentUser.userName}" />
+			<a href="${updateLink}"><button class="btn">Update Info</button></a>
+		</div>
 
 
-</form>
+		<script type="text/javascript">
+				function change(el) {
+					if (el.value == "Check In")
+						el.value = "Check Out";
+
+					else
+						el.value = "Check In";
+				}
+			</script>
+		<c:url var="formAction" value="/users/${currentUser.userName}" />
+		<form method="POST" action="${formAction}">
+			<input type="hidden" name="currentUserId"
+				value="${currentUser.userId}" /> <input type="hidden"
+				name="CSRF_TOKEN" value="${CSRF_TOKEN}" /> <input type="submit"
+				value="Check In" onClick="return change(this);" />
+
+
+		</form>
+	</div>
+</div>
+
+
 <!--  /////////////////////////////////////////////////// TEST PAGE CODE - DELETE BELOW IF THE PAGE IS NOT WORKING ///////////////////////////////////////////////////////////// -->
 
 
@@ -103,6 +103,10 @@
 			ex ea commodo consequat.</p>
 	</div>
 </div>
+</div>
+
+
+
 </div>
 <!-- end content-top -->
 <div class="container">
@@ -352,96 +356,8 @@
 	</div>
 	<div class="row content_middle_bottom">
 		<div class="col-md-4">
-			<h3 class="m_2">Our Trainers</h3>
-			<div class="course_demo">
-				<ul id="flexiselDemo3">
-					<li><img src="images/pic4.jpg" />
-					<div class="desc">
-							<h3>
-								Lorem Ipsum<br>
-								<span class="m_text">Spinning</span>
-							</h3>
-							<p>
-								Lorem ipsum dolor<br> sit amet, consectetuer.
-							</p>
-							<div class="coursel_list">
-								<i class="heart1"> </i> <i class="like"> </i>
-							</div>
-							<div class="coursel_list1">
-								<i class="twt"> </i> <i class="fb"> </i>
-							</div>
-							<div class="clear"></div>
-						</div></li>
-					<li><img src="images/pic5.jpg" />
-					<div class="desc">
-							<h3>
-								Lorem Ipsum<br>
-								<span class="m_text">Kik Boxing</span>
-							</h3>
-							<p>
-								Lorem ipsum dolor<br> sit amet, consectetuer.
-							</p>
-							<div class="coursel_list">
-								<i class="heart2"> </i> <i class="like1"> </i>
-							</div>
-							<div class="coursel_list1">
-								<i class="twt"> </i> <i class="fb"> </i>
-							</div>
-							<div class="clear"></div>
-						</div></li>
-					<li><img src="images/pic4.jpg" />
-					<div class="desc">
-							<h3>
-								Lorem Ipsum<br>
-								<span class="m_text">Spinning</span>
-							</h3>
-							<p>
-								Lorem ipsum dolor<br> sit amet, consectetuer.
-							</p>
-							<div class="coursel_list">
-								<i class="heart2"> </i> <i class="like1"> </i>
-							</div>
-							<div class="coursel_list1">
-								<i class="twt"> </i> <i class="fb"> </i>
-							</div>
-							<div class="clear"></div>
-						</div></li>
-					<li><img src="images/pic5.jpg" />
-					<div class="desc">
-							<h3>
-								Lorem Ipsum<br>
-								<span class="m_text">Kik Boxing</span>
-							</h3>
-							<p>
-								Lorem ipsum dolor<br> sit amet, consectetuer.
-							</p>
-							<div class="coursel_list">
-								<i class="heart2"> </i> <i class="like1"> </i>
-							</div>
-							<div class="coursel_list1">
-								<i class="twt"> </i> <i class="fb"> </i>
-							</div>
-							<div class="clear"></div>
-						</div></li>
-					<li><img src="images/pic4.jpg" />
-					<div class="desc">
-							<h3>
-								Lorem Ipsum<br>
-								<span class="m_text">Spinning</span>
-							</h3>
-							<p>
-								Lorem ipsum dolor<br> sit amet, consectetuer.
-							</p>
-							<div class="coursel_list">
-								<i class="heart2"> </i> <i class="like1"> </i>
-							</div>
-							<div class="coursel_list1">
-								<i class="twt"> </i> <i class="fb"> </i>
-							</div>
-							<div class="clear"></div>
-						</div></li>
-				</ul>
-				<script type="text/javascript">
+
+			<script type="text/javascript">
 					$(window).load(function() {
 						$("#flexiselDemo3").flexisel({
 							visibleItems : 4,
@@ -468,158 +384,93 @@
 
 					});
 				</script>
-				<script type="text/javascript" src="js/jquery.flexisel.js"></script>
-			</div>
+			<script type="text/javascript" src="js/jquery.flexisel.js"></script>
 		</div>
-		<div class="col-md-4">
-			<h3 class="m_2">Next Events</h3>
-			<div class="events">
-				<div class="event-top">
-					<ul class="event1">
-						<h4>26 April, 2014</h4>
-						<img src="images/pic.jpg" alt="" />
-					</ul>
-					<ul class="event1_text">
-						<span class="m_5">h.12.00-h.13.00</span>
-						<h4>Aerobics</h4>
-						<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit,.
-						</p>
-						<div class="btn2">
-							<a href="#">Reservation</a>
-						</div>
-					</ul>
-					<div class="clear"></div>
-				</div>
-				<div class="event-bottom">
-					<ul class="event1">
-						<h4>26 April, 2014</h4>
-						<img src="images/pic.jpg" alt="" />
-					</ul>
-					<ul class="event1_text">
-						<span class="m_5">h.12.00-h.13.00</span>
-						<h4>Spinning</h4>
-						<p>Lorem ipsum dolor sit amet.</p>
-						<div class="btn2">
-							<a href="#">Reservation</a>
-						</div>
-					</ul>
-					<div class="clear"></div>
-				</div>
-			</div>
-		</div>
-		<div class="col-md-4">
-			<h3 class="m_2">From the blog</h3>
-			<div class="blog_events">
-				<ul class="tab-left1">
-					<span class="tab1-img"><img src="images/pic7.jpg" alt=""></span>
-					<div class="tab-text1">
-						<p>
-							<a href="#">nostrud exerci tation ullamcorper suscipit
-								lobortis nisl ut aliquip</a>
-						</p>
-						<span class="m_date">25 April, 2014</span>
-					</div>
-					<div class="clear"></div>
-				</ul>
-				<ul class="tab-left1">
-					<span class="tab1-img"><img src="images/pic6.jpg" alt=""></span>
-					<div class="tab-text1">
-						<p>
-							<a href="#">soluta nobis eleifend option congue nihil
-								imperdiet doming id</a>
-						</p>
-						<span class="m_date">25 April, 2014</span>
-					</div>
-					<div class="clear"></div>
-				</ul>
-				<ul class="tab-last1">
-					<span class="tab1-img"><img src="images/pic8.jpg" alt=""></span>
-					<div class="tab-text1">
-						<p>
-							<a href="#">quod mazim placerat facer possim assum. Typi non
-								habent</a>
-						</p>
-						<span class="m_date">25 April, 2014</span>
-					</div>
-					<div class="clear"></div>
-				</ul>
-			</div>
-		</div>
-		<div class="clear"></div>
 	</div>
-	<div class="row about">
-		<div class="col-md-8">
-			<h3 class="m_2">Gallery</h3>
-			<div id="ca-container" class="ca-container">
-				<div class="ca-wrapper">
-					<div class="ca-item ca-item-1">
-						<div class="ca-item-main">
-							<div class="ca-icon"></div>
-							<div class="ca-icon1"></div>
-						</div>
+	<div class="col-md-4">
+		<h3 class="m_2">Next Events</h3>
+		<div class="events">
+			<div class="event-top">
+				<ul class="event1">
+					<h4>26 April, 2014</h4>
+					<img src="images/pic.jpg" alt="" />
+				</ul>
+				<ul class="event1_text">
+					<span class="m_5">h.12.00-h.13.00</span>
+					<h4>Aerobics</h4>
+					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit,.</p>
+					<div class="btn2">
+						<a href="#">Reservation</a>
 					</div>
-					<div class="ca-item ca-item-2">
-						<div class="ca-item-main">
-							<div class="ca-icon"></div>
-							<div class="ca-icon2"></div>
-						</div>
-					</div>
-					<div class="ca-item ca-item-3">
-						<div class="ca-item-main">
-							<div class="ca-icon"></div>
-							<div class="ca-icon3"></div>
-						</div>
-					</div>
-					<div class="ca-item ca-item-4">
-						<div class="ca-item-main">
-							<div class="ca-icon"></div>
-							<div class="ca-icon4"></div>
-						</div>
-					</div>
-					<div class="ca-item ca-item-5">
-						<div class="ca-item-main">
-							<div class="ca-icon"></div>
-							<div class="ca-icon5"></div>
-						</div>
-					</div>
-					<div class="ca-item ca-item-6">
-						<div class="ca-item-main">
-							<div class="ca-icon"></div>
-							<div class="ca-icon6"></div>
-						</div>
-					</div>
-					<div class="ca-item ca-item-7">
-						<div class="ca-item-main">
-							<div class="ca-icon"></div>
-							<div class="ca-icon7"></div>
-						</div>
-					</div>
-					<div class="ca-item ca-item-8">
-						<div class="ca-item-main">
-							<div class="ca-icon"></div>
-							<div class="ca-icon"></div>
-						</div>
-					</div>
-				</div>
+				</ul>
+				<div class="clear"></div>
 			</div>
-			<script type="text/javascript">
-				$('#ca-container').contentcarousel();
-			</script>
+			<div class="event-bottom">
+				<ul class="event1">
+					<h4>26 April, 2014</h4>
+					<img src="images/pic.jpg" alt="" />
+				</ul>
+				<ul class="event1_text">
+					<span class="m_5">h.12.00-h.13.00</span>
+					<h4>Spinning</h4>
+					<p>Lorem ipsum dolor sit amet.</p>
+					<div class="btn2">
+						<a href="#">Reservation</a>
+					</div>
+				</ul>
+				<div class="clear"></div>
+			</div>
 		</div>
-		<div class="col-md-4">
-			<h3 class="m_2">Partner</h3>
-			<ul class="partner">
-				<li><img src="images/p6.png" alt="" /></li>
-				<li><img src="images/p5.png" alt="" /></li>
-				<li><img src="images/p4.png" alt="" /></li>
-				<li><img src="images/p3.png" alt="" /></li>
-				<li><img src="images/p2.png" alt="" /></li>
-				<li><img src="images/p1.png" alt="" /></li>
+	</div>
+	<div class="col-md-4">
+		<h3 class="m_2">From the blog</h3>
+		<div class="blog_events">
+			<ul class="tab-left1">
+				<span class="tab1-img"><img src="images/pic7.jpg" alt=""></span>
+				<div class="tab-text1">
+					<p>
+						<a href="#">nostrud exerci tation ullamcorper suscipit
+							lobortis nisl ut aliquip</a>
+					</p>
+					<span class="m_date">25 April, 2014</span>
+				</div>
+				<div class="clear"></div>
+			</ul>
+			<ul class="tab-left1">
+				<span class="tab1-img"><img src="images/pic6.jpg" alt=""></span>
+				<div class="tab-text1">
+					<p>
+						<a href="#">soluta nobis eleifend option congue nihil
+							imperdiet doming id</a>
+					</p>
+					<span class="m_date">25 April, 2014</span>
+				</div>
+				<div class="clear"></div>
+			</ul>
+			<ul class="tab-last1">
+				<span class="tab1-img"><img src="images/pic8.jpg" alt=""></span>
+				<div class="tab-text1">
+					<p>
+						<a href="#">quod mazim placerat facer possim assum. Typi non
+							habent</a>
+					</p>
+					<span class="m_date">25 April, 2014</span>
+				</div>
 				<div class="clear"></div>
 			</ul>
 		</div>
-		<div class="clear"></div>
 	</div>
+	<div class="clear"></div>
+</div>
+<div class="row about">
+	<div class="col-md-8">
+
+		<script type="text/javascript">
+				$('#ca-container').contentcarousel();
+			</script>
+	</div>
+	<div class="clear"></div>
+</div>
 </div>
 </div>
 <div class="map">
@@ -627,8 +478,7 @@
 		marginheight="0" marginwidth="0"
 		src="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=United+Kingdom&amp;aq=0&amp;oq=un&amp;sll=37.0625,-95.677068&amp;sspn=48.956293,107.138672&amp;ie=UTF8&amp;hq=&amp;hnear=United+Kingdom&amp;ll=55.378051,-3.435973&amp;spn=135.795411,68.554687&amp;t=m&amp;z=2&amp;output=embed">
 	</iframe>
-	<br />
-	<small><a
+	<br /> <small><a
 		href="http://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=United+Kingdom&amp;aq=0&amp;oq=un&amp;sll=37.0625,-95.677068&amp;sspn=48.956293,107.138672&amp;ie=UTF8&amp;hq=&amp;hnear=United+Kingdom&amp;ll=55.378051,-3.435973&amp;spn=135.795411,68.554687&amp;t=m&amp;z=2"
 		style="color: #666; font-size: 12px; text-align: left"> </a></small>
 	<div class="opening_hours">
@@ -637,25 +487,25 @@
 				Opening <span class="opening">Hours</span>
 			</h3>
 			<li><i class="calender"> </i><span class="week">Monday</span>
-			<div class="hours">h.6:00-h.24:00</div>
+				<div class="hours">h.6:00-h.24:00</div>
 				<div class="clear"></div></li>
 			<li><i class="calender"> </i><span class="week">Tuesday</span>
-			<div class="hours">h.6:00-h.24:00</div>
+				<div class="hours">h.6:00-h.24:00</div>
 				<div class="clear"></div></li>
 			<li><i class="calender"> </i><span class="week">Wednesday</span>
-			<div class="hours">h.6:00-h.24:00</div>
+				<div class="hours">h.6:00-h.24:00</div>
 				<div class="clear"></div></li>
 			<li><i class="calender"> </i><span class="week">Thrusday</span>
-			<div class="hours">h.6:00-h.24:00</div>
+				<div class="hours">h.6:00-h.24:00</div>
 				<div class="clear"></div></li>
 			<li><i class="calender"> </i><span class="week">Friday</span>
-			<div class="hours">h.6:00-h.24:00</div>
+				<div class="hours">h.6:00-h.24:00</div>
 				<div class="clear"></div></li>
 			<li><i class="calender"> </i><span class="week">Saturday</span>
-			<div class="hours">h.6:00-h.24:00</div>
+				<div class="hours">h.6:00-h.24:00</div>
 				<div class="clear"></div></li>
 			<li><i class="calender"> </i><span class="week">Sunday</span>
-			<div class="hours">h.6:00-h.24:00</div>
+				<div class="hours">h.6:00-h.24:00</div>
 				<div class="clear"></div></li>
 			<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
 				diam nonummy nibh euismod tincidunt ut laoreet</p>
