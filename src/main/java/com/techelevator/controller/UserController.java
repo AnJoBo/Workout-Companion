@@ -32,7 +32,6 @@ public class UserController {
 	public UserController(UserDAO userDAO, CheckInAndOutDAO checkInDAO) {
 		this.userDAO = userDAO;
 	    this.checkInDAO = checkInDAO;
-		
 	}
 
 	@RequestMapping(path = "/users/new", method = RequestMethod.GET)
@@ -48,10 +47,12 @@ public class UserController {
 		if (result.hasErrors()) {
 			flash.addFlashAttribute("user", user);
 			flash.addFlashAttribute(BindingResult.MODEL_KEY_PREFIX + "user", result);
+			flash.addFlashAttribute("message", "User sucessfully NOT created!");
 			return "redirect:/users/new";
 		}
 		userDAO.saveUser(user.getUserName(), user.getPassword(), user.getRole(), user.getEmail(), user.getPhone(),
 				user.getPicture(), user.getFitnessGoal());
+		flash.addFlashAttribute("message", "User sucessfully created!");
 		return "redirect:/";
 	}
 
@@ -66,8 +67,6 @@ public class UserController {
 	@RequestMapping(path = "/users/{userName}", method = RequestMethod.POST)
 	public String displayUserDashboardAfterPost(@RequestParam int currentUserId, ModelMap modelHolder, HttpSession session) {		
 		return "redirect:/userDashboard";
-		
-//		checkInDAO.checkInUser(currentUserId);
 	}
 
 	@RequestMapping(path = "/about", method = RequestMethod.GET)
@@ -81,11 +80,12 @@ public class UserController {
 		return "userUpdate";
 	}
 
-	@RequestMapping(path = "/userUpdate/{userName}", method = RequestMethod.POST)
+	@RequestMapping(path = "/userUpdate/info", method = RequestMethod.POST)
 	public String updateAccount(@RequestParam String userName, @RequestParam(required = false) String newUserName,
-			@RequestParam(required = false) String newEmail, @RequestParam(required = false) String newPhone,
-			@RequestParam(required = false) String newPicture, @RequestParam(required = false) String newFitnessGoal,
-			RedirectAttributes flash, HttpSession session) {
+								@RequestParam(required = false) String newEmail, @RequestParam(required = false) String newPhone,
+								@RequestParam(required = false) String newPicture, @RequestParam(required = false) String newFitnessGoal,
+								@RequestParam(required = true) String password,
+								RedirectAttributes flash, HttpSession session) {
 
 		User thisUser = new User();
 		thisUser = userDAO.getUserByUserName(userName);
@@ -107,10 +107,17 @@ public class UserController {
 		}
 
 		flash.addFlashAttribute("message", "Your information has been updated!");
-		userDAO.updateUser(userName, newUserName, newEmail, newPhone, newPicture, newFitnessGoal);
+		userDAO.updateUser(userName, newUserName, newEmail, newPhone, newPicture, newFitnessGoal, password);
 		session.setAttribute("currentUser", userDAO.getUserByUserName(newUserName));
 		return "redirect:/users/userDashboard";
 	}
+	
+ 	@RequestMapping(path = "/userUpdate/password", method = RequestMethod.POST)
+ 	public String updatePassword(@RequestParam String userName, @RequestParam String password, @RequestParam String newPassword, RedirectAttributes flash) {
+ 		flash.addFlashAttribute("message", "Your password has been successfully changed!");
+ 		userDAO.updatePassword(userName, password, newPassword);
+ 		return "redirect:/users/userPage";
+ 	}
 
 	@RequestMapping(path = "/deleteUser/{userName}", method = RequestMethod.POST)
 	public String deleteUser(@RequestParam String userName, ModelMap modelHolder, HttpSession session) {
@@ -119,8 +126,6 @@ public class UserController {
 		session.invalidate();
 		return "redirect:/";
 	}
-
-	// end of check in stuff
 
 	@RequestMapping(path = "/employee/dashboard", method = RequestMethod.GET)
 	public String displayEmployeeDashboard(ModelMap modelHolder, HttpSession session) {

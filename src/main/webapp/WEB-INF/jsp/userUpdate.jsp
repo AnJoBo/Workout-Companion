@@ -40,7 +40,7 @@
 	<div class="col-md-5">
 	
 	<h3>Update User Info</h3>
-		<c:url var="formAction" value="/userUpdate/${currentUser.userName}" />
+		<c:url var="formAction" value="/userUpdate/info" />
 		<form action="${formAction}" method="POST">
 			<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" /> 
 			<input type="hidden" name="userName" value="${currentUser.userName}" />
@@ -75,20 +75,31 @@
     					<option value="gain weight" ${currentUser.fitnessGoal == "gain weight" ? "selected" : "" }>GAIN WEIGHT</option>
   				</select>
 			</div>
+			
+			<div class="form-group">
+				<label for="newPassword" style="color:red;">Enter Password: </label> 
+				<input type="password" id="password" name="password" class="form-control"/>
+			</div>
+			
 			<button type="submit" class="btn btn-default">Update Info</button>
 		</form>
 			
 			<hr>
 			
 	<h3>Update Password</h3>
-		<c:url var="formAction" value="/userUpdate/${currentUser.userName}" />
-		<form action="${formAction}" method="POST">
+		<c:url var="formAction" value="/userUpdate/password" />
+		<form action="${formAction}" method="POST" id="changePasswordForm">
 			<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" /> 
 			<input type="hidden" name="userName" value="${currentUser.userName}" />
 			
 			<div class="form-group">
+				<label for="newPassword" style="color:red;">Current Password: </label> 
+				<input type="password" id="password" name="password" class="form-control"/>
+			</div>
+			
+			<div class="form-group">
 				<label for="newPassword">New Password: </label> 
-				<input type="password" id="newPassword" name="newPassword" class="form-control" />
+				<input type="password" id="newPassword" name="newPassword" class="form-control"/>
 			</div>
 			
 			<div class="form-group">

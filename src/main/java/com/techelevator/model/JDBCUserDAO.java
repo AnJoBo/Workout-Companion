@@ -38,13 +38,14 @@ public class JDBCUserDAO implements UserDAO {
 	}
 
 	@Override
-	public void saveUser(String userName, String password, String role, String email, String phone, String picture,
-			String fitnessGoal) {
-		byte[] salt = hashMaster.generateRandomSalt();
-		String hashedPassword = hashMaster.computeHash(password, salt);
-		String saltString = new String(Base64.encode(salt));
-
-		jdbcTemplate.update("INSERT INTO app_user(user_name, password, salt, role, email, phone, picture, fitness_goal) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", userName, hashedPassword, saltString, "user", email, phone, picture, fitnessGoal);
+	public User getUserByUserName(String userName) {
+		User thisUser = null;
+		String sqlSearchForUsername = "SELECT * " + "FROM app_user " + "WHERE UPPER(user_name) = ? ";
+		SqlRowSet user = jdbcTemplate.queryForRowSet(sqlSearchForUsername, userName.toUpperCase());
+		while(user.next()) {
+			thisUser = MapRowToUser(user);
+		}
+		return thisUser;
 	}
 
 	@Override
@@ -63,44 +64,46 @@ public class JDBCUserDAO implements UserDAO {
 	}
 
 	@Override
-	public void updatePassword(String userName, String password) {
+	public void saveUser(String userName, String password, String role, String email, String phone, String picture, String fitnessGoal) {
 		byte[] salt = hashMaster.generateRandomSalt();
 		String hashedPassword = hashMaster.computeHash(password, salt);
 		String saltString = new String(Base64.encode(salt));
 
-		jdbcTemplate.update("UPDATE app_user SET password = ?, salt = ? WHERE user_name = ?", hashedPassword,
-				saltString, userName);
+		jdbcTemplate.update("INSERT INTO app_user(user_name, password, salt, role, email, phone, picture, fitness_goal) "
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?)", userName, hashedPassword, saltString, "user", email, phone, picture, fitnessGoal);
 	}
-	
+
 	@Override
-	public void updateUser(String userName, String newUserName, String newEmail, String newPhone, String newPicture, String newFitnessGoal) {
-		jdbcTemplate.update("UPDATE app_user SET user_name = ?, email = ?, phone = ?, picture = ?, fitness_goal = ? WHERE user_name = ?", 
-							newUserName, newEmail, newPhone, newPicture, newFitnessGoal, userName);
+	public void updateUser(String userName, String newUserName, String newEmail, String newPhone, String newPicture, String newFitnessGoal, String password) {
+		if(searchForUsernameAndPassword(userName, password)) {
+			jdbcTemplate.update("UPDATE app_user SET user_name = ?, email = ?, phone = ?, picture = ?, fitness_goal = ? WHERE user_name = ?", 
+					newUserName, newEmail, newPhone, newPicture, newFitnessGoal, userName);
+			return;
+		}
+		return;
 	}
-	
+
+	@Override
+	public void updatePassword(String userName, String password, String newPassword) {
+		if(searchForUsernameAndPassword(userName, password)) {
+			byte[] salt = hashMaster.generateRandomSalt();
+			String hashedPassword = hashMaster.computeHash(newPassword, salt);
+			String saltString = new String(Base64.encode(salt));
+
+			jdbcTemplate.update("UPDATE app_user SET password = ?, salt = ? WHERE user_name = ?", hashedPassword, saltString, userName);
+			return;
+		}
+		return;
+	}
+
+	@Override
+	public void updateUserRole(String userName, String role) {
+		jdbcTemplate.update("UPDATE app_user SET role = ? WHERE user_name = ?", role, userName);
+	}
+
 	@Override
 	public void deleteUser(String userName) {
 		jdbcTemplate.update("DELETE FROM app_user WHERE user_name = ?", userName);
-	}
-
-	@Override
-	public User getUserByUserName(String userName) {
-		String sqlSearchForUsername = "SELECT * " + "FROM app_user " + "WHERE UPPER(user_name) = ? ";
-
-		SqlRowSet user = jdbcTemplate.queryForRowSet(sqlSearchForUsername, userName.toUpperCase());
-		User thisUser = null;
-		if (user.next()) {
-			thisUser = new User();
-			thisUser.setUserId(user.getInt("user_id"));
-			thisUser.setUserName(user.getString("user_name"));
-			thisUser.setPassword(user.getString("password"));
-			thisUser.setEmail(user.getString("email"));
-			thisUser.setPhone(user.getString("phone"));
-			thisUser.setRole(user.getString("role"));
-			thisUser.setPicture(user.getString("picture"));
-			thisUser.setFitnessGoal(user.getString("fitness_goal"));
-		}
-		return thisUser;
 	}
 
 	private User MapRowToUser(SqlRowSet row) {
@@ -111,12 +114,9 @@ public class JDBCUserDAO implements UserDAO {
 		user.setPhone(row.getString("phone"));
 		user.setFitnessGoal(row.getString("fitness_goal"));
 		user.setRole(row.getString("role"));
+		user.setPicture(row.getString("picture"));
+		user.setFitnessGoal(row.getString("fitness_goal"));
 		return user;
-	}
-
-	@Override
-	public void updateUserRole(String userName, String role) {
-		jdbcTemplate.update("UPDATE app_user SET role = ? WHERE user_name = ?", role, userName);
 	}
 
 }
