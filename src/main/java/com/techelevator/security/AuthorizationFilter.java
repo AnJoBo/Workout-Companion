@@ -45,9 +45,11 @@ public class AuthorizationFilter implements Filter {
 		}
 		if(urlRequested.contains("/admin/") && !sessionUser.getRole().equals("admin")) {
 			httpResponse.sendError(403);
+			return;
 		}
 		if(urlRequested.contains("/employee/") && (!sessionUser.getRole().equals("employee") || !sessionUser.getRole().equals("admin"))) {
 			httpResponse.sendError(403);
+			return;
 		}
 		chain.doFilter(request, response);
 		
