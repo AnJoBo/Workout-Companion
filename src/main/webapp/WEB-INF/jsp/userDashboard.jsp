@@ -1,5 +1,4 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
 <%@ include file="include/header.jspf"%>
 
 <h1>USER DASHBAORD</h1>
@@ -107,12 +106,6 @@
 			nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip
 			ex ea commodo consequat.</p>
 	</div>
-</div>
-
-</div>
-
-
-
 </div>
 
 <!-- end content-top -->
@@ -363,7 +356,7 @@
 	</div>
 	<div class="row content_middle_bottom">
 		<div class="col-md-4">
-<<<<<<< HEAD
+
 			<h3 class="m_2">Our Trainers</h3>
 			<div class="course_demo">
 				<ul id="flexiselDemo3">
@@ -448,38 +441,6 @@
 							<div class="clear"></div>
 						</div></li>
 				</ul>
-				<script type="text/javascript">
-=======
-
-			<script type="text/javascript">
->>>>>>> 404a181372807f1b741ae49fe9082079c09826c3
-					$(window).load(function() {
-						$("#flexiselDemo3").flexisel({
-							visibleItems : 4,
-							animationSpeed : 1000,
-							autoPlay : true,
-							autoPlaySpeed : 3000,
-							pauseOnHover : true,
-							enableResponsiveBreakpoints : true,
-							responsiveBreakpoints : {
-								portrait : {
-									changePoint : 480,
-									visibleItems : 1
-								},
-								landscape : {
-									changePoint : 640,
-									visibleItems : 2
-								},
-								tablet : {
-									changePoint : 768,
-									visibleItems : 2
-								}
-							}
-						});
-
-					});
-				</script>
-			<script type="text/javascript" src="js/jquery.flexisel.js"></script>
 		</div>
 	</div>
 	<div class="col-md-4">
