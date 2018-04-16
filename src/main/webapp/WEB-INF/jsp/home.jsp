@@ -2,10 +2,12 @@
 
 <%@ include file="include/header.jspf"%>
 
-
-<p>Current user: <c:out value="${currentUser.userName}"/></p>
-
-
+<%-- Message after user create redirect --%>
+<c:if test="${not empty message}">
+	<div style="display: inline-block; border: 1px solid black;">
+		<c:out value="${message}" />
+	</div>
+</c:if>
 
 <div class="main">
 	<div class="login_top">
