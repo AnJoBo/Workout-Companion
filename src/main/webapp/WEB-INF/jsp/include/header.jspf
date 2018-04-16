@@ -78,19 +78,6 @@
 			 <!-- /////////////////////// NAV BUTONS /////////////////////// -->
 			 
 			 
-			 
-			 
-			 
-			 
-			 
-			 
-			 
-			 
-			 
-			 
-			 
-			 
-			 
 			 <script type="text/javascript">
 
  			$(document).ready(function() {
@@ -237,9 +224,6 @@
 			   
  			   <c:url var="aboutUrl" value="/about"/>
 			   <li><a href="${aboutUrl}">About</a></li>
-			   
-			    <c:url var="checkInUrl" value="/gymCheckInAndOut/{currentUser.userName}"/>
-			   <li><a href="${checkInUrl}">Check In/Out</a></li>
 			   
 			   
 			   <!-- <li><a href="trainers.html">Trainers</a></li> -->

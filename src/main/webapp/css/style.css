@@ -123,6 +123,10 @@ i.phone {
 	margin:0;
 	padding:0;
 }
+
+ul.a {
+    list-style-type: circle;
+}
 .social ul li:first-child, ol li:first-child {
 	margin-top: 0px;
 	margin-left: 0;
@@ -4233,5 +4237,9 @@ span.m_26 {
 	}
 	.course_demo {
 		padding: 0 5%;
+	}
+	
+ 	.test{
+		border:10px solid #f00900;
 	}
 }
