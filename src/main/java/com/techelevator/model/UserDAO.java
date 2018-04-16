@@ -8,9 +8,9 @@ public interface UserDAO {
 
 	public boolean searchForUsernameAndPassword(String userName, String password);
 
-	public void updatePassword(String userName, String password);
+	public void updatePassword(String userName, String password, String newPassword);
 	
-	public void updateUser(String userName, String newUserName, String newEmail, String newPhone, String newPicture, String newFitnessGoal);
+	public void updateUser(String userName, String newUserName, String newEmail, String newPhone, String newPicture, String newFitnessGoal, String password);
 
 	public User getUserByUserName(String userName);
 	
