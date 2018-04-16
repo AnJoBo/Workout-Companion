@@ -1,8 +1,6 @@
 package com.techelevator.model;
 
-
 import java.util.List;
-
 
 public interface UserDAO {
 
@@ -18,15 +16,8 @@ public interface UserDAO {
 	
 	public List<User> getAllUsers();
 
-	
-
 	public void deleteUser(String userName);
 	
 	public void updateUserRole(String userName, String role);
-	
-
-
-
-	
 
 }

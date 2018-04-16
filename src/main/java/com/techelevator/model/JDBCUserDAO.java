@@ -99,9 +99,7 @@ public class JDBCUserDAO implements UserDAO {
 			thisUser.setRole(user.getString("role"));
 			thisUser.setPicture(user.getString("picture"));
 			thisUser.setFitnessGoal(user.getString("fitness_goal"));
-		
 		}
-
 		return thisUser;
 	}
 
@@ -113,17 +111,12 @@ public class JDBCUserDAO implements UserDAO {
 		user.setPhone(row.getString("phone"));
 		user.setFitnessGoal(row.getString("fitness_goal"));
 		user.setRole(row.getString("role"));
-	
-
 		return user;
 	}
-
-
 
 	@Override
 	public void updateUserRole(String userName, String role) {
 		jdbcTemplate.update("UPDATE app_user SET role = ? WHERE user_name = ?", role, userName);
 	}
-
 
 }

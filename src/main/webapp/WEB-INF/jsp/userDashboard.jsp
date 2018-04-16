@@ -1,26 +1,15 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@page contentType="text/html" import="java.util.*"%>
-<%@ taglib prefix="tags" tagdir="/WEB-INF/tags"%>
 
 <%@ include file="include/header.jspf"%>
 
-
-
-<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
-
 <h1>USER DASHBAORD</h1>
 
+<%-- Message after user update redirect --%>
 <c:if test="${not empty message}">
 	<div style="display: inline-block; border: 1px solid black;">
 		<c:out value="${message}" />
 	</div>
 </c:if>
-
-
-
-<c:out value="${date}" />
-
-
 
 <c:forEach var="LogResults" items="${LogResults}">
 	<p>
@@ -35,15 +24,11 @@
 	</p>
 </c:forEach>
 
-
-
-
 <c:url var="userImg" value="/img/${currentUser.picture}" />
 <img src="${userImg}" style="display: block;">
 <p>
 	Hello,
 	<c:out value="${currentUser.userName}" />
-
 </p>
 <p>
 	user id
@@ -62,28 +47,31 @@
 	<c:out value="${currentUser.fitnessGoal}" />
 </p>
 
+<input type="hidden" name="currentUserId" value="${currentUser.userId}" />
 <c:url var="updateLink" value="/userUpdate/${currentUser.userName}" />
 <a href="${updateLink}"><button class="btn">Update Info</button></a>
 
 
 
-<script type="text/javascript">
-	function change(el) {
-		if (el.value == "Check In")
-			el.value = "Check Out";
 
-		else
-			el.value = "Check In";
-	}
-</script>
-<c:url var="formAction" value="/users/${currentUser.userName}" />
-<form method="POST" action="${formAction}">
+<%-- <c:if test="${checkedInStatus == false}">
+	<c:url var="formAction" value="/users/checkIn" />
+	<form method="POST" action="${formAction}">
 	<input type="hidden" name="currentUserId" value="${currentUser.userId}" />
-	<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" /> 
-	<input type="submit" value="Check In" onClick="return change(this);" />
+<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
+	<input type="submit" value="Check In" />
+	</form>
+</c:if>
+<c:if test="${checkedInStatus == true}">
+	<c:url var="formAction" value="/users/checkOut" />
+	<form method="POST" action="${formAction}">
+	<input type="hidden" name="currentUserId" value="${currentUser.userId}" />
+<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
+		<input type="submit" value="Check Out" />
+	</form>
+</c:if>
+ --%>
 
-
-</form>
 <!--  /////////////////////////////////////////////////// TEST PAGE CODE - DELETE BELOW IF THE PAGE IS NOT WORKING ///////////////////////////////////////////////////////////// -->
 
 
@@ -102,7 +90,6 @@
 			nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip
 			ex ea commodo consequat.</p>
 	</div>
-</div>
 </div>
 <!-- end content-top -->
 <div class="container">
@@ -356,10 +343,9 @@
 			<div class="course_demo">
 				<ul id="flexiselDemo3">
 					<li><img src="images/pic4.jpg" />
-					<div class="desc">
+						<div class="desc">
 							<h3>
-								Lorem Ipsum<br>
-								<span class="m_text">Spinning</span>
+								Lorem Ipsum<br> <span class="m_text">Spinning</span>
 							</h3>
 							<p>
 								Lorem ipsum dolor<br> sit amet, consectetuer.
@@ -373,10 +359,9 @@
 							<div class="clear"></div>
 						</div></li>
 					<li><img src="images/pic5.jpg" />
-					<div class="desc">
+						<div class="desc">
 							<h3>
-								Lorem Ipsum<br>
-								<span class="m_text">Kik Boxing</span>
+								Lorem Ipsum<br> <span class="m_text">Kik Boxing</span>
 							</h3>
 							<p>
 								Lorem ipsum dolor<br> sit amet, consectetuer.
@@ -390,10 +375,9 @@
 							<div class="clear"></div>
 						</div></li>
 					<li><img src="images/pic4.jpg" />
-					<div class="desc">
+						<div class="desc">
 							<h3>
-								Lorem Ipsum<br>
-								<span class="m_text">Spinning</span>
+								Lorem Ipsum<br> <span class="m_text">Spinning</span>
 							</h3>
 							<p>
 								Lorem ipsum dolor<br> sit amet, consectetuer.
@@ -407,10 +391,9 @@
 							<div class="clear"></div>
 						</div></li>
 					<li><img src="images/pic5.jpg" />
-					<div class="desc">
+						<div class="desc">
 							<h3>
-								Lorem Ipsum<br>
-								<span class="m_text">Kik Boxing</span>
+								Lorem Ipsum<br> <span class="m_text">Kik Boxing</span>
 							</h3>
 							<p>
 								Lorem ipsum dolor<br> sit amet, consectetuer.
@@ -424,10 +407,9 @@
 							<div class="clear"></div>
 						</div></li>
 					<li><img src="images/pic4.jpg" />
-					<div class="desc">
+						<div class="desc">
 							<h3>
-								Lorem Ipsum<br>
-								<span class="m_text">Spinning</span>
+								Lorem Ipsum<br> <span class="m_text">Spinning</span>
 							</h3>
 							<p>
 								Lorem ipsum dolor<br> sit amet, consectetuer.
@@ -627,8 +609,7 @@
 		marginheight="0" marginwidth="0"
 		src="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=United+Kingdom&amp;aq=0&amp;oq=un&amp;sll=37.0625,-95.677068&amp;sspn=48.956293,107.138672&amp;ie=UTF8&amp;hq=&amp;hnear=United+Kingdom&amp;ll=55.378051,-3.435973&amp;spn=135.795411,68.554687&amp;t=m&amp;z=2&amp;output=embed">
 	</iframe>
-	<br />
-	<small><a
+	<br /> <small><a
 		href="http://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=United+Kingdom&amp;aq=0&amp;oq=un&amp;sll=37.0625,-95.677068&amp;sspn=48.956293,107.138672&amp;ie=UTF8&amp;hq=&amp;hnear=United+Kingdom&amp;ll=55.378051,-3.435973&amp;spn=135.795411,68.554687&amp;t=m&amp;z=2"
 		style="color: #666; font-size: 12px; text-align: left"> </a></small>
 	<div class="opening_hours">
@@ -637,25 +618,25 @@
 				Opening <span class="opening">Hours</span>
 			</h3>
 			<li><i class="calender"> </i><span class="week">Monday</span>
-			<div class="hours">h.6:00-h.24:00</div>
+				<div class="hours">h.6:00-h.24:00</div>
 				<div class="clear"></div></li>
 			<li><i class="calender"> </i><span class="week">Tuesday</span>
-			<div class="hours">h.6:00-h.24:00</div>
+				<div class="hours">h.6:00-h.24:00</div>
 				<div class="clear"></div></li>
 			<li><i class="calender"> </i><span class="week">Wednesday</span>
-			<div class="hours">h.6:00-h.24:00</div>
+				<div class="hours">h.6:00-h.24:00</div>
 				<div class="clear"></div></li>
 			<li><i class="calender"> </i><span class="week">Thrusday</span>
-			<div class="hours">h.6:00-h.24:00</div>
+				<div class="hours">h.6:00-h.24:00</div>
 				<div class="clear"></div></li>
 			<li><i class="calender"> </i><span class="week">Friday</span>
-			<div class="hours">h.6:00-h.24:00</div>
+				<div class="hours">h.6:00-h.24:00</div>
 				<div class="clear"></div></li>
 			<li><i class="calender"> </i><span class="week">Saturday</span>
-			<div class="hours">h.6:00-h.24:00</div>
+				<div class="hours">h.6:00-h.24:00</div>
 				<div class="clear"></div></li>
 			<li><i class="calender"> </i><span class="week">Sunday</span>
-			<div class="hours">h.6:00-h.24:00</div>
+				<div class="hours">h.6:00-h.24:00</div>
 				<div class="clear"></div></li>
 			<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
 				diam nonummy nibh euismod tincidunt ut laoreet</p>

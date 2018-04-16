@@ -4,16 +4,12 @@ import java.util.List;
 
 public interface CheckInAndOutDAO {
 
-	void saveUserCheckInAtGym(int userId, String checkIn);
-
 	public List<CheckInAndOut> getLogOfCheckins();
 
-	
+	public void checkInUser(int userId);
 
-	void saveUserCheckInAtGym(int userId);
+	public void saveUserCheckOutGym(int userId);
 
-	void saveUserCheckOutGym(int userId, String checkOut);
-
-//	CheckInAndOut getAllCheckInsByUserId(int userId);
+	public boolean checkIfUserIsCheckedIn(int userId);
 
 }
