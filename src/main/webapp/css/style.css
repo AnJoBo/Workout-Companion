@@ -385,9 +385,10 @@ a:hover, a:focus {
 	padding:3% 0;
 	width: 89%;
 	margin: 0 auto;
+	
 }
 .content_left_text {
-	padding:5% 0 0 5%;
+	padding:1% 0 0 5%;
 }
 .content_left_text h3 {
 	color: #555;
@@ -3712,7 +3713,8 @@ span.m_26 {
 }
 	
 .test{
-		border:10px solid #f00900;
+		border:0px solid #f00900;
+		align-content: center;
 }
 	
 .center-div
