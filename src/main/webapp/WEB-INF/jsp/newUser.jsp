@@ -89,4 +89,4 @@
 	</div>
 </form>
 		
-<c:import url="/WEB-INF/jsp/footer.jsp" />
+<%@ include file="include/footer.jspf"%>

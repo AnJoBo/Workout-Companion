@@ -4242,4 +4242,10 @@ span.m_26 {
  	.test{
 		border:10px solid #f00900;
 	}
+	
+	.center-div
+{
+     margin: 0 auto;
+     width: 100px; 
+}
 }
