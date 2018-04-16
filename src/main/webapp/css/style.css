@@ -387,7 +387,7 @@ a:hover, a:focus {
 	margin: 0 auto;
 }
 .content_left_text {
-	padding:10% 0 0 5%;
+	padding:5% 0 0 5%;
 }
 .content_left_text h3 {
 	color: #555;
@@ -3610,7 +3610,7 @@ ul.twitter_footer li p {
 	font-size: 2.1em;
 }
 .content_left_text {
-	padding: 9% 0 0 5%;
+	padding: 2% 0 0 5%;
 }
 .social-media li {
 	margin:0;
@@ -3710,7 +3710,33 @@ span.m_26 {
 .data, .data-middle{
 	width: 86.5%;
 }
+	
+.test{
+		border:10px solid #f00900;
 }
+	
+.center-div
+{
+     margin: 0 auto;
+     width: 100px; 
+}
+
+.user-card{padding-top:30px;}
+
+.glyphicon {  margin-bottom: 10px;margin-right: 10px;}
+
+small {
+display: block;
+line-height: 1.428571429;
+color: #999;
+}
+}
+
+
+
+/* ////////////////////////////////////////////////////////////MEDIA ////////////////////////////////////////////////////////////////// */
+
+
 @media (max-width:768px){
   .timetable
 	{
@@ -4237,9 +4263,5 @@ span.m_26 {
 	}
 	.course_demo {
 		padding: 0 5%;
-	}
-	
- 	.test{
-		border:10px solid #f00900;
 	}
 }
