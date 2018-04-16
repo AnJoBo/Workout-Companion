@@ -1,21 +1,69 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@page contentType="text/html" import="java.util.*"%>
 
 <%@ include file="include/header.jspf"%>
 
-
-
-<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
-
+<div class="nbs-flexisel-container">
 <h1>USER DASHBAORD</h1>
 
+<%-- Message after user update redirect --%>
 <c:if test="${not empty message}">
 	<div style="display: inline-block; border: 1px solid black;">
 		<c:out value="${message}" />
+		
+				<c:url var="formAction" value="/users/${currentUser.userName}" />
+		<form method="POST" action="${formAction}">
+			<input type="hidden" name="currentUserId"
+				value="${currentUser.userId}" /> <input type="hidden"
+				name="CSRF_TOKEN" value="${CSRF_TOKEN}" /> <input type="submit"
+				value="Check In" onClick="return change(this);" />
+
+		</form>
+		
 	</div>
 </c:if>
+</div>
 
-<div class="center-div">
+<c:forEach var="LogResults" items="${LogResults}">
+	<p>
+		User Id:
+		<c:out value="${LogResults.userId}" />
+		Gym Number:
+		<c:out value="${LogResults.gymId}" />
+		Check In :
+		<c:out value="${LogResults.checkIn}" />
+		Check Out:
+		<c:out value="${LogResults.checkOut}" />
+	</p>
+</c:forEach>
+
+<%-- <c:url var="userImg" value="/img/${currentUser.picture}" />
+<img src="${userImg}" style="display: block;">
+<p>
+	Hello,
+	<c:out value="${currentUser.userName}" />
+</p>
+<p>
+	user id
+	<c:out value="${currentUser.userId}" />
+</p>
+<p>
+	Your email:
+	<c:out value="${currentUser.email}" />
+</p>
+<p>
+	Your phone number:
+	<c:out value="${currentUser.phone}" />
+</p>
+<p>
+	Fitness Goal:
+	<c:out value="${currentUser.fitnessGoal}" />
+</p>
+
+<input type="hidden" name="currentUserId" value="${currentUser.userId}" />
+<c:url var="updateLink" value="/userUpdate/${currentUser.userName}" />
+<a href="${updateLink}"><button class="btn">Update Info</button></a>
+
+<div class="test">
 
 	<div class="header-text" >
 		<c:out value="${date}" />
@@ -55,21 +103,15 @@
 				</li>
 				<li>Fitness Goal: <c:out value="${currentUser.fitnessGoal}" />
 				</li>
-			</ul>
+			</ul> 
+			
+			
+			<div>
 			<c:url var="updateLink" value="/userUpdate/${currentUser.userName}" />
 			<a href="${updateLink}"><button class="btn">Update Info</button></a>
-		</div>
+		</div>  --%>
 
 
-		<script type="text/javascript">
-				function change(el) {
-					if (el.value == "Check In")
-						el.value = "Check Out";
-
-					else
-						el.value = "Check In";
-				}
-			</script>
 		<c:url var="formAction" value="/users/${currentUser.userName}" />
 		<form method="POST" action="${formAction}">
 			<input type="hidden" name="currentUserId"
@@ -77,43 +119,23 @@
 				name="CSRF_TOKEN" value="${CSRF_TOKEN}" /> <input type="submit"
 				value="Check In" onClick="return change(this);" />
 
-
 		</form>
-	</div>
-</div>
 
 
 
 
 
-
-<!-- 
-///////////////////////////////////////////////////////////// -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="container">
+<div class="container" >
     <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-6">
             <div class="well well-sm">
                 <div class="row">
                     <div class="col-sm-6 col-md-4">
-                        <img src="http://placehold.it/380x500" alt="" class="img-rounded img-responsive" />
+                    
+                    <c:url var="userImg" value="/img/${currentUser.picture}" />
+					<img src="${userImg}" alt="" class="img-rounded img-responsive" style="display: block;">
+					
+                 
                     </div>
                     <div class="col-sm-6 col-md-8">
                         <h4>
@@ -172,7 +194,6 @@
 
 
 
-
 <!--  /////////////////////////////////////////////////// TEST PAGE CODE - DELETE BELOW IF THE PAGE IS NOT WORKING ///////////////////////////////////////////////////////////// -->
 
 
@@ -192,11 +213,7 @@
 			ex ea commodo consequat.</p>
 	</div>
 </div>
-</div>
 
-
-
-</div>
 <!-- end content-top -->
 <div class="container">
 	<div class="row content-middle">
@@ -445,36 +462,93 @@
 	</div>
 	<div class="row content_middle_bottom">
 		<div class="col-md-4">
-
-			<script type="text/javascript">
-					$(window).load(function() {
-						$("#flexiselDemo3").flexisel({
-							visibleItems : 4,
-							animationSpeed : 1000,
-							autoPlay : true,
-							autoPlaySpeed : 3000,
-							pauseOnHover : true,
-							enableResponsiveBreakpoints : true,
-							responsiveBreakpoints : {
-								portrait : {
-									changePoint : 480,
-									visibleItems : 1
-								},
-								landscape : {
-									changePoint : 640,
-									visibleItems : 2
-								},
-								tablet : {
-									changePoint : 768,
-									visibleItems : 2
-								}
-							}
-						});
-
-					});
-				</script>
-			<script type="text/javascript" src="js/jquery.flexisel.js"></script>
-		</div>
+<<<<<<< HEAD
+			<h3 class="m_2">Our Trainers</h3>
+			<div class="course_demo">
+				<ul id="flexiselDemo3">
+					<li><img src="images/pic4.jpg" />
+						<div class="desc">
+							<h3>
+								Lorem Ipsum<br> <span class="m_text">Spinning</span>
+							</h3>
+							<p>
+								Lorem ipsum dolor<br> sit amet, consectetuer.
+							</p>
+							<div class="coursel_list">
+								<i class="heart1"> </i> <i class="like"> </i>
+							</div>
+							<div class="coursel_list1">
+								<i class="twt"> </i> <i class="fb"> </i>
+							</div>
+							<div class="clear"></div>
+						</div></li>
+					<li><img src="images/pic5.jpg" />
+						<div class="desc">
+							<h3>
+								Lorem Ipsum<br> <span class="m_text">Kik Boxing</span>
+							</h3>
+							<p>
+								Lorem ipsum dolor<br> sit amet, consectetuer.
+							</p>
+							<div class="coursel_list">
+								<i class="heart2"> </i> <i class="like1"> </i>
+							</div>
+							<div class="coursel_list1">
+								<i class="twt"> </i> <i class="fb"> </i>
+							</div>
+							<div class="clear"></div>
+						</div></li>
+					<li><img src="images/pic4.jpg" />
+						<div class="desc">
+							<h3>
+								Lorem Ipsum<br> <span class="m_text">Spinning</span>
+							</h3>
+							<p>
+								Lorem ipsum dolor<br> sit amet, consectetuer.
+							</p>
+							<div class="coursel_list">
+								<i class="heart2"> </i> <i class="like1"> </i>
+							</div>
+							<div class="coursel_list1">
+								<i class="twt"> </i> <i class="fb"> </i>
+							</div>
+							<div class="clear"></div>
+						</div></li>
+					<li><img src="images/pic5.jpg" />
+						<div class="desc">
+							<h3>
+								Lorem Ipsum<br> <span class="m_text">Kik Boxing</span>
+							</h3>
+							<p>
+								Lorem ipsum dolor<br> sit amet, consectetuer.
+							</p>
+							<div class="coursel_list">
+								<i class="heart2"> </i> <i class="like1"> </i>
+							</div>
+							<div class="coursel_list1">
+								<i class="twt"> </i> <i class="fb"> </i>
+							</div>
+							<div class="clear"></div>
+						</div></li>
+					<li><img src="images/pic4.jpg" />
+						<div class="desc">
+							<h3>
+								Lorem Ipsum<br> <span class="m_text">Spinning</span>
+							</h3>
+							<p>
+								Lorem ipsum dolor<br> sit amet, consectetuer.
+							</p>
+							<div class="coursel_list">
+								<i class="heart2"> </i> <i class="like1"> </i>
+							</div>
+							<div class="coursel_list1">
+								<i class="twt"> </i> <i class="fb"> </i>
+							</div>
+							<div class="clear"></div>
+						</div></li>
+				</ul>
+	
+			</div>
 	</div>
 	<div class="col-md-4">
 		<h3 class="m_2">Next Events</h3>
@@ -584,7 +658,7 @@
 			<li><i class="calender"> </i><span class="week">Wednesday</span>
 				<div class="hours">h.6:00-h.24:00</div>
 				<div class="clear"></div></li>
-			<li><i class="calender"> </i><span class="week">Thrusday</span>
+			<li><i class="calender"> </i><span class="week">Thursday</span>
 				<div class="hours">h.6:00-h.24:00</div>
 				<div class="clear"></div></li>
 			<li><i class="calender"> </i><span class="week">Friday</span>

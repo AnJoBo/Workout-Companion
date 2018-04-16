@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.techelevator.model.CheckInAndOutDAO;
 import com.techelevator.model.User;
 import com.techelevator.model.UserDAO;
 
@@ -17,6 +18,8 @@ public class AuthenticationController {
 	
 	@Autowired
 	private UserDAO userDAO;
+	@Autowired
+	private CheckInAndOutDAO checkInDao;
 
 	@Autowired
 	public AuthenticationController(UserDAO userDAO) {
@@ -38,6 +41,7 @@ public class AuthenticationController {
 		if(userDAO.searchForUsernameAndPassword(userName, password)) {
 			User user = userDAO.getUserByUserName(userName);
 			session.setAttribute("currentUser", user);
+			
 			
 			if(destination != null && ! destination.isEmpty()) {
 				return "redirect:" + destination;

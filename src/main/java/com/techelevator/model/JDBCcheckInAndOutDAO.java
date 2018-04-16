@@ -11,8 +11,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
-
-
 @Component
 public class JDBCcheckInAndOutDAO implements CheckInAndOutDAO {
 
@@ -24,11 +22,9 @@ public class JDBCcheckInAndOutDAO implements CheckInAndOutDAO {
 	}
 
 	@Override
-	public void saveUserCheckInAtGym(int userId) {
+	public void checkInUser(int userId) {
 		String sqlInsertSurvey = "INSERT INTO checkin_checkout(user_id, gym_id, check_in) VALUES (?,?,?)";
 		jdbcTemplate.update(sqlInsertSurvey, userId, 1, LocalDate.now());
-		
-		 
 	}
 
 	@Override
@@ -40,21 +36,24 @@ public class JDBCcheckInAndOutDAO implements CheckInAndOutDAO {
 			allCheckInLogs.add(MapRowToUser(results));
 		}
 		return allCheckInLogs;
-
 	}
-
 	@Override
-	public void saveUserCheckOutGym(int userId, String checkOut) {
-		jdbcTemplate.update("INSERT INTO checkin_checkout(user_id, gym_id, check_in) VALUES ('" + userId + "', 2, '"
-				+ checkOut + "')");
-
+	public boolean checkIfUserIsCheckedIn(int userId) {
+		String sqlInsertCheckIn = "SELECT check_in FROM checkin_checkout WHERE user_id = ? AND check_in IS NULL AND check_out IS NULL";
+		jdbcTemplate.queryForRowSet(sqlInsertCheckIn, userId);
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlInsertCheckIn);
+		if(results.next()) {						
+			return false;
+		}
+		return true;
 	}
-
-//	@Override
-//	public SqlRowSet CheckInAndOut getAllCheckInsByUserId(int userId) {
-//		String sqlSearchForId = "SELECT * " + "FROM checkin_checkout " + "WHERE (user_id) = ? ";
-//	}
-			
+	
+	@Override
+	public void saveUserCheckOutGym(int userId) {
+		String sqlInsertSurvey =  "UPDATE checkin_checkout SET check_out = ? WHERE user_id = ? AND check_in IS NOT NULL AND  check_out IS NULL";
+		jdbcTemplate.update(sqlInsertSurvey, userId, 1, LocalDate.now());
+	}
+		
 	private CheckInAndOut MapRowToUser(SqlRowSet user) {
 		CheckInAndOut thisUserCheckIn = null;
 		thisUserCheckIn = new CheckInAndOut();
@@ -65,27 +64,5 @@ public class JDBCcheckInAndOutDAO implements CheckInAndOutDAO {
 
 		return thisUserCheckIn;
 	}
-
-	@Override
-	public void saveUserCheckInAtGym(int userId, String checkIn) {
-		// TODO Auto-generated method stub
-		
-	}
-
-//	private CheckInAndOut MapRowToUser(SqlRowSet row) {
-//		CheckInAndOut user = new CheckInAndOut();
-//		user.setUserId(row.getInt("user_id"));
-//		user.setGymId(row.getInt("gym_id"));
-//		user.setCheckIn(row.getString("check_in"));
-//		user.setCheckOut(row.getString("check_out"));
-//
-//		return user;
-//	}
-
-	// @Override
-	// public void saveUserCheckInAtGym(int userId, LocalDate checkIn ) {
-	// jdbcTemplate.update("INSERT INTO checkin_checkout(user_id, gym_id, check_in)
-	// VALUES (?, ?, ?)", userId, 2, checkIn);
-	// }
 
 }
