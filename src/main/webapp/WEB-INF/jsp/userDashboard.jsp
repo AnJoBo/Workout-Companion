@@ -25,32 +25,10 @@
 	</p>
 </c:forEach>
 
-<c:url var="userImg" value="/img/${currentUser.picture}" />
-<img src="${userImg}" style="display: block;">
-<p>
-	Hello,
-	<c:out value="${currentUser.userName}" />
-</p>
-<p>
-	user id
-	<c:out value="${currentUser.userId}" />
-</p>
-<p>
-	Your email:
-	<c:out value="${currentUser.email}" />
-</p>
-<p>
-	Your phone number:
-	<c:out value="${currentUser.phone}" />
-</p>
-<p>
-	Fitness Goal:
-	<c:out value="${currentUser.fitnessGoal}" />
-</p>
+
 
 <input type="hidden" name="currentUserId" value="${currentUser.userId}" />
-<c:url var="updateLink" value="/userUpdate/${currentUser.userName}" />
-<a href="${updateLink}"><button class="btn">Update Info</button></a>
+
 
 <div class="test">
 
@@ -130,14 +108,13 @@
 			ex ea commodo consequat.</p>
 	</div>
 </div>
-<<<<<<< HEAD
-=======
-</div>
-
-
 
 </div>
->>>>>>> 404a181372807f1b741ae49fe9082079c09826c3
+
+
+
+</div>
+
 <!-- end content-top -->
 <div class="container">
 	<div class="row content-middle">
