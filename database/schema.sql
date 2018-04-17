@@ -44,7 +44,7 @@ CREATE TABLE checkin_checkout (
   workout_id SERIAL NOT NULL, 
   workout_name varchar(255)  NOT NULL,
   workout_image varChar(255) NOT NULL, 
-  workout_description varchar(255) NOT NULL,
+  workout_description TEXT NOT NULL,
   equipment_id integer NOT NULL, 
   CONSTRAINT pk_workout_id PRIMARY KEY (workout_id)
  );
@@ -58,8 +58,9 @@ CREATE TABLE equipment (
 );
 
  CREATE TABLE workout_user(
-  reps varchar(255), 
-  number_of_sets varchar(255),
+  reps integer,
+  number_of_sets integer,
+  weight integer, 
   workout_id integer NOT NULL, 
   user_id integer NOT NULL, 
   equipment_id integer NOT NULL, 

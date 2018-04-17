@@ -31,16 +31,18 @@ public class WorkoutController {
 	}
 	
 	@RequestMapping(path="/users/workout", method = RequestMethod.GET)
-	public String displayWorkoutsPage(ModelMap mh) {
+	public String displayWorkoutsPage(ModelMap mh, int reps[]) {
 		List<Workouts> workoutList = workoutDAO.getAllWorkouts();
 		mh.put("allWorkouts", workoutList);
+		
 		return "displayWorkout";
 	}
 	
 	@RequestMapping(path="/users/workout", method = RequestMethod.POST)
-	public String displayWorkoutsPost(ModelMap mh) {
+	public String displayWorkoutsPost(ModelMap mh, int reps[]) {
 		List<Workouts> workoutList = workoutDAO.getAllWorkouts();
 		mh.put("allWorkouts", workoutList);
+		
 		return "redirect:/users/workout";
 	}
 	

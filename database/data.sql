@@ -25,4 +25,48 @@ VALUES ('James', 'Jd4Gz2svLEgxxjzgo6fF7A==', 'eW2xShApr2mXBo790L9V7OG45wy/5oD94a
 INSERT INTO gym (name) VALUES ('SlimGym');
 INSERT INTO gym (name) VALUES ('Elevated Gainz');
 
+
+INSERT INTO WORKOUT (workout_name, workout_image, workout_description, equipment_id)
+VALUES ('Bench Press', 'benchpress', 'The person performing the exercise lies on their back on a bench with a weight grasped in both hands. They push the weight upwards until their arms are extended, not allowing the elbows to lock. They then lower the weight to chest level. This is one repetition (rep).', 1);
+
+INSERT INTO WORKOUT (workout_name, workout_image, workout_description, equipment_id)
+VALUES ('Dumbbell Row', 'dumbbellrow', 'Pull the weight toward your hip, keeping your elbow in close as you flex your back, bend your arm and bring your shoulder upward. At the top, your elbow should be pointed toward the ceiling as you squeeze your shoulder blades together. Lower the dumbbell under control along the same path. Complete your reps for one side, then switch arms and do the same amount of reps for the other — that’s one set.', 1);
+
+INSERT INTO WORKOUT (workout_name, workout_image, workout_description, equipment_id)
+VALUES ('Squat', 'squat', 'You Squat by bending your hips and knees while the bar rests on your upper-back. Squat down until your hips are below your knees. Keep your knees out and lower back neutral. Then Squat back up. Lock your hips and knees at the top.', 2);
+
+INSERT INTO WORKOUT (workout_name, workout_image, workout_description, equipment_id)
+VALUES ('Pullup', 'pullup', 'Proper Pullup form starts hanging on a pullup bar. Grip the bar shoulder-width apart with straight arms. Pull yourself up by pulling your elbows to the floor. Keep pulling until your chin passes the bar. Lower yourself all the way down until your arms are straight. Then pull yourself up again.', 2);
+
+INSERT INTO WORKOUT (workout_name, workout_image, workout_description, equipment_id)
+VALUES ('Kettlebell Swing', 'kbswing', 'The kettlebell is swung from just below the groin to somewhere between the upper abdomen and shoulders, with arms straight or slightly bent, the degree of flexion depends on the trajectory of the kettlebell. The key to a good kettlebell swing is effectively thrusting the hips, not bending too much at the knees and sending the weight forwards, as opposed to squatting the weight up, or lifting up with the arms.', 3);
+
+INSERT INTO WORKOUT (workout_name, workout_image, workout_description, equipment_id)
+VALUES ('Russian Twist', 'russianTwist', 'Lie down on the floor placing your feet either under something that will not move or by having a partner hold them. Your legs should be bent at the knees. Elevate your upper body so that it creates an imaginary V-shape with your thighs.', 3);
+
+
+INSERT INTO EQUIPMENT (equipment_name, workout_id) 
+VALUES ('Flat Bench', 1);
+
+INSERT INTO EQUIPMENT (equipment_name, workout_id) 
+VALUES ('Power Rack', 2);
+
+INSERT INTO EQUIPMENT (equipment_name, workout_id) 
+VALUES ('Kettle Bell', 3);
+
+INSERT INTO WORKOUT_USER (reps, number_of_sets, weight, workout_id, user_id, equipment_id)
+VALUES ('5', '3', 100, 1, 1, 1);
+
+INSERT INTO WORKOUT_USER (reps, number_of_sets, weight, workout_id, user_id, equipment_id)
+VALUES ('5', '3', 100, 1, 1, 1);
+
+INSERT INTO WORKOUT_USER (reps, number_of_sets, weight, workout_id, user_id, equipment_id)
+VALUES ('4', '3', 100, 1, 1, 1);
+
+INSERT INTO WORKOUT_USER (reps, number_of_sets, weight, workout_id, user_id, equipment_id)
+VALUES ('10', '2', 150, 3, 1, 2);
+
+INSERT INTO WORKOUT_USER (reps, number_of_sets, weight, workout_id, user_id, equipment_id)
+VALUES ('10', '2', 150, 3, 1, 2);
+
  COMMIT;
