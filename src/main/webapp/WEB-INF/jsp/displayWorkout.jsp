@@ -10,6 +10,25 @@
 <html>
 <head>
 
+<script language="Javascript" type="text/javascript">
+var counter = 1;
+var limit = 4;
+function addInput(divName){
+if (counter == limit) {
+alert("Reached adding limit" + counter + " inputs");
+}
+else {
+var newdiv = document.createElement('div');
+newdiv.innerHTML = "Entry " + (counter + 1) +
+	"<input type='number' name='reps[]'>";
+document.getElementById(divName).appendChild(newdiv);
+counter++;
+}
+}
+
+</script>
+
+
 <section class="centeredPanel">
 	<h1 class="centered">Submit a Survey</h1>
 	<form method="POST" action="${formAction}">
@@ -28,7 +47,7 @@
 				<option value="YNP2">Yosemite National Park</option>
 				
 			</select>
-			<input type="submit" value="Select Workout" />
+			
 		</div>
 		</form>
 		</section>
@@ -37,23 +56,7 @@
 
 <!-- Add reps one button push and submit -->
 
-<script language="Javascript" type="text/javascript">
-var counter = 1;
-var limit = 4;
-function addInput(divName){
-if (counter == limit) {
-alert("Reached adding limit" + counter + " inputs");
-}
-else {
-var newdiv = document.createElement('div');
-newdiv.innerHTML = "Entry " + (counter + 1) +
-	"<input type='number' name='reps[]'>";
-document.getElementById(divName).appendChild(newdiv);
-counter++;
-}
-}
 
-</script>
 </head>
 
 
