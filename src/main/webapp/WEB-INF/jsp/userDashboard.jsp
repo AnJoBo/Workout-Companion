@@ -1,11 +1,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ include file="include/header.jspf"%>
 
-<div class="test container">
+<div class="container">
 
 	<h1>USER DASHBAORD</h1>
 
-	<div style="display: inline-block; border: 1px solid black;">
+	<div style="display: inline-block; border: 0px solid black;">
 
 		<%-- Message after user update redirect --%>
 		<c:if test="${not empty message}">
@@ -35,16 +35,13 @@
 			</p>
 		</c:forEach>
 
-
-
-
 	<h1>
 
 		<c:url var="formAction" value="/users/${currentUser.userName}" />
 		<form method="POST" action="${formAction}">
 			<input type="hidden" name="currentUserId"
 				value="${currentUser.userId}" /> <input type="hidden"
-				name="CSRF_TOKEN" value="${CSRF_TOKEN}" /> <input type="submit"
+				name="CSRF_TOKEN" value="${CSRF_TOKEN}" /> <input type="submit" class="btn btn-primary"
 				value="Gym Check In" onClick="return change(this);" />
 		</form>
 	</h1>
@@ -98,17 +95,6 @@
 				</div>
 			</div>
 		</div>
-
-
-
-
-
-		<!--  /////////////////////////////////////////////////// TEST PAGE CODE - DELETE BELOW IF THE PAGE IS NOT WORKING ///////////////////////////////////////////////////////////// -->
-
-
-
-
-
 
 		<!-- start content-top -->
 		<div class="row content-top">

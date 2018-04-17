@@ -1,21 +1,29 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <!DOCTYPE html>
 
 <html>
 <head>
 <title>Gym Companion</title>
-	<c:url var="bootstrapUrl" value="/css/bootstrap.css"/>
-	<link href="${bootstrapUrl }" rel='stylesheet' type='text/css' />
- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
-<c:url var="cssUrl" value="/css/style.css"/>
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<c:url var="bootstrapUrl" value="/css/bootstrap.css" />
+<link href="${bootstrapUrl }" rel='stylesheet' type='text/css' />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link
+	href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800'
+	rel='stylesheet' type='text/css'>
+<link
+	href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700'
+	rel='stylesheet' type='text/css'>
+<c:url var="cssUrl" value="/css/style.css" />
+<link
+	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<script
+	src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 <link href="${cssUrl }" rel='stylesheet' type='text/css' />
 
 
@@ -45,47 +53,47 @@
 </script> -->
 </head>
 <body>
-  <!-- start header_bottom -->
-    <div class="header-bottom">
-		 <div class="container">
+	<!-- start header_bottom -->
+	<div class="header-bottom">
+		<div class="container">
 			<div class="header-bottom_left">
 				<i class="phone"> </i><span>1-800-000-0000</span>
 			</div>
-			<div class="social">	
-			   <ul>	
-				  <li class="facebook"><a href="#"><span> </span></a></li>
-				  <li class="twitter"><a href="#"><span> </span></a></li>
-				  <li class="pinterest"><a href="#"><span> </span></a></li>	
-				  <li class="google"><a href="#"><span> </span></a></li>
-				  <li class="tumblr"><a href="#"><span> </span></a></li>
-				  <li class="instagram"><a href="#"><span> </span></a></li>	
-				  <li class="rss"><a href="#"><span> </span></a></li>							
-			   </ul>
-		   </div>
-		   <div class="clear"></div>
+			<div class="social">
+				<ul>
+					<li class="facebook"><a href="#"><span> </span></a></li>
+					<li class="twitter"><a href="#"><span> </span></a></li>
+					<li class="pinterest"><a href="#"><span> </span></a></li>
+					<li class="google"><a href="#"><span> </span></a></li>
+					<li class="tumblr"><a href="#"><span> </span></a></li>
+					<li class="instagram"><a href="#"><span> </span></a></li>
+					<li class="rss"><a href="#"><span> </span></a></li>
+				</ul>
+			</div>
+			<div class="clear"></div>
 		</div>
-    </div>
-    <!-- start menu -->
-    <div class="menu">
-	  <div class="container">
-		 <div class="logo">
-		 <c:url var="logoUrl" value="/images/logo.png"/>
-		 <c:url var="homeUrl" value="/"/>
-			<a href="${homeUrl}"><img src="${logoUrl}" alt=""/></a>
-			
-		 </div>
-		 <div class="h_menu4"><!-- start h_menu4 -->
-		   <a class="toggleMenu" href="#">Menu</a>
-			 <ul class="nav">
-			 
-			 <!-- /////////////////////// NAV BUTONS /////////////////////// -->
-			 
-			 
-			 <script type="text/javascript">
+	</div>
+	<!-- start menu -->
+	<div class="menu">
+		<div class="container">
+			<div class="logo">
+				<c:url var="logoUrl" value="/images/logo.png" />
+				<c:url var="homeUrl" value="/" />
+				<a href="${homeUrl}"><img src="${logoUrl}" alt="" /></a>
+
+			</div>
+			<div class="h_menu4">
+				<!-- start h_menu4 -->
+				<a class="toggleMenu" href="#">Menu</a>
+				<ul class="nav">
+
+					<!-- /////////////////////// NAV BUTONS /////////////////////// -->
+
+
+					<script type="text/javascript">
 
  			$(document).ready(function() {
 
- 				$("time.timeago").timeago();
 
  				
 
@@ -108,15 +116,15 @@
  			
  			</script>
 
- 			
-<!-- //////////////////////////////////////////////////////////////////////////////////////////////////////// The following is just a copy of the "if you are logged in, show this" code. Its only here to reference ////////////////////////////////////////////////////////////////////////////////////////////////////////-->
- 			
 
- 	
+					<!-- //////////////////////////////////////////////////////////////////////////////////////////////////////// The following is just a copy of the "if you are logged in, show this" code. Its only here to reference ////////////////////////////////////////////////////////////////////////////////////////////////////////-->
 
- 		
 
- 	<%-- </head>
+
+
+
+
+					<%-- </head>
 
  	<body>
 
@@ -205,61 +213,59 @@
  			<p id="currentUser">Current User: ${currentUser}</p>
 
  		</c:if>	 --%>
-			 
-			 
-			 
-			<!-- //////////////////////////////////////////////////////////////////////////////////////////////////////// End of  reference code ////////////////////////////////////////////////////////////////////////////////////////////////////////-->
-			 
-			 
-			 
-			 
-			 
-			 
-			 
-			 
-			 
-			 
-			 
-			 
-			 
-			 <%-- <c:url var="homeUrl" value="/"/>
+
+
+
+					<!-- //////////////////////////////////////////////////////////////////////////////////////////////////////// End of  reference code ////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+					<%-- <c:url var="homeUrl" value="/"/>
 			   <li class="active"><a href="${login}">Home</a></li> <!-- "HOME" button redirects to the login page for now --> --%>
-			   
- 			   <c:url var="aboutUrl" value="/about"/>
-			   <li><a href="${aboutUrl}">About</a></li>
-			   
-			   
-			   <!-- <li><a href="trainers.html">Trainers</a></li> -->
-			   
-			   <li><a href="classes.html">Classes</a></li>
-			   
-			   
-			   <li><a href="pricing.html">Pricing</a></li>
-			   
-			   <li><a href="contact.html">Contact</a></li>
-			   
-			   <%--  <c:url var="loginUrl" value="/login"/>
+
+					<c:url var="aboutUrl" value="/about" />
+					<li><a href="${aboutUrl}">About</a></li>
+
+
+					<!-- <li><a href="trainers.html">Trainers</a></li> -->
+
+					<li><a href="classes.html">Classes</a></li>
+
+
+					<li><a href="pricing.html">Pricing</a></li>
+
+					<li><a href="contact.html">Contact</a></li>
+
+					<%--  <c:url var="loginUrl" value="/login"/>
 			   <li><a href="${loginUrl}">Log In</a></li> --%>
-			  
-			  <!-- Logout functionality -->
-				<li>	
-				<c:if test="${not empty currentUser}">
-						<c:url var="logOutUrl" value="/logout" />
+
+					<!-- Logout functionality -->
+					<li><c:if test="${not empty currentUser}">
+							<c:url var="logOutUrl" value="/logout" />
 							<form id="logoutForm" action="${logOutUrl}" method="POST">
-								<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
-								<input type=submit class="btn logout-btn a" value="Log Out"/>
+								<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
+								<input type=submit class="btn logout-btn a" value="Log Out" />
 							</form>
-						</c:if>
-					</li>
-					
-					
+						</c:if></li>
+
+
 
 
 				</ul>
-			  <script type="text/javascript" src="js/nav.js"></script>
-		  </div><!-- end h_menu4 -->
-		 <div class="clear"></div>
-	  </div>
+				<script type="text/javascript" src="js/nav.js"></script>
+			</div>
+			<!-- end h_menu4 -->
+			<div class="clear"></div>
+		</div>
 	</div>
 	<!-- end menu -->
-	

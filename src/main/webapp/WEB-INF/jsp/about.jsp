@@ -1,7 +1,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <%@ include file="include/header.jspf"%>
-
+<c:url value="/js/jquery.flexisel.js" var="flexiselUrl" />
+		<script type="text/javascript" src="${flexiselUrl}"></script>
 
 			<!-- start content-top -->
 			<div class="row content-top">
@@ -199,7 +200,7 @@
 			  <div class="col-md-4">
 		        <h3 class="m_2">Our Trainers</h3>
 		         <div class="course_demo">
-		          <ul id="flexiselDemo3">	
+		          <ul id="flexiselTrainers">	
 					<li><img src="images/pic4.jpg" /><div class="desc">
 						<h3>Lorem Ipsum<br><span class="m_text">Spinning</span></h3>
 						<p>Lorem ipsum dolor<br> sit amet, consectetuer.</p>
@@ -267,14 +268,16 @@
 					</div></li>							    	  	       	   	    	
 				</ul>
 				<script type="text/javascript">
-			$(window).load(function() {
-				$("#flexiselDemo3").flexisel({
-					visibleItems: 4,
-					animationSpeed: 1000,
+			$(function() {
+				$('#flexiselGallery').flexisel({
 					autoPlay: true,
-					autoPlaySpeed: 3000,    		
 					pauseOnHover: true,
-					enableResponsiveBreakpoints: true,
+				});
+				$("#flexiselTrainers").flexisel({
+					autoPlay: true,
+					autoPlaySpeed: 6000,    		
+					pauseOnHover: true,
+				/* 	enableResponsiveBreakpoints: true,
 			    	responsiveBreakpoints: { 
 			    		portrait: { 
 			    			changePoint:480,
@@ -288,12 +291,11 @@
 			    			changePoint:768,
 			    			visibleItems: 2
 			    		}
-			    	}
+			    	} */
 			    });
 			    
 			});
 		</script>
-		<script type="text/javascript" src="js/jquery.flexisel.js"></script>
 	  </div>
      </div>
      <div class="col-md-4">
@@ -365,61 +367,43 @@
       <div class="row about">
 		 <div class="col-md-8">
 		     	 <h3 class="m_2">Gallery</h3>
-		     	 <div id="ca-container" class="ca-container">
-				    <div class="ca-wrapper">
-				         <div class="ca-item ca-item-1">
-						   <div class="ca-item-main">
-								<div class="ca-icon"> </div>
-								<div class="ca-icon1"> </div>
-							</div>
-						  </div>
-						<div class="ca-item ca-item-2">
-							<div class="ca-item-main">
-								<div class="ca-icon"> </div>
-								<div class="ca-icon2"> </div>
-							</div>
-						</div>
-						<div class="ca-item ca-item-3">
-							<div class="ca-item-main">
-								<div class="ca-icon"> </div>
-								<div class="ca-icon3"> </div>
-							</div>
-						</div>
-						<div class="ca-item ca-item-4">
-							<div class="ca-item-main">
-								<div class="ca-icon"> </div>
-								<div class="ca-icon4"> </div>
-						     </div>
-						</div>
-						<div class="ca-item ca-item-5">
-							<div class="ca-item-main">
-								<div class="ca-icon"> </div>
-								<div class="ca-icon5"> </div>
-							</div>
-						</div>
-						<div class="ca-item ca-item-6">
-							<div class="ca-item-main">
-								<div class="ca-icon"> </div>
-								<div class="ca-icon6"> </div>
-							</div>
-						</div>
-						<div class="ca-item ca-item-7">
-							<div class="ca-item-main">
-								<div class="ca-icon"> </div>
-								<div class="ca-icon7"> </div>
-							</div>
-						</div>
-						<div class="ca-item ca-item-8">
-							<div class="ca-item-main">
-								<div class="ca-icon"> </div>
-								<div class="ca-icon"> </div>
-							</div>
-						</div>
-			    </div>
+		     	 <c:url value="/images/" var="imageUrl" />
+		     	 <div id="ca-container" class="">
+				    <ul id="flexiselGallery">
+				         <li class="ca-item ca-item-1">
+						   <img src="${imageUrl}pic12.jpg" />
+						  </li>
+						<li class="ca-item ca-item-2">
+													   <img src="${imageUrl}pic12.jpg" />
+
+						</li>
+						<li class="ca-item ca-item-3">
+													   <img src="${imageUrl}pic11.jpg" />
+
+						</li>
+						<li class="ca-item ca-item-4">
+													   <img src="${imageUrl}pic10.jpg" />
+
+						</li>
+						<li class="ca-item ca-item-5">
+													   <img src="${imageUrl}pic14.jpg" />
+
+						</li>
+						<li class="ca-item ca-item-6">
+													   <img src="${imageUrl}pic15.jpg" />
+
+						</li>
+						<li class="ca-item ca-item-7">
+													   <img src="${imageUrl}pic16.jpg" />
+
+						</li>
+						<li class="ca-item ca-item-8">
+													   <img src="${imageUrl}pic17.jpg" />
+
+						</li>
+			    </ul>
 			 </div>
-				    <script type="text/javascript">
-						$('#ca-container').contentcarousel();
-					</script>
+				   
 		   </div>
 		   <div class="col-md-4">
 		   	 <h3 class="m_2">Partner</h3>
