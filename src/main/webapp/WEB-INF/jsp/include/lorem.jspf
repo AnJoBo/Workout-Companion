@@ -260,7 +260,7 @@
 	<div class="row content_middle_bottom">
 		<div class="col-md-4">
 
-			<h3 class="m_2">Our Trainers</h3>
+			<h3 class="m_2"></h3>
 			<div class="course_demo">
 				<ul id="flexiselDemo3">
 					<li><img src="images/pic4.jpg" />
@@ -346,7 +346,6 @@
 				</ul>
 		</div>
 	</div>
-	<div class="col-md-4">
 		<h3 class="m_2">Next Events</h3>
 		<div class="events">
 			<div class="event-top">
@@ -381,7 +380,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-md-4">
+	<div class="container col-md-4">
 		<h3 class="m_2">From the blog</h3>
 		<div class="blog_events">
 			<ul class="tab-left1">
