@@ -20,6 +20,35 @@ public class JDBCworkoutDAO implements WorkoutDAO{
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 	
+	@Override
+	public List<Workouts> getAllEquipment1() {
+		List<Workouts> allequipment = new ArrayList<>();
+		String sqlSelectAll = "SELECT * FROM equipment";
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSelectAll);
+		while (results.next()) {
+			allequipment.add(MapRowToEquipment(results));
+		}
+		return allequipment;
+	}
+	
+	private Workouts MapRowToEquipment(SqlRowSet user) {
+		Workouts equipment = null;
+		equipment = new Workouts();
+		equipment.setEquipmentName(user.getString("equipment_name"));
+		equipment.setWorkoutName(user.getString("workout_name"));
+		equipment.setReps(user.getString("reps"));
+		equipment.setSets(user.getString("number_of_sets"));
+		equipment.setWorkoutid(user.getInt("workout_id"));
+		equipment.setWorkoutname(user.getString("workout_name"));
+		equipment.setWorkoutimage(user.getString("workout_image"));
+		equipment.setWorkoutdescription(user.getString("workout_description"));
+		equipment.setEquipmentid(user.getInt("equipment_id"));
+		return equipment;
+		
+	
+	}
+	
+	
 	
 	@Override
 	public List<Workouts> getAllWorkouts() {
@@ -31,15 +60,12 @@ public class JDBCworkoutDAO implements WorkoutDAO{
 		}
 		return allWorkouts;
 	}
-	
-	private Workouts MapRowToEquipment(SqlRowSet user) {
-		Workouts equipment = null;
-		equipment = new Workouts();
-		equipment.setEquipmentName(user.getString("equipment_name"));
-		equipment.setWorkoutName(user.getString("workout_name"));
-		equipment.setReps(user.getString("reps"));
-		equipment.setSets(user.getString("number_of_sets"));
-		equipment.setWorkoutImage(user.getString("equipment_image"));
-		return equipment;
+
+	@Override
+	public List<Workouts> getAllEquipment() {
+		// TODO Auto-generated method stub
+		return null;
 	}
+
+	
 }

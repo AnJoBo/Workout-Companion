@@ -1,14 +1,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@page contentType="text/html" import="java.util.*"%>
-
-
 <%@ include file="include/header.jspf"%>
 
-
+<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
 
 
 <html>
-<head>
+<body>
 
 <script language="Javascript" type="text/javascript">
 var counter = 1;
@@ -24,44 +22,51 @@ newdiv.innerHTML = "Entry " + (counter + 1) +
 document.getElementById(divName).appendChild(newdiv);
 counter++;
 }
-}
+} 
 
 </script>
 
 
 <section class="centeredPanel">
-	<h1 class="centered">Submit a Survey</h1>
+	
 	<form method="POST" action="${formAction}">
+	<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
 		<div>
-			<label for="parkCode">Favorite National Park</label> <select
-				id="parkCode" name="parkCode">
-				<option value="CVNP">Cuyahoga Valley National Park</option>
-				<option value="ENP">Everglades National Park</option>
-				<option value="GCNP">Grand Canyon National Park</option>
-				<option value="GNP">Glacier National Park</option>
-				<option value="GSMNP">Great Smoky Mountains National Park</option>
-				<option value="GTNP">Grand Teton National Park</option>
-				<option value="MRNP">Mount Rainier National Park</option>
-				<option value="RMNP">Rocky Mountain National Park</option>
-				<option value="YNP">Yellowstone National Park</option>
-				<option value="YNP2">Yosemite National Park</option>
+			<label for="parkCode">Select a Workout</label> <select id="parkCode" name="parkCode">
+				<option value="1">Bench Press</option>
+				<option value="2">Dumbbell Row</option>
+				<option value="3">Squat</option>
+				<option value="4">Pullup</option>
+				<option value="5">Kettlebell Swing</option>
+				<option value="6">Russian Twistk</option>
+				
 				
 			</select>
-			
+			<button type="submit" class="btn btn-default">select workout</button>
 		</div>
 		</form>
-		</section>
+		</section>   
+		
+		
+		
+		
+		
+<form method="GET" action="${formAction}">
+<b><div class = "popularParks">Most Popular Parks!!!</div></b>
+
+	<c:forEach var="surveyResults" items="${workouts}">
+		<div class="surveylist">
+				<c:out value="${workouts.workoutname}" />
+			</div>
+</c:forEach>
+</form> 
 
 
 
-<!-- Add reps one button push and submit -->
+		<!-- Add reps one button push and submit -->
 
-
-</head>
-
-
-<body>
-<form method="POST">
+<form method="POST" action="${formAction}">
+<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
 <div id="dynamicInput">
 Enter number of Sets:
 <input type="number" name="sets">
@@ -74,7 +79,8 @@ Rep 1
 <input type="button" value="Rep +" onClick="addInput('dynamicInput');">
 <div></div><button type="submit" class="btn btn-default">Submit</button></div>
 </form>
+
 </body>
-</html> 
+</html>  
 
 <%@ include file="include/footer.jspf"%>

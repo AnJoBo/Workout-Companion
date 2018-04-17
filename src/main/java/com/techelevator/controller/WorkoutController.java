@@ -31,17 +31,18 @@ public class WorkoutController {
 	}
 	
 	@RequestMapping(path="/users/workout", method = RequestMethod.GET)
-	public String displayWorkoutsPage(ModelMap mh, int reps[]) {
-		List<Workouts> workoutList = workoutDAO.getAllWorkouts();
-		mh.put("allWorkouts", workoutList);
-		
+	public String displayWorkoutsPage() {
+//		List<Workouts> equipment = workoutDAO.getAllEquipment1();
+	//	List<Workouts> workouts = workoutDAO.getAllWorkouts();
+//		mh.put("equipment", equipment);
+//	mh.put("workouts", workouts);
 		return "displayWorkout";
 	}
 	
 	@RequestMapping(path="/users/workout", method = RequestMethod.POST)
 	public String displayWorkoutsPost(ModelMap mh, int reps[]) {
-		List<Workouts> workoutList = workoutDAO.getAllWorkouts();
-		mh.put("allWorkouts", workoutList);
+		List<Workouts> workouts = workoutDAO.getAllWorkouts();
+		mh.put("workouts", workouts);
 		
 		return "redirect:/users/workout";
 	}
