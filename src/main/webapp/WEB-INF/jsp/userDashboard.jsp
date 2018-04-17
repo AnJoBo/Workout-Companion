@@ -5,7 +5,6 @@
 	<h1>USER DASHBAORD</h1>
 
 	<div style="display: inline-block; border: 1px solid black;">
-<<<<<<< HEAD
 
 		<%-- Message after user update redirect --%>
 		<c:if test="${not empty message}">
