@@ -44,7 +44,7 @@ CREATE TABLE checkin_checkout (
   workout_id SERIAL NOT NULL, 
   workout_name varchar(255)  NOT NULL,
   workout_image varChar(255) NOT NULL, 
-  workout_description varchar(255) NOT NULL,
+  workout_description TEXT NOT NULL,
   equipment_id integer NOT NULL, 
   CONSTRAINT pk_workout_id PRIMARY KEY (workout_id)
  );
