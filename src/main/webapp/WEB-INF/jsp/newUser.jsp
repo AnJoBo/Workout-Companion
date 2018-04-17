@@ -4,15 +4,15 @@
 
 <%-- Message after user create failure redirect --%>
 <c:if test="${not empty message}">
-	<div style="display: inline-block; border: 1px solid black;">
+	<div style="display: inline-block; border: 0px solid black;">
 		<c:out value="${message}" />
 	</div>
 </c:if>
-
+<div class="container">
 <c:url var="formAction" value="/users" />
 <form method="POST" action="${formAction}">
 <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
-	<div class="row">
+	<div class="">
 		<div class="col-sm-4">
 			<div class="form-group">
 				<label for="userName">User Name: </label>
@@ -48,6 +48,7 @@
 			<div class="col-sm-4 col-lg-7">
 				<div class="form-group">
 					<label for="picture">Select avatar:</label>
+					<br></br>
 					<div>
 	  				<label class="radio-inline">
 	  					<input type="radio" name="picture" value="f00.png"><img src="../img/f00.png" style="height: 150px">
@@ -99,10 +100,11 @@
 	  				</label>
   				</div>
 			</div>
-			<button type="submit" class="btn btn-default">Create User</button>
+			<button type="submit" class="btn btn-primary">Create User</button> 
 		</div>
 	</div>
 </form>
+</div>
 		
 <script type="text/javascript">
 	$(document).ready(function () {

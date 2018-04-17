@@ -1,13 +1,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ include file="include/header.jspf"%>
 
-<div class="test container">
+<div class="container">
 	<h1>
 		<c:url var="formAction" value="/users/${currentUser.userName}" />
 		<form method="POST" action="${formAction}">
 			<input type="hidden" name="currentUserId"
 				value="${currentUser.userId}" /> <input type="hidden"
-				name="CSRF_TOKEN" value="${CSRF_TOKEN}" /> <input type="submit"
+				name="CSRF_TOKEN" value="${CSRF_TOKEN}" /> <input type="submit" class="btn btn-primary"
 				value="Gym Check In" onClick="return change(this);" />
 		</form>
 	</h1>
@@ -61,17 +61,6 @@
 				</div>
 			</div>
 		</div>
-
-
-
-
-
-		<!--  /////////////////////////////////////////////////// TEST PAGE CODE - DELETE BELOW IF THE PAGE IS NOT WORKING ///////////////////////////////////////////////////////////// -->
-
-
-
-
-
 
 		<!-- start content-top -->
 		<div class="row content-top">

@@ -329,6 +329,9 @@ a:hover, a:focus {
 	color:#D8F3FD;
 	text-decoration:none;
 }
+.radio-inline + .radio-inline, .checkbox-inline + .checkbox-inline{
+	margin-left: 0;
+}
 /***** Media Quries *****/
 @media screen and (max-width: 768px) {
 	.h_logo4{
@@ -389,6 +392,12 @@ a:hover, a:focus {
 }
 .content_left_text {
 	padding:1% 0 0 5%;
+}
+
+.newUser_display{
+	display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .content_left_text h3 {
 	color: #555;
@@ -760,7 +769,7 @@ h4.m_3{
 	overflow: hidden;
 	margin: 0 auto;
 	width:100%;
-  	background: #FFF;
+  	background: #00000000;
 }
 .nbs-flexisel-item {
 	float: left;
@@ -1000,7 +1009,6 @@ span.m_date{
 /* Circular Content Carousel Style */
 .ca-container{
 	position: relative;
-	height:430px;
 }
 .ca-container1{
 	position: relative;
