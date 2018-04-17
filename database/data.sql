@@ -64,9 +64,9 @@ INSERT INTO WORKOUT_USER (reps, number_of_sets, weight, workout_id, user_id, equ
 VALUES ('4', '3', 100, 1, 1, 1);
 
 INSERT INTO WORKOUT_USER (reps, number_of_sets, weight, workout_id, user_id, equipment_id)
-VALUES ('10', '2', 150, 1, 2);
+VALUES ('10', '2', 150, 3, 1, 2);
 
 INSERT INTO WORKOUT_USER (reps, number_of_sets, weight, workout_id, user_id, equipment_id)
-VALUES ('10', '2', 150, 1, 2);
+VALUES ('10', '2', 150, 3, 1, 2);
 
  COMMIT;
