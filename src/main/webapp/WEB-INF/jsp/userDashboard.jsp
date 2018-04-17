@@ -2,7 +2,44 @@
 <%@ include file="include/header.jspf"%>
 
 <div class="test container">
+
+	<h1>USER DASHBAORD</h1>
+
+	<div style="display: inline-block; border: 1px solid black;">
+
+		<%-- Message after user update redirect --%>
+		<c:if test="${not empty message}">
+			<c:out value="${message}" />
+
+			<c:url var="formAction" value="/users/${currentUser.userName}" />
+			<form method="POST" action="${formAction}">
+				<input type="hidden" name="currentUserId"
+					value="${currentUser.userId}" /> <input type="hidden"
+					name="CSRF_TOKEN" value="${CSRF_TOKEN}" /> <input type="submit"
+					value="Check In" onClick="return change(this);" />
+
+			</form>
+
+		</c:if>
+
+		<c:forEach var="LogResults" items="${LogResults}">
+			<p>
+				User Id:
+				<c:out value="${LogResults.userId}" />
+				Gym Number:
+				<c:out value="${LogResults.gymId}" />
+				Check In :
+				<c:out value="${LogResults.checkIn}" />
+				Check Out:
+				<c:out value="${LogResults.checkOut}" />
+			</p>
+		</c:forEach>
+
+
+
+
 	<h1>
+
 		<c:url var="formAction" value="/users/${currentUser.userName}" />
 		<form method="POST" action="${formAction}">
 			<input type="hidden" name="currentUserId"
