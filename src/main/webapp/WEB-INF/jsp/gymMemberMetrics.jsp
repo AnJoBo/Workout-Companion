@@ -2,25 +2,48 @@
 
 <%@ include file="include/header.jspf"%>
 
-<c:out value="${thisUser.userName}"/>
+<style>
+	td{
+		padding: 2px 5px;
+		border: 1px solid black;
+	}
+</style>
+
+<h2><c:out value="${thisUser.userName}"/></h2>
 
 <table class ="userMetrics">
-	<thead>
-		<tr>
-		<th>Username</th>
-		<th>Email</th>
-		<th>Phone</th>
-		<th>Goal</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><c:out value="${thisUser.email}"/> </td>
-			<td><c:out value="${thisUser.phone}"/> </td>
-			<td><c:out value="${thisUser.fitnessGoal}"/> </td>
-			<td><c:out value="${userMetrics.equipmentName}"/></td>
-		</tr>
-	</tbody>
+	<tr>
+		<td>Equipment Used</td>
+		<td><c:out value="${usersMetrics.equipmentName} "/></td>
+	</tr>
+	<tr>
+		<td>Number of Sets</td>
+		<td><c:out value="${usersMetrics.numberOfSets} "/></td>
+	</tr>
+	<tr>
+		<td>Set One</td>
+		<td><c:out value="${usersMetrics.setOne} "/></td>
+	</tr>
+	<tr>
+		<td>Set Two</td>
+		<td><c:out value="${usersMetrics.setTwo} "/></td>
+	</tr>
+	<tr>
+		<td>Set Three</td>
+		<td><c:out value="${usersMetrics.setThree} "/></td>
+	</tr>
+	<tr>
+		<td>Set Four</td>
+		<td><c:out value="${usersMetrics.setFour} "/></td>
+	</tr>
+	<tr>
+		<td>Weight Used</td>
+		<td><c:out value="${usersMetrics.weight} "/></td>
+	</tr>
+	<tr>
+		<td>Workout Time</td>
+		<td><c:out value="${usersMetrics.workoutTime} "/></td>
+	</tr>
 </table>
 
 <%@ include file="include/footer.jspf"%>
