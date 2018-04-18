@@ -42,11 +42,11 @@ public class WorkoutController {
 	@RequestMapping(path="/users/workout", method = RequestMethod.GET)
 	public String displayWorkoutsPage(ModelMap mh, HttpSession session) {
 		int currentUserId = ((User)session.getAttribute("currentUser")).getUserId();
-		List<Workouts> workouts = workoutDAO.getAllWorkouts();
+		
 		List<WorkoutUserJoined> getSetsAndReps = workoutUserJoinDAO.getNumberOfSetsAndRepsFromUserId(currentUserId);
 		mh.put("getSetsAndReps", getSetsAndReps);
 
-		mh.put("workouts", workouts);
+		//mh.put("workouts", workouts);
 		return "displayWorkout";
 	}
 
@@ -63,9 +63,9 @@ public class WorkoutController {
 			@RequestParam(defaultValue="0") int reps2,
 			@RequestParam(defaultValue="0") int reps3,
 			@RequestParam(defaultValue="0") int reps4, HttpSession session) {
-		List<Workouts> workouts = workoutDAO.getAllWorkouts();
+		//List<Workouts> workouts = workoutDAO.getAllWorkouts();
 		
-		mh.put("workouts", workouts);
+		//mh.put("workouts", workouts);
 		workoutUserJoinDAO.saveWorkout(reps1,reps2,reps3,reps4, sets, weight, workoutId, currentUserId, equipment);
 
 		
