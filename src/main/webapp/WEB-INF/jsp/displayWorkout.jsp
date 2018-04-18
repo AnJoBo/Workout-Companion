@@ -27,9 +27,12 @@ counter++;
 } 
 
 </script>
-
- <p>Hello <c:out value="${currentUser.userName}" /> Please Select Fill In Your Workout And Submit!</p>
- <section class="centeredPanel">
+<div class="container">
+ <p class="container"><strong>Hello, <c:out value="${currentUser.userName}" />! </strong>
+ </br>
+ </br>
+ Please fill in your workout.</p>
+ <section class="container centeredPanel">
 	
 	<form method="POST" action="${formAction}">
 	<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
@@ -106,6 +109,7 @@ counter++;
 			</div>
 </c:forEach>
 		</form>
+		</div>
 
 
 
