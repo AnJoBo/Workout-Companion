@@ -26,46 +26,57 @@ counter++;
 
 </script>
 
-
-<section class="centeredPanel">
+ <p>Hello <c:out value="${currentUser.userName}" /> Please Select Fill In Your Workout And Submit!</p>
+ <section class="centeredPanel">
 	
 	<form method="POST" action="${formAction}">
 	<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
 		<div>
-			<label for="parkCode">Select a Workout</label> <select id="parkCode" name="parkCode">
+		<div>
+			<label for="workoutId">Select a Workout</label> <select id="workoutId" name="workoutId">
 				<option value="1">Bench Press</option>
 				<option value="2">Dumbbell Row</option>
 				<option value="3">Squat</option>
 				<option value="4">Pullup</option>
 				<option value="5">Kettlebell Swing</option>
-				<option value="6">Russian Twistk</option>
-				
-				
+				<option value="6">Russian Twistk</option>	
 			</select>
-			<button type="submit" class="btn btn-default">select workout</button>
+			
+			<label for="workoutId">Select What peice of equipment you used:</label> <select id="equipment" name="equipment">
+				<option value="1">None</option>
+				<option value="2">Power Rack</option>
+				<option value="3">Kettle Bell</option>
+				<option value="4">Flat Bench</option>	
+			</select>
+		
+			</div>
+			<div>Input number of Sets you did:<input type="number" name="sets"></div>
+			<div>Input how many Reps in each set:</div><div>1:<input type="number" name="reps1"> 2: <input type="number" name="reps2"> 3: <input type="number" name="reps3" value="0">(optional) 4:<input type="number" name="reps4" value="0">(optional)</div>
+			<div>Input how much weight you used:<input type="number" name="weight"></div>
+			<input type="hidden" name="currentUserId" value="${currentUser.userId}" /> 
+			<button type="submit" class="btn btn-default">Submit this workout!</button>
 		</div>
 		</form>
-		</section>   
+		</section>    
 		
 		
 		
+		<c:url value="/users/workout" var="formAction" />
+		<form method="GET" action="${formAction}">
+<b><div class = "popularParks">Your Current Workouts</div></b>
 		
-		
-<form method="GET" action="${formAction}">
-<b><div class = "popularParks">Most Popular Parks!!!</div></b>
-
-	<c:forEach var="surveyResults" items="${workouts}">
+		<c:forEach var="getSetsAndReps" items="${getSetsAndReps}">
 		<div class="surveylist">
-				<c:out value="${workouts.workoutname}" />
+			<p><c:out value="${getSetsAndReps.reps1}" /></p> 
 			</div>
 </c:forEach>
-</form> 
+		</form>
 
 
 
 		<!-- Add reps one button push and submit -->
 
-<form method="POST" action="${formAction}">
+<%-- <form method="POST" action="${formAction}">
 <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
 <div id="dynamicInput">
 Enter number of Sets:
@@ -78,7 +89,7 @@ Rep 1
 </div>
 <input type="button" value="Rep +" onClick="addInput('dynamicInput');">
 <div></div><button type="submit" class="btn btn-default">Submit</button></div>
-</form>
+</form> --%>
 
 </body>
 </html>  
