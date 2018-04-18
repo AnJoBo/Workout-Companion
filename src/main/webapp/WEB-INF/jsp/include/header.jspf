@@ -243,8 +243,8 @@
 
 					<c:url var="trackerUrl" value="/tracker" />
 					<li><a href="${trackerUrl}">Workout Tracker</a></li>
-					
-					<c:url var="exerciseGuideUrl" value="/exerciseGuide" />
+
+					<c:url var="exerciseGuideUrl" value="/users/workout" />
 					<li><a href="${exerciseGuideUrl}">Exercise Guide</a></li>
 
 					<li><a href="pricing.html">Pricing</a></li>

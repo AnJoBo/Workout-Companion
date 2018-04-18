@@ -4,7 +4,7 @@
 
 <%-- Message after user create redirect --%>
 <c:if test="${not empty message}">
-	<div style="display: inline-block; border: 1px solid black;">
+	<div style="display: inline-block; border: 0px solid black;">
 		<c:out value="${message}" />
 	</div>
 </c:if>
