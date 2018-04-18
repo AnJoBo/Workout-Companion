@@ -2,11 +2,13 @@
 <%@page contentType="text/html" import="java.util.*"%>
 <%@ include file="include/header.jspf"%>
 
+
 <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
 
 
 <html>
 <body>
+
 
 <script language="Javascript" type="text/javascript">
 var counter = 1;
@@ -51,7 +53,7 @@ counter++;
 		
 			</div>
 			<div>Input number of Sets you did:<input type="number" name="sets"></div>
-			<div>Input how many Reps in each set:</div><div>1:<input type="number" name="reps1"> 2: <input type="number" name="reps2"> 3: <input type="number" name="reps3" value="0">(optional) 4:<input type="number" name="reps4" value="0">(optional)</div>
+			<div>Input how many Reps in each set:</div><div>1:<input type="number" name="reps1"> 2: <input type="number" name="reps2"> 3: <input type="number" name="reps3" >(optional) 4:<input type="number" name="reps4" >(optional)</div>
 			<div>Input how much weight you used:<input type="number" name="weight"></div>
 			<input type="hidden" name="currentUserId" value="${currentUser.userId}" /> 
 			<button type="submit" class="btn btn-default">Submit this workout!</button>
@@ -63,11 +65,44 @@ counter++;
 		
 		<c:url value="/users/workout" var="formAction" />
 		<form method="GET" action="${formAction}">
-<b><div class = "popularParks">Your Current Workouts</div></b>
+<b><div class = "workoutlist">Your Current Workouts</div></b>
 		
 		<c:forEach var="getSetsAndReps" items="${getSetsAndReps}">
+		
+		<c:choose>
+				<c:when test="${getSetsAndReps.workoutid == 1}">
+					<c:set var="workoutid1" value="Bench Press"/>	
+				</c:when>
+				<c:when test="${getSetsAndReps.workoutid == 2}">
+				<c:set var="workoutid1" value="Dumbbell Row"/>	
+				</c:when>
+				<c:when test="${getSetsAndReps.workoutid == 3}">
+					<c:set var="workoutid1" value="Squat"/>	
+				</c:when>
+				<c:when test="${getSetsAndReps.workoutid == 4}">
+					<c:set var="workoutid1" value="Pullup"/>	
+				</c:when>
+				<c:when test="${getSetsAndReps.workoutid == 5}">
+					<c:set var="workoutid1" value="Kettlebell Swing"/>	
+				</c:when>
+				
+				<c:otherwise>
+					<c:set var="workoutid1" value="Russian Twist"/>	
+				</c:otherwise>
+			</c:choose>
+		
+	
+		
+		
+		<div>you did <c:out value="${getSetsAndReps.numberOfSets}" /> Sets of <c:out value="${workoutid1}" /></div>
+	
 		<div class="surveylist">
-			<p><c:out value="${getSetsAndReps.reps1}" /></p> 
+			<div></div>
+			<div>Set 1:   <c:out value="${getSetsAndReps.reps1}" /> Repitions With <c:out value="${getSetsAndReps.weight}" /> LB </div>
+			<div>Set 2:   <c:out value="${getSetsAndReps.reps2}" /> Repitions With <c:out value="${getSetsAndReps.weight}" /> LB</div>
+			<div>Set 3:   <c:out value="${getSetsAndReps.reps3}" /> Repitions With <c:out value="${getSetsAndReps.weight}" /> LB</div>
+			<div>Set 4:   <c:out value="${getSetsAndReps.reps4}" /> Repitions With <c:out value="${getSetsAndReps.weight}" /> LB</div>
+		
 			</div>
 </c:forEach>
 		</form>

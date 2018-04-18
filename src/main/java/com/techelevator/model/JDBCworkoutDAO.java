@@ -33,8 +33,20 @@ public class JDBCworkoutDAO implements WorkoutDAO{
 		equipment.setEquipmentid(user.getInt("equipment_id"));
 		return equipment;
 		
-
 	}
+	
+	
+	@Override
+	public List<Workouts>getWorkoutFromeWorkoutId(int workoutId) {
+		List<Workouts> allWorkouts = new ArrayList<>();
+		String sqlSelectAll = " SELECT workout_name FROM workout WHERE workout_id = ?";
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSelectAll, workoutId);
+		while (results.next()) {
+			allWorkouts.add(MapRowToEquipment(results));
+		}
+		return allWorkouts;
+	}
+	
 	
 	
 	
