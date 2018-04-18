@@ -23,7 +23,7 @@ public class JDBCworkoutDAO implements WorkoutDAO{
 
 	
 	private Workouts MapRowToEquipment(SqlRowSet user) {
-		Workouts equipment = null;
+		Workouts equipment = new Workouts();
 		equipment.setWorkoutid(user.getInt("workout_id"));
 		equipment.setWorkoutname(user.getString("workout_name"));
 		equipment.setWorkoutimage(user.getString("workout_image"));
@@ -39,13 +39,15 @@ public class JDBCworkoutDAO implements WorkoutDAO{
 	@Override
 	public List<Workouts> getAllWorkouts() {
 		List<Workouts> allWorkouts = new ArrayList<>();
-		String sqlSelectAll = "SELECT * FROM equipment";
+		String sqlSelectAll = "SELECT * FROM workout";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSelectAll);
 		while (results.next()) {
 			allWorkouts.add(MapRowToEquipment(results));
 		}
 		return allWorkouts;
 	}
+	
+	
 
 	
 
