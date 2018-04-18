@@ -13,8 +13,7 @@
 
 			<c:url var="formAction" value="/users/${currentUser.userName}" />
 			<form method="POST" action="${formAction}">
-				<input type="hidden" name="currentUserId"
-					value="${currentUser.userId}" /> <input type="hidden"
+				<input type="hidden" name="currentUserId" value="${currentUser.userId}" /> <input type="hidden"
 					name="CSRF_TOKEN" value="${CSRF_TOKEN}" /> <input type="submit"
 					value="Check In" onClick="return change(this);" />
 

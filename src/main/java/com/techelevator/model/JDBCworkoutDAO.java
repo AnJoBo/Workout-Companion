@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.bouncycastle.util.encoders.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -21,32 +22,51 @@ public class JDBCworkoutDAO implements WorkoutDAO{
 	}
 	
 
-	
-	private Workouts MapRowToEquipment(SqlRowSet user) {
-		Workouts equipment = null;
-		equipment.setWorkoutid(user.getInt("workout_id"));
-		equipment.setWorkoutname(user.getString("workout_name"));
-		equipment.setWorkoutimage(user.getString("workout_image"));
-		equipment.setWorkoutdescription(user.getString("workout_description"));
-		equipment.setEquipmentid(user.getInt("equipment_id"));
-		return equipment;
-		
-	
-	}
-	
-	
-	
+//	
+//	private Workouts MapRowToEquipment(SqlRowSet user) {
+//		Workouts equipment = null;
+//		equipment.setWorkoutid(user.getInt("workout_id"));
+//		equipment.setWorkoutname(user.getString("workout_name"));
+//		equipment.setWorkoutimage(user.getString("workout_image"));
+//		equipment.setWorkoutdescription(user.getString("workout_description"));
+//		equipment.setEquipmentid(user.getInt("equipment_id"));
+//		return equipment;
+//		
+//	
+//	}
+//	
+//	
+//	
+//	@Override
+//	public List<Workouts> getAllWorkouts() {
+//		List<Workouts> allWorkouts = new ArrayList<>();
+//		String sqlSelectAll = "SELECT * FROM equipment";
+//		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSelectAll);
+//		while (results.next()) {
+//			allWorkouts.add(MapRowToEquipment(results));
+//		}
+//		return allWorkouts;
+//	}
+
 	@Override
 	public List<Workouts> getAllWorkouts() {
-		List<Workouts> allWorkouts = new ArrayList<>();
-		String sqlSelectAll = "SELECT * FROM equipment";
-		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSelectAll);
+		List<Workouts> AllWorkouts = new ArrayList<>();
+		String sqlSelectWorkouts = "SELECT * FROM workout ";
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSelectWorkouts);
 		while (results.next()) {
-			allWorkouts.add(MapRowToEquipment(results));
+			Workouts wD = new Workouts();
+			wD.setWorkoutid(results.getInt("workout_id"));
+			wD.setWorkoutname(results.getString("workout_name"));
+			wD.setWorkoutimage(results.getString("workout_image"));
+			wD.setWorkoutdescription(results.getString("workout_description"));
+			wD.setEquipmentid(results.getInt("equipment_id"));
+			AllWorkouts.add(wD);
 		}
-		return allWorkouts;
-	}
 
+		return AllWorkouts;
+	}
+	
+	
 	
 
 	

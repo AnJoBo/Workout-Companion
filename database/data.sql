@@ -27,10 +27,10 @@ INSERT INTO gym (name) VALUES ('Elevated Gainz');
 
 
 INSERT INTO WORKOUT (workout_name, workout_image, workout_description, equipment_id)
-VALUES ('Bench Press', 'benchpress', 'The person performing the exercise lies on their back on a bench with a weight grasped in both hands. They push the weight upwards until their arms are extended, not allowing the elbows to lock. They then lower the weight to chest level. This is one repetition (rep).', 1);
+VALUES ('Bench Press', 'benchpress', 'The person performing the exercise lies on their back on a bench with a weight grasped in both hands. They push the weight upwards until their arms are extended, not allowing the elbows to lock. They then lower the weight to chest level. This is one repetition (rep).', 4);
 
 INSERT INTO WORKOUT (workout_name, workout_image, workout_description, equipment_id)
-VALUES ('Dumbbell Row', 'dumbbellrow', 'Pull the weight toward your hip, keeping your elbow in close as you flex your back, bend your arm and bring your shoulder upward. At the top, your elbow should be pointed toward the ceiling as you squeeze your shoulder blades together. Lower the dumbbell under control along the same path. Complete your reps for one side, then switch arms and do the same amount of reps for the other — that’s one set.', 1);
+VALUES ('Dumbbell Row', 'dumbbellrow', 'Pull the weight toward your hip, keeping your elbow in close as you flex your back, bend your arm and bring your shoulder upward. At the top, your elbow should be pointed toward the ceiling as you squeeze your shoulder blades together. Lower the dumbbell under control along the same path. Complete your reps for one side, then switch arms and do the same amount of reps for the other — that’s one set.', 4);
 
 INSERT INTO WORKOUT (workout_name, workout_image, workout_description, equipment_id)
 VALUES ('Squat', 'squat', 'You Squat by bending your hips and knees while the bar rests on your upper-back. Squat down until your hips are below your knees. Keep your knees out and lower back neutral. Then Squat back up. Lock your hips and knees at the top.', 2);
@@ -46,7 +46,7 @@ VALUES ('Russian Twist', 'russianTwist', 'Lie down on the floor placing your fee
 
 
 INSERT INTO EQUIPMENT (equipment_name, workout_id) 
-VALUES ('Flat Bench', 1);
+VALUES ('None', 1);
 
 INSERT INTO EQUIPMENT (equipment_name, workout_id) 
 VALUES ('Power Rack', 2);
@@ -54,19 +54,13 @@ VALUES ('Power Rack', 2);
 INSERT INTO EQUIPMENT (equipment_name, workout_id) 
 VALUES ('Kettle Bell', 3);
 
-INSERT INTO WORKOUT_USER (reps, number_of_sets, weight, workout_id, user_id, equipment_id)
-VALUES ('5', '3', 100, 1, 1, 1);
+INSERT INTO EQUIPMENT (equipment_name, workout_id) 
+VALUES ('Flat Bench', 4);
 
-INSERT INTO WORKOUT_USER (reps, number_of_sets, weight, workout_id, user_id, equipment_id)
-VALUES ('5', '3', 100, 1, 1, 1);
+INSERT INTO WORKOUT_USER (reps1, reps2, reps3, reps4, number_of_sets, weight, workout_id, user_id, equipment_id)
+VALUES (4, 4, 5, 5, 5, 100, 1, 1, 1);
 
-INSERT INTO WORKOUT_USER (reps, number_of_sets, weight, workout_id, user_id, equipment_id)
-VALUES ('4', '3', 100, 1, 1, 1);
-
-INSERT INTO WORKOUT_USER (reps, number_of_sets, weight, workout_id, user_id, equipment_id)
-VALUES ('10', '2', 150, 3, 1, 2);
-
-INSERT INTO WORKOUT_USER (reps, number_of_sets, weight, workout_id, user_id, equipment_id)
-VALUES ('10', '2', 150, 3, 1, 2);
+INSERT INTO WORKOUT_USER (reps1, reps2, reps3, reps4, number_of_sets, weight, workout_id, user_id, equipment_id)
+VALUES (3, 3, 3, 2, 4, 100, 1, 1, 1);
 
  COMMIT;

@@ -58,7 +58,10 @@ CREATE TABLE equipment (
 );
 
  CREATE TABLE workout_user(
-  reps integer,
+  reps1 integer,
+  reps2 integer,
+  reps3 integer,
+  reps4 integer,
   number_of_sets integer,
   weight integer, 
   workout_id integer NOT NULL, 
