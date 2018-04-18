@@ -18,7 +18,7 @@
 			<td><c:out value="${thisUser.email}"/> </td>
 			<td><c:out value="${thisUser.phone}"/> </td>
 			<td><c:out value="${thisUser.fitnessGoal}"/> </td>
-			<td><c:out value="${thisUser.equipmentName}"/></td>
+			<td><c:out value="${userMetrics.equipmentName}"/></td>
 		</tr>
 	</tbody>
 </table>

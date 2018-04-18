@@ -18,7 +18,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.techelevator.model.CheckInAndOut;
 import com.techelevator.model.CheckInAndOutDAO;
-import com.techelevator.model.EquipmentDAO;
 import com.techelevator.model.User;
 import com.techelevator.model.UserDAO;
 
@@ -29,14 +28,11 @@ public class UserController {
 	private UserDAO userDAO;
 	@Autowired
 	private CheckInAndOutDAO checkInDAO;
-	@Autowired
-	private EquipmentDAO equipmentDAO;
 
 	@Autowired
 	public UserController(UserDAO userDAO, CheckInAndOutDAO checkInDAO) {
 		this.userDAO = userDAO;
 	    this.checkInDAO = checkInDAO;
-	    this.equipmentDAO = equipmentDAO;
 	}
 
 	@RequestMapping(path = "/users/new", method = RequestMethod.GET)
@@ -140,8 +136,8 @@ public class UserController {
 	
 	@RequestMapping(path = "/employee/userMetrics/{userName}", method = RequestMethod.GET)
 	public String displayUserMetrics(ModelMap mh, HttpSession session, @PathVariable String userName) {
-		mh.put("thisUser", userDAO.getAllUserMetricData(userName));
-		mh.put("equipment", equipmentDAO.getAllEquipment());
+		mh.put("thisUser", userDAO.getUserByUserName(userName));
+		mh.put("usersMetrics", userDAO.getAllUserMetricData(userName));
 		return "gymMemberMetrics";
 	}
 }
