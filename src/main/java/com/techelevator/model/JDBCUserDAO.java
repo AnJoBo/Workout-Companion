@@ -36,6 +36,21 @@ public class JDBCUserDAO implements UserDAO {
 		}
 		return allUsers;
 	}
+	
+	@Override
+	public WorkoutMetrics getAllUserMetricData(String userName) {
+		WorkoutMetrics thisUser = new WorkoutMetrics();
+		String sqlSelectAllUsers = "SELECT equipment.*, workout.*, workout_user.* FROM app_user "
+								+ "JOIN workout_user on app_user.user_id = workout_user.user_id "
+								+ "JOIN equipment on workout_user.equipment_id = equipment.equipment_id "
+								+ "JOIN workout on equipment.workout_id = workout.workout_id "
+								+ "WHERE user_name = ? ";
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSelectAllUsers, userName);
+		while (results.next()) {
+			thisUser = mapRowToWorkoutMetrics(results);
+		}
+		return thisUser;
+	}
 
 	@Override
 	public User getUserByUserName(String userName) {
@@ -117,6 +132,18 @@ public class JDBCUserDAO implements UserDAO {
 		user.setPicture(row.getString("picture"));
 		user.setFitnessGoal(row.getString("fitness_goal"));
 		return user;
+	}
+	
+	private WorkoutMetrics mapRowToWorkoutMetrics(SqlRowSet row) {
+		WorkoutMetrics workout = new WorkoutMetrics();
+		workout.setEquipmentId(row.getInt("equipment_id"));
+		workout.setEquipmentName(row.getString("equipment_name"));
+		workout.setNumberOfSets(row.getInt("sets"));
+		workout.setReps(row.getInt("reps"));
+		workout.setWeight(row.getInt("weight"));
+		workout.setWorkoutId(row.getInt("workout_id"));
+		workout.setWorkoutName(row.getString("workout_name"));
+		return workout;
 	}
 
 }
