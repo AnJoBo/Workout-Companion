@@ -10,7 +10,14 @@ public class WorkoutUserJoined {
 	private int workoutid;
 	private int userid;
 	private int equipmentid;
+	private String workoutDate;
 	
+	public String getWorkoutDate() {
+		return workoutDate;
+	}
+	public void setWorkoutDate(String workoutDate) {
+		this.workoutDate = workoutDate;
+	}
 	public int getReps1() {
 		return reps1;
 	}
