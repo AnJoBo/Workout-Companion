@@ -1,14 +1,20 @@
 package com.techelevator.model;
 
+import java.time.LocalDate;
+
 public class WorkoutMetrics {
 	
 	private int equipmentId;
 	private String equipmentName;
 	private int workoutId;
 	private String workoutName;
-	private int reps;
+	private int setOne;
+	private int setTwo;
+	private int setThree;
+	private int setFour;
 	private int numberOfSets;
 	private int weight;
+	private String workoutTime; 
 	
 	
 	public int getEquipmentId() {
@@ -35,12 +41,6 @@ public class WorkoutMetrics {
 	public void setWorkoutName(String workoutName) {
 		this.workoutName = workoutName;
 	}
-	public int getReps() {
-		return reps;
-	}
-	public void setReps(int reps) {
-		this.reps = reps;
-	}
 	public int getNumberOfSets() {
 		return numberOfSets;
 	}
@@ -52,5 +52,35 @@ public class WorkoutMetrics {
 	}
 	public void setWeight(int weight) {
 		this.weight = weight;
+	}
+	public int getSetOne() {
+		return setOne;
+	}
+	public void setSetOne(int setOne) {
+		this.setOne = setOne;
+	}
+	public int getSetTwo() {
+		return setTwo;
+	}
+	public void setSetTwo(int setTwo) {
+		this.setTwo = setTwo;
+	}
+	public int getSetThree() {
+		return setThree;
+	}
+	public void setSetThree(int setThree) {
+		this.setThree = setThree;
+	}
+	public int getSetFour() {
+		return setFour;
+	}
+	public void setSetFour(int setFour) {
+		this.setFour = setFour;
+	}
+	public String getWorkoutTime() {
+		return workoutTime;
+	}
+	public void setWorkoutTime(String workoutTime) {
+		this.workoutTime = workoutTime;
 	}
 }

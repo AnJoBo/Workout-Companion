@@ -136,13 +136,14 @@ public class JDBCUserDAO implements UserDAO {
 	
 	private WorkoutMetrics mapRowToWorkoutMetrics(SqlRowSet row) {
 		WorkoutMetrics workout = new WorkoutMetrics();
-		workout.setEquipmentId(row.getInt("equipment_id"));
 		workout.setEquipmentName(row.getString("equipment_name"));
 		workout.setNumberOfSets(row.getInt("number_of_sets"));
-		workout.setReps(row.getInt("reps"));
+		workout.setSetOne(row.getInt("reps1"));
+		workout.setSetTwo(row.getInt("reps2"));
+		workout.setSetThree(row.getInt("reps3"));
+		workout.setSetFour(row.getInt("reps4"));
 		workout.setWeight(row.getInt("weight"));
-		workout.setWorkoutId(row.getInt("workout_id"));
-		workout.setWorkoutName(row.getString("workout_name"));
+		workout.setWorkoutTime(row.getString("workout_date")); 
 		return workout;
 	}
 
