@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
-import org.bouncycastle.util.encoders.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -25,7 +24,7 @@ public class JDBCworkoutDAO implements WorkoutDAO{
 
 	
 	private Workouts MapRowToEquipment(SqlRowSet user) {
-		Workouts equipment = null;
+		Workouts equipment = new Workouts();
 		equipment.setWorkoutid(user.getInt("workout_id"));
 		equipment.setWorkoutname(user.getString("workout_name"));
 		equipment.setWorkoutimage(user.getString("workout_image"));
@@ -53,7 +52,7 @@ public class JDBCworkoutDAO implements WorkoutDAO{
 	@Override
 	public List<Workouts> getAllWorkouts() {
 		List<Workouts> allWorkouts = new ArrayList<>();
-		String sqlSelectAll = "SELECT * FROM equipment";
+		String sqlSelectAll = "SELECT * FROM workout";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSelectAll);
 		while (results.next()) {
 			allWorkouts.add(MapRowToEquipment(results));
