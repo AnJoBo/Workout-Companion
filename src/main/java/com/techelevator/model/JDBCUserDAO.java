@@ -138,7 +138,7 @@ public class JDBCUserDAO implements UserDAO {
 		WorkoutMetrics workout = new WorkoutMetrics();
 		workout.setEquipmentId(row.getInt("equipment_id"));
 		workout.setEquipmentName(row.getString("equipment_name"));
-		workout.setNumberOfSets(row.getInt("sets"));
+		workout.setNumberOfSets(row.getInt("number_of_sets"));
 		workout.setReps(row.getInt("reps"));
 		workout.setWeight(row.getInt("weight"));
 		workout.setWorkoutId(row.getInt("workout_id"));
