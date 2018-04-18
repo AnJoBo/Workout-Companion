@@ -96,12 +96,37 @@ counter++;
 		<b><div class = "workoutlist">you did this workout on <c:out value="${getSetsAndReps.workoutDate}" /></div></b>
 		<div>you did <c:out value="${getSetsAndReps.numberOfSets}" /> Sets of <c:out value="${workoutid1}" /> on </div>
 	
+	
 		<div class="surveylist">
 			<div></div>
 			<div>Set 1:   <c:out value="${getSetsAndReps.reps1}" /> Repitions With <c:out value="${getSetsAndReps.weight}" /> LB </div>
-			<div>Set 2:   <c:out value="${getSetsAndReps.reps2}" /> Repitions With <c:out value="${getSetsAndReps.weight}" /> LB</div>
-			<div>Set 3:   <c:out value="${getSetsAndReps.reps3}" /> Repitions With <c:out value="${getSetsAndReps.weight}" /> LB</div>
-			<div>Set 4:   <c:out value="${getSetsAndReps.reps4}" /> Repitions With <c:out value="${getSetsAndReps.weight}" /> LB</div>
+			<c:choose>
+				<c:when test="${getSetsAndReps.reps3 == 0}">	
+				<div></div>
+				</c:when>
+				<c:otherwise>
+					<div>Set 2:   <c:out value="${getSetsAndReps.reps2}" /> Repitions With <c:out value="${getSetsAndReps.weight}" /> LB</div>
+				</c:otherwise>
+			</c:choose>
+			
+			<c:choose>
+				<c:when test="${getSetsAndReps.reps3 == 0}">	
+				<div></div>
+				</c:when>
+				<c:otherwise>
+					<div>Set 3:   <c:out value="${getSetsAndReps.reps3}" /> Repitions With <c:out value="${getSetsAndReps.weight}" /> LB</div>	
+				</c:otherwise>
+			</c:choose>
+			
+			<c:choose>
+				<c:when test="${getSetsAndReps.reps4 == 0}">	
+				<div></div>
+				</c:when>
+				<c:otherwise>
+					<div>Set 4:   <c:out value="${getSetsAndReps.reps4}" /> Repitions With <c:out value="${getSetsAndReps.weight}" /> LB</div>	
+				</c:otherwise>
+			</c:choose>
+			
 		
 			</div>
 </c:forEach>
