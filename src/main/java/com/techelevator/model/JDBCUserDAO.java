@@ -36,6 +36,21 @@ public class JDBCUserDAO implements UserDAO {
 		}
 		return allUsers;
 	}
+	
+	@Override
+	public User getAllUserMetricData(String userName) {
+		User thisUser = new User();
+		String sqlSelectAllUsers = "SELECT * FROM app_user "
+								+ "JOIN workout_user on app_user.user_id = workout_user.user_id "
+								+ "JOIN equipment on workout_user.equipment_id = equipment.equipment_id "
+								+ "JOIN workout on equipment.workout_id = workout.workout_id "
+								+ "WHERE user_name = ? ";
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSelectAllUsers, userName);
+		while (results.next()) {
+			thisUser = MapRowToUser(results);
+		}
+		return thisUser;
+	}
 
 	@Override
 	public User getUserByUserName(String userName) {

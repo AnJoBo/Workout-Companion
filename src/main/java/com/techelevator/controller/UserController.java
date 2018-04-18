@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,6 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.techelevator.model.CheckInAndOut;
 import com.techelevator.model.CheckInAndOutDAO;
+import com.techelevator.model.EquipmentDAO;
 import com.techelevator.model.User;
 import com.techelevator.model.UserDAO;
 
@@ -27,11 +29,14 @@ public class UserController {
 	private UserDAO userDAO;
 	@Autowired
 	private CheckInAndOutDAO checkInDAO;
+	@Autowired
+	private EquipmentDAO equipmentDAO;
 
 	@Autowired
 	public UserController(UserDAO userDAO, CheckInAndOutDAO checkInDAO) {
 		this.userDAO = userDAO;
 	    this.checkInDAO = checkInDAO;
+	    this.equipmentDAO = equipmentDAO;
 	}
 
 	@RequestMapping(path = "/users/new", method = RequestMethod.GET)
@@ -128,7 +133,15 @@ public class UserController {
 	}
 
 	@RequestMapping(path = "/employee/dashboard", method = RequestMethod.GET)
-	public String displayEmployeeDashboard(ModelMap modelHolder, HttpSession session) {
+	public String displayEmployeeDashboard(ModelMap mh, HttpSession session) {
+		mh.put("allUsers", userDAO.getAllUsers());
 		return "employeeDashboard";
+	}
+	
+	@RequestMapping(path = "/employee/userMetrics/{userName}", method = RequestMethod.GET)
+	public String displayUserMetrics(ModelMap mh, HttpSession session, @PathVariable String userName) {
+		mh.put("thisUser", userDAO.getAllUserMetricData(userName));
+		mh.put("equipment", equipmentDAO.getAllEquipment());
+		return "gymMemberMetrics";
 	}
 }

@@ -20,4 +20,5 @@ public interface UserDAO {
 	
 	public void updateUserRole(String userName, String role);
 
+	public User getAllUserMetricData(String userName);
 }
