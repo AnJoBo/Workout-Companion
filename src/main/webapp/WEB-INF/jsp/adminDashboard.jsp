@@ -2,7 +2,6 @@
 <%@ include file="include/header.jspf" %>
 		
 <h1>Employee Dash</h1>
-<c:out value="Current User: ${currentUser.userName }"/>
 
 <table class ="adminViewTable">
 	<thead>

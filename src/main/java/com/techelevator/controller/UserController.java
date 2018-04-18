@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -128,7 +129,15 @@ public class UserController {
 	}
 
 	@RequestMapping(path = "/employee/dashboard", method = RequestMethod.GET)
-	public String displayEmployeeDashboard(ModelMap modelHolder, HttpSession session) {
+	public String displayEmployeeDashboard(ModelMap mh, HttpSession session) {
+		mh.put("allUsers", userDAO.getAllUsers());
 		return "employeeDashboard";
+	}
+	
+	@RequestMapping(path = "/employee/userMetrics/{userName}", method = RequestMethod.GET)
+	public String displayUserMetrics(ModelMap mh, HttpSession session, @PathVariable String userName) {
+		mh.put("thisUser", userDAO.getUserByUserName(userName));
+		mh.put("usersMetrics", userDAO.getAllUserMetricData(userName));
+		return "gymMemberMetrics";
 	}
 }
