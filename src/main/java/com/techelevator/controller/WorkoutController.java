@@ -72,4 +72,12 @@ public class WorkoutController {
 		return "redirect:/users/workout";
 	}
 	
-}
+	@RequestMapping(path="/users/exercises", method = RequestMethod.GET)
+		public String displayExercisesPage(ModelMap mh) {
+			List<Workouts> exercises = workoutDAO.getAllWorkouts();
+			mh.put("allExercises", exercises);
+			return "exerciseGuide";
+		}
+	}
+	
+

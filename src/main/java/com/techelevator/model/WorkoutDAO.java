@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface WorkoutDAO {
 
-	List<Workouts> getAllWorkouts();
+	public List<Workouts> getAllWorkouts();
 
 	
 

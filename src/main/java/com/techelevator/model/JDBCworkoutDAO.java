@@ -22,50 +22,33 @@ public class JDBCworkoutDAO implements WorkoutDAO{
 	}
 	
 
-//	
-//	private Workouts MapRowToEquipment(SqlRowSet user) {
-//		Workouts equipment = null;
-//		equipment.setWorkoutid(user.getInt("workout_id"));
-//		equipment.setWorkoutname(user.getString("workout_name"));
-//		equipment.setWorkoutimage(user.getString("workout_image"));
-//		equipment.setWorkoutdescription(user.getString("workout_description"));
-//		equipment.setEquipmentid(user.getInt("equipment_id"));
-//		return equipment;
-//		
-//	
-//	}
-//	
-//	
-//	
-//	@Override
-//	public List<Workouts> getAllWorkouts() {
-//		List<Workouts> allWorkouts = new ArrayList<>();
-//		String sqlSelectAll = "SELECT * FROM equipment";
-//		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSelectAll);
-//		while (results.next()) {
-//			allWorkouts.add(MapRowToEquipment(results));
-//		}
-//		return allWorkouts;
-//	}
 
-	@Override
-	public List<Workouts> getAllWorkouts() {
-		List<Workouts> AllWorkouts = new ArrayList<>();
-		String sqlSelectWorkouts = "SELECT * FROM workout ";
-		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSelectWorkouts);
-		while (results.next()) {
-			Workouts wD = new Workouts();
-			wD.setWorkoutid(results.getInt("workout_id"));
-			wD.setWorkoutname(results.getString("workout_name"));
-			wD.setWorkoutimage(results.getString("workout_image"));
-			wD.setWorkoutdescription(results.getString("workout_description"));
-			wD.setEquipmentid(results.getInt("equipment_id"));
-			AllWorkouts.add(wD);
-		}
+	
+	private Workouts MapRowToEquipment(SqlRowSet user) {
+		Workouts equipment = null;
+		equipment.setWorkoutid(user.getInt("workout_id"));
+		equipment.setWorkoutname(user.getString("workout_name"));
+		equipment.setWorkoutimage(user.getString("workout_image"));
+		equipment.setWorkoutdescription(user.getString("workout_description"));
+		equipment.setEquipmentid(user.getInt("equipment_id"));
+		return equipment;
+		
 
-		return AllWorkouts;
 	}
 	
+	
+	
+	@Override
+	public List<Workouts> getAllWorkouts() {
+		List<Workouts> allWorkouts = new ArrayList<>();
+		String sqlSelectAll = "SELECT * FROM equipment";
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSelectAll);
+		while (results.next()) {
+			allWorkouts.add(MapRowToEquipment(results));
+		}
+		return allWorkouts;
+	}
+
 	
 	
 
