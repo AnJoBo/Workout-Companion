@@ -1,19 +1,20 @@
 package com.techelevator.model;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 public class CheckInAndOut {
 
-	
-	
-	private int UserId;
+	private int userId;
 	private int gymId;
-	private String CheckIn;
-	private String CheckOut;
+	private LocalDateTime checkIn;
+	private LocalDateTime checkOut;
 	
 	public int getUserId() {
-		return UserId;
+		return userId;
 	}
 	public void setUserId(int userId) {
-		UserId = userId;
+		this.userId = userId;
 	}
 	public int getGymId() {
 		return gymId;
@@ -21,20 +22,16 @@ public class CheckInAndOut {
 	public void setGymId(int gymId) {
 		this.gymId = gymId;
 	}
-	public String getCheckIn() {
-		return CheckIn;
+	public LocalDateTime getCheckIn() {
+		return checkIn;
 	}
-	public void setCheckIn(String checkIn) {
-		CheckIn = checkIn;
+	public void setCheckIn(LocalDateTime checkIn) {
+		this.checkIn = checkIn;
 	}
-	public String getCheckOut() {
-		return CheckOut;
+	public LocalDateTime getCheckOut() {
+		return checkOut;
 	}
-	public void setCheckOut(String checkOut) {
-		CheckOut = checkOut;
+	public void setCheckOut(LocalDateTime checkOut) {
+		this.checkOut = checkOut;
 	}
-	
-	
-	
-
 }

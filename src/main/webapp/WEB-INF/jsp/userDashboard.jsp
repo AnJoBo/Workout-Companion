@@ -5,45 +5,28 @@
 
 	<h1>USER DASHBAORD</h1>
 
-	<div style="display: inline-block; border: 0px solid black;">
-
-		<%-- Message after user update redirect --%>
-		<c:if test="${not empty message}">
+	<%-- Message after user update redirect --%>
+	<c:if test="${not empty message}">
 			<c:out value="${message}" />
+	</c:if>
 
-			<c:url var="formAction" value="/users/${currentUser.userName}" />
-			<form method="POST" action="${formAction}">
-				<input type="hidden" name="currentUserId" value="${currentUser.userId}" /> <input type="hidden"
-					name="CSRF_TOKEN" value="${CSRF_TOKEN}" /> <input type="submit"
-					value="Check In" onClick="return change(this);" />
-
-			</form>
-
-		</c:if>
-
-		<c:forEach var="LogResults" items="${LogResults}">
-			<p>
-				User Id:
-				<c:out value="${LogResults.userId}" />
-				Gym Number:
-				<c:out value="${LogResults.gymId}" />
-				Check In :
-				<c:out value="${LogResults.checkIn}" />
-				Check Out:
-				<c:out value="${LogResults.checkOut}" />
-			</p>
-		</c:forEach>
-
-	<h1>
-
-		<c:url var="formAction" value="/users/${currentUser.userName}" />
+	<c:if test="${checkedIn == true}">
+		<c:url var="formAction" value="/checkOut/${currentUser.userName}" />
 		<form method="POST" action="${formAction}">
-			<input type="hidden" name="currentUserId"
-				value="${currentUser.userId}" /> <input type="hidden"
-				name="CSRF_TOKEN" value="${CSRF_TOKEN}" /> <input type="submit" class="btn btn-primary"
-				value="Gym Check In" onClick="return change(this);" />
+			<input type="hidden" name="currentUserId" value="${currentUser.userId}" /> 
+			<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" /> 
+			<input type="submit" class="btn btn-primary" value="Gym Check Out"/>
 		</form>
-	</h1>
+	</c:if>
+	
+	<c:if test="${checkedIn == false}">
+		<c:url var="formAction" value="/checkIn/${currentUser.userName}" />
+		<form method="POST" action="${formAction}">
+			<input type="hidden" name="currentUserId" value="${currentUser.userId}" /> 
+			<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" /> 
+			<input type="submit" class="btn btn-primary" value="Gym Check In"/>
+		</form>
+	</c:if>
 
 	<div style="display: inline-block; border: 0px solid black;">
 
@@ -80,6 +63,8 @@
 									<br /> <i class="glyphicon glyphicon-phone"></i>
 									<c:out value="${currentUser.phone}" />
 									<br /> <i class="glyphicon glyphicon-gift"></i>June 02, 1988
+									<br /> <i class="glyphicon glyphicon-time"></i>Time at gym:
+									<c:out value=""/>
 								</p>
 								<!-- Update Button -->
 								<div class="btn-group">
