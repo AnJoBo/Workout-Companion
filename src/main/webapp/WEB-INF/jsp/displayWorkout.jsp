@@ -38,16 +38,16 @@ counter++;
 	<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
 		<div>
 		<div>
-			<label for="workoutId">Select a Workout</label> <select id="workoutId" name="workoutId">
+			<label for="workoutId">Exercise: </label> <select id="workoutId" name="workoutId">
 				<option value="1">Bench Press</option>
 				<option value="2">Dumbbell Row</option>
 				<option value="3">Squat</option>
 				<option value="4">Pullup</option>
 				<option value="5">Kettlebell Swing</option>
-				<option value="6">Russian Twistk</option>	
+				<option value="6">Russian Twist</option>	
 			</select>
-			
-			<label for="workoutId">Select What peice of equipment you used:</label> <select id="equipment" name="equipment">
+			</br>
+			<label for="workoutId">Equipment used:</label> <select id="equipment" name="equipment">
 				<option value="1">None</option>
 				<option value="2">Power Rack</option>
 				<option value="3">Kettle Bell</option>
@@ -55,11 +55,23 @@ counter++;
 			</select>
 		
 			</div>
-			<div>Input number of Sets you did:<input type="number" name="sets"></div>
-			<div>Input how many Reps in each set:</div><div>1:<input type="number" name="reps1"> 2: <input type="number" name="reps2"> 3: <input type="number" name="reps3" >(optional) 4:<input type="number" name="reps4" >(optional)</div>
-			<div>Input how much weight you used:<input type="number" name="weight"></div>
+			<div>Sets:<input type="number" name="sets"></div>
+			Reps per set:
+			<div>
+			Set 1: <input type="number" name="reps1"> 
+			</br>
+			Set 2: <input type="number" name="reps2"> 
+			</br>
+			Set 3: <input type="number" name="reps3" >
+			</br>
+			Set 4: <input type="number" name="reps4" >(optional) 
+			</div>
+	</br>
+			<div>Weight:<input type="number" name="weight"></div>
 			<input type="hidden" name="currentUserId" value="${currentUser.userId}" /> 
+			</br>
 			<button type="submit" class="btn btn-default">Submit this workout!</button>
+			</br>
 		</div>
 		</form>
 		</section>    
@@ -68,7 +80,8 @@ counter++;
 		
 		<c:url value="/users/workout" var="formAction" />
 		<form method="GET" action="${formAction}">
-<b><div class = "workoutlist">Your Current Workouts</div></b>
+		</br>
+<strong><div class = "workoutlist">Past Workouts:</div></strong>
 		
 		<c:forEach var="getSetsAndReps" items="${getSetsAndReps}">
 		
@@ -96,8 +109,8 @@ counter++;
 		
 	
 		
-		<b><div class = "workoutlist">you did this workout on <c:out value="${getSetsAndReps.workoutDate}" /></div></b>
-		<div>you did <c:out value="${getSetsAndReps.numberOfSets}" /> Sets of <c:out value="${workoutid1}" /> on </div>
+		<b><div class = "workoutlist"><c:out value="${getSetsAndReps.workoutDate}" />:</div></b>
+		<div><c:out value="${getSetsAndReps.numberOfSets}" /> Sets of <c:out value="${workoutid1}" /></div>
 	
 		<div class="surveylist">
 			<div></div>

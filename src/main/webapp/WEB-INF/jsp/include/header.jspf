@@ -78,8 +78,16 @@
 		<div class="container">
 			<div class="logo">
 				<c:url var="logoUrl" value="/images/logo.png" />
-				<c:url var="homeUrl" value="/" />
-				<a href="${homeUrl}"><img src="${logoUrl}" alt="" /></a>
+				<c:url var="dashboardUrl" value="/users/${currentUser.userName}" />
+				<c:if test="${not empty currentUser}">
+				<a href="${dashboardUrl}">
+				</c:if>
+				<img src="${logoUrl}" alt="" /></a>
+				
+
+
+
+
 
 			</div>
 			<div class="h_menu4">
@@ -233,18 +241,23 @@
 					<%-- <c:url var="homeUrl" value="/"/>
 			   <li class="active"><a href="${login}">Home</a></li> <!-- "HOME" button redirects to the login page for now --> --%>
 
-					<c:url var="aboutUrl" value="/about" />
-					<li><a href="${aboutUrl}">About</a></li>
+					<li><c:if test="${not empty currentUser}">
+							<c:url var="dashboardUrl" value="/users/${currentUser.userName}" />
+							<form id="logoutForm" action="${dashboardUrl}" method="GET">
+								<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
+								<input type=submit class="btn logout-btn a" value="Dashboard" />
+							</form>
+						</c:if></li>
 
 
 					<!-- <li><a href="trainers.html">Trainers</a></li> -->
 
 					<li><a href="classes.html">Classes</a></li>
 
-					<c:url var="trackerUrl" value="/tracker" />
+					<c:url var="trackerUrl" value="/users/workout" />
 					<li><a href="${trackerUrl}">Workout Tracker</a></li>
 
-					<c:url var="exerciseGuideUrl" value="/users/workout" />
+					<c:url var="exerciseGuideUrl" value="/users/exercises" />
 					<li><a href="${exerciseGuideUrl}">Exercise Guide</a></li>
 
 					<li><a href="pricing.html">Pricing</a></li>
@@ -262,6 +275,7 @@
 								<input type=submit class="btn logout-btn a" value="Log Out" />
 							</form>
 						</c:if></li>
+
 
 
 
