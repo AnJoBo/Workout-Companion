@@ -93,8 +93,8 @@ counter++;
 		
 	
 		
-		
-		<div>you did <c:out value="${getSetsAndReps.numberOfSets}" /> Sets of <c:out value="${workoutid1}" /></div>
+		<b><div class = "workoutlist">you did this workout on <c:out value="${getSetsAndReps.workoutDate}" /></div></b>
+		<div>you did <c:out value="${getSetsAndReps.numberOfSets}" /> Sets of <c:out value="${workoutid1}" /> on </div>
 	
 		<div class="surveylist">
 			<div></div>

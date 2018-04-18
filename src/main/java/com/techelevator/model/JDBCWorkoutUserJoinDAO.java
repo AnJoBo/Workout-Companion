@@ -1,5 +1,6 @@
 package com.techelevator.model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,6 +44,7 @@ public class JDBCWorkoutUserJoinDAO implements WorkoutUserJoinDAO {
 		JoinedData.setWorkoutid(user.getInt("workout_id"));
 		JoinedData.setUserid(user.getInt("user_id"));
 		JoinedData.setEquipmentid(user.getInt("equipment_id"));
+		JoinedData.setWorkoutDate(user.getString("workout_date"));
 		return JoinedData;
 	}
 
@@ -50,7 +52,7 @@ public class JDBCWorkoutUserJoinDAO implements WorkoutUserJoinDAO {
 	public void saveWorkout(int reps1, int reps2, int reps3, int reps4, int sets, int weight, int workoutId, int userId, int equipmentId) {
 		
 
-		jdbcTemplate.update("INSERT INTO workout_user(reps1, reps2, reps3, reps4, number_of_sets ,weight ,workout_id, user_id, equipment_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", reps1, reps2, reps3, reps4, sets, weight, workoutId, userId, equipmentId);
+		jdbcTemplate.update("INSERT INTO workout_user(reps1, reps2, reps3, reps4, number_of_sets ,weight ,workout_id, user_id, equipment_id, workout_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", reps1, reps2, reps3, reps4, sets, weight, workoutId, userId, equipmentId, LocalDate.now());
 	}
 //	@Override
 //	public List<WorkoutUserJoined> getNumberOfSetsAndRepsFromUserId(int userId) {

@@ -67,6 +67,7 @@ CREATE TABLE equipment (
   workout_id integer NOT NULL, 
   user_id integer NOT NULL, 
   equipment_id integer NOT NULL, 
+  workout_date date,
    CONSTRAINT fk_user_id FOREIGN KEY (user_id) REFERENCES app_user(user_id),
    CONSTRAINT fk_workout_id FOREIGN KEY (workout_id) REFERENCES workout(workout_id),
    CONSTRAINT fk_equipment_id FOREIGN KEY (equipment_id) REFERENCES equipment(equipment_id)
