@@ -260,9 +260,9 @@
 					<c:url var="exerciseGuideUrl" value="/users/exercises" />
 					<li><a href="${exerciseGuideUrl}">Exercise Guide</a></li>
 
-					<li><a href="pricing.html">Pricing</a></li>
+					<!-- <li><a href="pricing.html">Pricing</a></li>
 
-					<li><a href="contact.html">Contact</a></li>
+					<li><a href="contact.html">Contact</a></li> -->
 
 					<%--  <c:url var="loginUrl" value="/login"/>
 			   <li><a href="${loginUrl}">Log In</a></li> --%>
