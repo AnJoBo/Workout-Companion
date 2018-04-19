@@ -20,6 +20,7 @@ public class CSRFFilter implements Filter {
 
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
+		// HMM...
 	}
 
 	@Override

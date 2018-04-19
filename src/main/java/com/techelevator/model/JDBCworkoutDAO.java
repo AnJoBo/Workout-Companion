@@ -20,9 +20,6 @@ public class JDBCworkoutDAO implements WorkoutDAO{
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 	
-
-
-	
 	private Workouts MapRowToEquipment(SqlRowSet user) {
 		Workouts equipment = new Workouts();
 		equipment.setWorkoutid(user.getInt("workout_id"));
@@ -30,10 +27,9 @@ public class JDBCworkoutDAO implements WorkoutDAO{
 		equipment.setWorkoutimage(user.getString("workout_image"));
 		equipment.setWorkoutdescription(user.getString("workout_description"));
 		equipment.setEquipmentid(user.getInt("equipment_id"));
-		return equipment;
 		
+		return equipment;
 	}
-	
 	
 	@Override
 	public List<Workouts>getWorkoutFromeWorkoutId(int workoutId) {
@@ -46,9 +42,6 @@ public class JDBCworkoutDAO implements WorkoutDAO{
 		return allWorkouts;
 	}
 	
-	
-	
-	
 	@Override
 	public List<Workouts> getAllWorkouts() {
 		List<Workouts> allWorkouts = new ArrayList<>();
@@ -59,9 +52,4 @@ public class JDBCworkoutDAO implements WorkoutDAO{
 		}
 		return allWorkouts;
 	}
-
-	
-	
-
-	
 }

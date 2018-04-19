@@ -55,7 +55,7 @@ public class JDBCUserDAO implements UserDAO {
 	@Override
 	public User getUserByUserName(String userName) {
 		User thisUser = null;
-		String sqlSearchForUsername = "SELECT * " + "FROM app_user " + "WHERE UPPER(user_name) = ? ";
+		String sqlSearchForUsername = "SELECT * FROM app_user WHERE UPPER(user_name) = ? ";
 		SqlRowSet user = jdbcTemplate.queryForRowSet(sqlSearchForUsername, userName.toUpperCase());
 		while(user.next()) {
 			thisUser = MapRowToUser(user);
@@ -65,13 +65,13 @@ public class JDBCUserDAO implements UserDAO {
 
 	@Override
 	public boolean searchForUsernameAndPassword(String userName, String password) {
-		String sqlSearchForUser = "SELECT * " + "FROM app_user " + "WHERE UPPER(user_name) = ? ";
-
+		String sqlSearchForUser = "SELECT * FROM app_user WHERE UPPER(user_name) = ? ";
 		SqlRowSet user = jdbcTemplate.queryForRowSet(sqlSearchForUser, userName.toUpperCase());
 		if (user.next()) {
 			String dbSalt = user.getString("salt");
 			String dbHashedPassword = user.getString("password");
 			String givenPassword = hashMaster.computeHash(password, Base64.decode(dbSalt));
+			
 			return dbHashedPassword.equals(givenPassword);
 		} else {
 			return false;
@@ -85,7 +85,8 @@ public class JDBCUserDAO implements UserDAO {
 		String saltString = new String(Base64.encode(salt));
 
 		jdbcTemplate.update("INSERT INTO app_user(user_name, password, salt, role, email, phone, picture, fitness_goal) "
-				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?)", userName, hashedPassword, saltString, "user", email, phone, picture, fitnessGoal);
+							+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?)", 
+							userName, hashedPassword, saltString, "user", email, phone, picture, fitnessGoal);
 	}
 
 	@Override
