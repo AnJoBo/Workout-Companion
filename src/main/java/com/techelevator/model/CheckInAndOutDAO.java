@@ -8,8 +8,8 @@ public interface CheckInAndOutDAO {
 
 	public void checkInUser(int userId);
 
-	public void saveUserCheckOutGym(int userId);
+	public void checkOutUser(int userId);
 
-	public boolean checkIfUserIsCheckedIn(int userId);
+	public boolean checkIfUserIsCheckedIn(String userName);
 
 }

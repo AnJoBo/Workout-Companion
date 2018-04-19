@@ -34,8 +34,8 @@ CREATE TABLE gym (
 CREATE TABLE checkin_checkout (
   user_id integer NOT NULL,
   gym_id integer NOT NULL,
-  check_in date NOT NULL,
-  check_out date,
+  check_in timestamp NOT NULL,
+  check_out timestamp,
   CONSTRAINT fk_gym_id FOREIGN KEY (gym_id) REFERENCES gym(gym_id),
   CONSTRAINT fk_user_id FOREIGN key (user_id) REFERENCES app_user(user_id)
 );

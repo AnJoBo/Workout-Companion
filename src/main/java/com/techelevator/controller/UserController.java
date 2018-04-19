@@ -1,5 +1,6 @@
 package com.techelevator.controller;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -58,22 +59,26 @@ public class UserController {
 	}
 
 	@RequestMapping(path = "/users/{userName}", method = RequestMethod.GET)
-	public String displayUserDashboard(ModelMap modelHolder, HttpSession session) {
-		List<CheckInAndOut> LogResults = checkInDAO.getLogOfCheckins();
-		modelHolder.put("LogResults", LogResults);
-	
+	public String displayUserDashboard(ModelMap modelHolder, HttpSession session, @PathVariable String userName) {	
+		boolean checkUserCheckInStatus = checkInDAO.checkIfUserIsCheckedIn(userName);
+		if(checkUserCheckInStatus) {
+			modelHolder.put("checkedIn", true);
+		} else {
+			modelHolder.put("checkedIn", false);
+		}
 		return "userDashboard";
 	}
 
-	@RequestMapping(path = "/users/{userName}", method = RequestMethod.POST)
-	public String displayUserDashboardAfterPost(@RequestParam int currentUserId, ModelMap modelHolder, HttpSession session) {		
-		return "redirect:/userDashboard";
+	@RequestMapping(path = "/checkIn/{userName}", method = RequestMethod.POST)
+	public String checkInUser(@PathVariable String userName, @RequestParam int currentUserId, ModelMap modelHolder, HttpSession session) {
+		checkInDAO.checkInUser(currentUserId);
+		return "redirect:/users/" + userName;
 	}
-
-	@RequestMapping(path = "/about", method = RequestMethod.GET)
-	public String displayAboutPage(ModelMap modelHolder, HttpSession session) {
-
-		return "about";
+	
+	@RequestMapping(path = "/checkOut/{userName}", method = RequestMethod.POST)
+	public String checkOutUser(@PathVariable String userName, @RequestParam int currentUserId, ModelMap modelHolder, HttpSession session) {
+		checkInDAO.checkOutUser(currentUserId);
+		return "redirect:/users/" + userName;
 	}
 
 	@RequestMapping(path = "/userUpdate/{userName}", method = RequestMethod.GET)
