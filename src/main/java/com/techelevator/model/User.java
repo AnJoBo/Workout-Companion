@@ -20,17 +20,23 @@ public class User {
 	
 	private String role;
 	
-	@Email(message="That's not a real e-mail") // If validation fails, this message will be passed
+	@Email(message="That's not a real e-mail")
 	@NotBlank
 	private String email;
 	
-	// Validation?
 	private String phone;
 	
 	private int UserId;
-	
 
 	private String gymCheckInDate;
+	
+	private String gymCheckInOut;
+
+	private String picture;
+	
+	private String fitnessGoal;
+	
+	
 	
 	public String getGymCheckInDate() {
 		return gymCheckInDate;
@@ -44,13 +50,6 @@ public class User {
 	public void setGymCheckInOut(String gymCheckInOut) {
 		this.gymCheckInOut = gymCheckInOut;
 	}
-	private String gymCheckInOut;
-
-	private String picture;
-	
-	private String fitnessGoal;
-
-	
 	public String getUserName() {
 		return userName;
 	}
@@ -106,7 +105,6 @@ public class User {
 		UserId = userId;
 	}
 	public void setCheckIn(String string) {
-		
-		
+		// WHAT?!
 	}
 }

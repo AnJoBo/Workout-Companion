@@ -24,13 +24,15 @@
 		<td>
 		<c:url var="roleUpdate" value="/admin/dashboard" />
 		<form action="${roleUpdate}" method="POST">
-		<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
-		<input type="hidden" name="userName" value="${user.userName}"/>
+			<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
+			<input type="hidden" name="userName" value="${user.userName}"/>
 			<select class="form-control" name="role" >
 				<option value="user" ${user.role == "user" ? "selected" : "" }>USER</option>
 				<option value="employee" ${user.role == "employee" ? "selected" : "" }>EMPLOYEE</option>
 			</select>
-		<td><button type="submit" class="btn btn-default">Update</button></td>
+			<td>
+				<button type="submit" class="btn btn-default">Update</button>
+			</td>
 		</form>
 		</td>
 	</c:if>

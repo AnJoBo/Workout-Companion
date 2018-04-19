@@ -8,10 +8,4 @@ public interface WorkoutDAO {
 
 	List<Workouts> getWorkoutFromeWorkoutId(int workoutId);
 
-	
-
-	
-
-	
-
 }
