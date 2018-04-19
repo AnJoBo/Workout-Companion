@@ -1,4 +1,43 @@
-<!DOCTYPE html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ include file="include/header.jspf" %>
+
+
+
+<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
+
+<h1 style="text-align:center">Class Schedule</h1>
+
+<div>
+
+	<div><c:url var="EGC" value="/img/EGCal.png" />
+	<img src="${EGC}" class="class-schedule"></div>
+
+</div>	
+
+
+<%@ include file="include/footer.jspf" %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -107,4 +146,4 @@
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfiJV1mUX_oCwYRMQNtIb_Y7Tim4IygY8&callback=initMap">
     </script>
 </body>
-</html>
+</html> -->
