@@ -29,12 +29,6 @@
 	</c:if>
 
 	<div style="display: inline-block; border: 0px solid black;">
-
-
-		<%-- Message after user update redirect --%>
-		<c:if test="${not empty message}">
-			<c:out value="${message}" />
-		</c:if>
 		
 		<div class="">
 			<div class="">
