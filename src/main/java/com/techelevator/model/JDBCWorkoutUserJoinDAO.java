@@ -30,8 +30,8 @@ public class JDBCWorkoutUserJoinDAO implements WorkoutUserJoinDAO {
 			allJoinedData.add(MapRowToJoined(results));
 		}
 		return allJoinedData;
-
-}
+	}
+	
 	private WorkoutUserJoined MapRowToJoined(SqlRowSet user) {
 		WorkoutUserJoined JoinedData = null;
 		JoinedData = new WorkoutUserJoined();
@@ -53,31 +53,18 @@ public class JDBCWorkoutUserJoinDAO implements WorkoutUserJoinDAO {
 	}
 
 	@Override
-	public void saveWorkout(int reps1, int reps2, int reps3, int reps4, int reps5, int reps6, int reps7, int reps8, int sets, int weight, int workoutId, int userId, int equipmentId) {
-		
 
+	public void saveWorkout(int reps1, int reps2, int reps3, int reps4, int reps5, int reps6, int reps7, int reps8, int sets, int weight, int workoutId, int userId, int equipmentId) {
 		jdbcTemplate.update("INSERT INTO workout_user(reps1, reps2, reps3, reps4, reps5, reps6, reps7, reps8, number_of_sets, weight ,workout_id, user_id, equipment_id, workout_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", reps1, reps2, reps3, reps4, reps5, reps6, reps7, reps8, sets, weight, workoutId, userId, equipmentId, LocalDate.now());
+
 	}
-//	@Override
-//	public List<WorkoutUserJoined> getNumberOfSetsAndRepsFromUserId(int userId) {
-//		List<WorkoutUserJoined> allJoinedData = new ArrayList<>();
-//		String sqlSelectAll = "SELECT number_of_sets, reps1, reps2, reps3, reps4 FROM workout_user WHERE user_id = 4";
-//		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSelectAll);
-//		while (results.next()) {
-//			allJoinedData.add(MapRowToJoined(results));
-//		}
-//		return allJoinedData;
-//	}
-	
+
 	@Override
 	public List<WorkoutUserJoined> getNumberOfSetsAndRepsFromUserId(int userId) {
 		String sqlSelect = "SELECT * FROM workout_user WHERE user_id = ?";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSelect, userId);
 		return mapRowSetToSetAndRow(results);
 	}
-	
-	
-
 	
 	private List<WorkoutUserJoined> mapRowSetToSetAndRow(SqlRowSet results) {
 		ArrayList<WorkoutUserJoined> list = new ArrayList<>();
@@ -86,9 +73,4 @@ public class JDBCWorkoutUserJoinDAO implements WorkoutUserJoinDAO {
 		}
 		return list;
 	}
-	
-	
-	
-	
-	
 }

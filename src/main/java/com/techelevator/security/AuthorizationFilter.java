@@ -18,7 +18,7 @@ public class AuthorizationFilter implements Filter {
 
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
-		
+		// WELL THEN...
 	}
 
 	@Override
@@ -67,7 +67,7 @@ public class AuthorizationFilter implements Filter {
 
 	@Override
 	public void destroy() {
-		
+		// MKAY.
 	}
 
 }

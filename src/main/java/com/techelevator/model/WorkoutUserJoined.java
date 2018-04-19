@@ -1,6 +1,7 @@
 package com.techelevator.model;
 
 public class WorkoutUserJoined {
+	
 	private int reps1;
 	private int reps2;
 	private int reps3;
@@ -16,6 +17,7 @@ public class WorkoutUserJoined {
 	private int equipmentid;
 	private String workoutDate;
 	
+
 	public int getReps5() {
 		return reps5;
 	}
@@ -40,6 +42,7 @@ public class WorkoutUserJoined {
 	public void setReps8(int reps8) {
 		this.reps8 = reps8;
 	}
+
 	public String getWorkoutDate() {
 		return workoutDate;
 	}
@@ -100,7 +103,4 @@ public class WorkoutUserJoined {
 	public void setEquipmentid(int equipmentid) {
 		this.equipmentid = equipmentid;
 	}
-	
-	
-	
 }

@@ -23,10 +23,5 @@ public class Equipment {
 	}
 	public void setWorkoutid(int workoutid) {
 		this.workoutid = workoutid;
-	}
-	
-	
-	
-	}
-	
-
+	}	
+}

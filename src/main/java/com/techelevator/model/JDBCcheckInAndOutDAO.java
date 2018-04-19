@@ -1,10 +1,8 @@
 package com.techelevator.model;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -19,8 +17,6 @@ public class JDBCcheckInAndOutDAO implements CheckInAndOutDAO {
 
 	private JdbcTemplate jdbcTemplate;
 	
-	//private static final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-
 	@Autowired
 	public JDBCcheckInAndOutDAO(DataSource dataSource) {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
@@ -48,10 +44,37 @@ public class JDBCcheckInAndOutDAO implements CheckInAndOutDAO {
 	@Override
 	public void checkOutUser(int userId) {
 		LocalDateTime now = LocalDateTime.now();
-		String sqlInsertSurvey =  "UPDATE checkin_checkout SET check_out = ? WHERE user_id = ? AND check_in IS NOT NULL AND check_out IS NULL";
-		jdbcTemplate.update(sqlInsertSurvey, now, userId);
+		String sqlCheckOut =  "UPDATE checkin_checkout SET check_out = ? WHERE user_id = ? AND check_in IS NOT NULL AND check_out IS NULL";
+		jdbcTemplate.update(sqlCheckOut, now, userId);
 	}
-	
+
+	@Override
+	public long getTotalTimeSpentAtGym(String userName) {
+		long totalSeconds = 0;
+		List<CheckInAndOut> time = new ArrayList<>();
+		String sqlGetTimeSpent = "SELECT check_in, check_out, app_user.user_id, gym_id FROM checkin_checkout " + 
+								"JOIN app_user on checkin_checkout.user_id = app_user.user_id " + 
+								"WHERE UPPER(app_user.user_name) = ? AND check_in IS NOT NULL AND check_out IS NOT NULL";
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetTimeSpent, userName.toUpperCase());
+		
+		while(results.next()) {
+			time.add(MapRowToUser(results));
+		}
+		
+		for(CheckInAndOut times : time) {
+			LocalDateTime from = times.getCheckIn();
+			LocalDateTime to = times.getCheckOut();
+
+	        LocalDateTime fromTemp = LocalDateTime.from(from);
+
+	        long seconds = fromTemp.until(to, ChronoUnit.SECONDS);
+	        fromTemp = fromTemp.plusSeconds(seconds);
+
+	        totalSeconds += seconds; 
+		}
+		return totalSeconds;
+	}
+
 	@Override
 	public List<CheckInAndOut> getLogOfCheckins() {
 		List<CheckInAndOut> allCheckInLogs = new ArrayList<>();
@@ -70,7 +93,7 @@ public class JDBCcheckInAndOutDAO implements CheckInAndOutDAO {
 		thisUserCheckIn.setGymId(user.getInt("gym_id"));
 		thisUserCheckIn.setCheckIn(user.getTimestamp("check_in").toLocalDateTime());
 		thisUserCheckIn.setCheckOut(user.getTimestamp("check_out").toLocalDateTime());
-
+		
 		return thisUserCheckIn;
 	}
 

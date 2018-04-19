@@ -1,8 +1,5 @@
 package com.techelevator.controller;
 
-import java.time.LocalDate;
-import java.util.List;
-
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -17,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.techelevator.model.CheckInAndOut;
 import com.techelevator.model.CheckInAndOutDAO;
 import com.techelevator.model.User;
 import com.techelevator.model.UserDAO;
@@ -49,7 +45,7 @@ public class UserController {
 		if (result.hasErrors()) {
 			flash.addFlashAttribute("user", user);
 			flash.addFlashAttribute(BindingResult.MODEL_KEY_PREFIX + "user", result);
-			flash.addFlashAttribute("message", "User sucessfully NOT created!");
+			flash.addFlashAttribute("message", "Please try again. (With a stronger password, perhaps?)");
 			return "redirect:/users/new";
 		}
 		userDAO.saveUser(user.getUserName(), user.getPassword(), user.getRole(), user.getEmail(), user.getPhone(),
@@ -66,6 +62,7 @@ public class UserController {
 		} else {
 			modelHolder.put("checkedIn", false);
 		}
+		modelHolder.put("timeSpent", checkInDAO.getTotalTimeSpentAtGym(userName));
 		return "userDashboard";
 	}
 
@@ -105,9 +102,9 @@ public class UserController {
 		if (newPhone.equals("")) {
 			newPhone = thisUser.getPhone();
 		}
-		// if(newPicture.equals("")) {
+		
 		newPicture = thisUser.getPicture();
-		// }
+		
 		if (newFitnessGoal.equals("")) {
 			newFitnessGoal = thisUser.getFitnessGoal();
 		}

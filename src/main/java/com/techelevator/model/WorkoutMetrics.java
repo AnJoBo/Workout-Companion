@@ -1,7 +1,5 @@
 package com.techelevator.model;
 
-import java.time.LocalDate;
-
 public class WorkoutMetrics {
 	
 	private int equipmentId;

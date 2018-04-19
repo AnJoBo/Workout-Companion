@@ -1,8 +1,6 @@
 package com.techelevator.model;
 
 public class Workouts {
-
-	
 	
 	private int workoutid;
 	private String workoutname;
@@ -41,7 +39,5 @@ public class Workouts {
 	public void setEquipmentid(int equipmentid) {
 		this.equipmentid = equipmentid;
 	}
-	
-	
 	
 }

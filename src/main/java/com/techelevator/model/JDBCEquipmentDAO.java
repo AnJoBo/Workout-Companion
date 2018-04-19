@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
+
 @Component
 public class JDBCEquipmentDAO implements EquipmentDAO  {
 	
@@ -17,12 +18,8 @@ public class JDBCEquipmentDAO implements EquipmentDAO  {
 	@Autowired
 	public JDBCEquipmentDAO(DataSource dataSource) {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
-		
 	}
-	
-	
-	
-	
+
 	@Override
 	public List<Equipment> getAllEquipment() {
 		List<Equipment> allequipment = new ArrayList<>();
@@ -32,14 +29,7 @@ public class JDBCEquipmentDAO implements EquipmentDAO  {
 			allequipment.add(MapRowToEquipment(results));
 		}
 		return allequipment;
-
-}
-	
-	
-	
-	
-	
-	
+	}	
 	
 	private Equipment MapRowToEquipment(SqlRowSet user) {
 		Equipment equipment = null;
@@ -48,7 +38,6 @@ public class JDBCEquipmentDAO implements EquipmentDAO  {
 		equipment.setEquipmentName(user.getString("equipment_name"));
 		equipment.setWorkoutid(user.getInt("workout_id"));
 		
-
 		return equipment;
 	}
 
