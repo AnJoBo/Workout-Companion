@@ -39,6 +39,10 @@ public class JDBCWorkoutUserJoinDAO implements WorkoutUserJoinDAO {
 		JoinedData.setReps2(user.getInt("reps2"));
 		JoinedData.setReps3(user.getInt("reps3"));
 		JoinedData.setReps4(user.getInt("reps4"));
+		JoinedData.setReps1(user.getInt("reps5"));
+		JoinedData.setReps2(user.getInt("reps6"));
+		JoinedData.setReps3(user.getInt("reps7"));
+		JoinedData.setReps4(user.getInt("reps8"));
 		JoinedData.setNumberOfSets(user.getInt("number_of_sets"));
 		JoinedData.setWeight(user.getInt("weight"));
 		JoinedData.setWorkoutid(user.getInt("workout_id"));
@@ -49,10 +53,10 @@ public class JDBCWorkoutUserJoinDAO implements WorkoutUserJoinDAO {
 	}
 
 	@Override
-	public void saveWorkout(int reps1, int reps2, int reps3, int reps4, int sets, int weight, int workoutId, int userId, int equipmentId) {
+	public void saveWorkout(int reps1, int reps2, int reps3, int reps4, int reps5, int reps6, int reps7, int reps8, int sets, int weight, int workoutId, int userId, int equipmentId) {
 		
 
-		jdbcTemplate.update("INSERT INTO workout_user(reps1, reps2, reps3, reps4, number_of_sets ,weight ,workout_id, user_id, equipment_id, workout_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", reps1, reps2, reps3, reps4, sets, weight, workoutId, userId, equipmentId, LocalDate.now());
+		jdbcTemplate.update("INSERT INTO workout_user(reps1, reps2, reps3, reps4, reps5, reps6, reps7, reps8, number_of_sets, weight ,workout_id, user_id, equipment_id, workout_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", reps1, reps2, reps3, reps4, reps5, reps6, reps7, reps8, sets, weight, workoutId, userId, equipmentId, LocalDate.now());
 	}
 //	@Override
 //	public List<WorkoutUserJoined> getNumberOfSetsAndRepsFromUserId(int userId) {

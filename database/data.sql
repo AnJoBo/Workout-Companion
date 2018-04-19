@@ -59,10 +59,10 @@ VALUES ('Kettle Bell', 3);
 INSERT INTO EQUIPMENT (equipment_name, workout_id) 
 VALUES ('Flat Bench', 4);
 
-INSERT INTO WORKOUT_USER (reps1, reps2, reps3, reps4, number_of_sets, weight, workout_id, user_id, equipment_id, workout_date)
-VALUES (4, 4, 5, 5, 5, 100, 1, 1, 1, '2020-10-01');
+INSERT INTO WORKOUT_USER (reps1, reps2, reps3, reps4, reps5, reps6, reps7, reps8, number_of_sets, weight, workout_id, user_id, equipment_id, workout_date)
+VALUES (4, 4, 5, 5, 5, 4, 4, 5, 5, 100, 1, 1, 1, '2020-10-01');
 
-INSERT INTO WORKOUT_USER (reps1, reps2, reps3, reps4, number_of_sets, weight, workout_id, user_id, equipment_id, workout_date)
-VALUES (3, 3, 3, 2, 4, 100, 1, 1, 1, '2105-05-02');
+INSERT INTO WORKOUT_USER (reps1, reps2, reps3, reps4, reps5, reps6, reps7, reps8, number_of_sets, weight, workout_id, user_id, equipment_id, workout_date)
+VALUES (5, 5, 5, 5, 5, 4, 4, 5, 5, 100, 1, 1, 1, '2020-10-01');
 
  COMMIT;

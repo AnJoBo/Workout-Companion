@@ -62,11 +62,16 @@ public class WorkoutController {
 			@RequestParam int reps1,
 			@RequestParam(defaultValue="0") int reps2,
 			@RequestParam(defaultValue="0") int reps3,
-			@RequestParam(defaultValue="0") int reps4, HttpSession session) {
+			@RequestParam(defaultValue="0") int reps4,
+			@RequestParam(defaultValue="0") int reps5,
+			@RequestParam(defaultValue="0") int reps6,
+			@RequestParam(defaultValue="0") int reps7,
+			@RequestParam(defaultValue="0") int reps8,
+			HttpSession session) {
 		//List<Workouts> workouts = workoutDAO.getAllWorkouts();
 		
 		//mh.put("workouts", workouts);
-		workoutUserJoinDAO.saveWorkout(reps1,reps2,reps3,reps4, sets, weight, workoutId, currentUserId, equipment);
+		workoutUserJoinDAO.saveWorkout(reps1,reps2,reps3,reps4, reps5, reps6, reps7, reps8, sets, weight, workoutId, currentUserId, equipment);
 
 		
 		return "redirect:/users/workout";

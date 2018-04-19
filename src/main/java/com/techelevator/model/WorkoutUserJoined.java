@@ -5,6 +5,10 @@ public class WorkoutUserJoined {
 	private int reps2;
 	private int reps3;
 	private int reps4;
+	private int reps5;
+	private int reps6;
+	private int reps7;
+	private int reps8;
 	private int numberOfSets;
 	private int weight;
 	private int workoutid;
@@ -12,6 +16,30 @@ public class WorkoutUserJoined {
 	private int equipmentid;
 	private String workoutDate;
 	
+	public int getReps5() {
+		return reps5;
+	}
+	public void setReps5(int reps5) {
+		this.reps5 = reps5;
+	}
+	public int getReps6() {
+		return reps6;
+	}
+	public void setReps6(int reps6) {
+		this.reps6 = reps6;
+	}
+	public int getReps7() {
+		return reps7;
+	}
+	public void setReps7(int reps7) {
+		this.reps7 = reps7;
+	}
+	public int getReps8() {
+		return reps8;
+	}
+	public void setReps8(int reps8) {
+		this.reps8 = reps8;
+	}
 	public String getWorkoutDate() {
 		return workoutDate;
 	}
