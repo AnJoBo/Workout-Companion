@@ -1,7 +1,5 @@
 package com.techelevator.controller;
 
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -17,7 +15,7 @@ import com.techelevator.model.ClassScheduleDAO;
  * Google Calendar API 
 
 Here is your client ID
-979825869286-s490vi6dp17e1nf5kb26q5uoua1vfu9r.apps.googleusercontent.com
+191597247625-7g143cjdnuadu7efep4g1pbjp2nr26pg.apps.googleusercontent.com
 
 Here is your client secret
 aG1fOlbaq3w59x_TU0QYxeCv
@@ -40,7 +38,7 @@ public class ClassScheduleController {
 		this.scheduleDAO = scheduleDAO;
 	}
 	
-	@RequestMapping(path="/users/viewClassSchedule", method=RequestMethod.GET)
+	@RequestMapping(path="/users/classSchedule", method=RequestMethod.GET)
 	public String displayClassSchedule(ModelMap mh) {
 		mh.put("allClasses", scheduleDAO.getAllClasses());
 		return "classSchedule";

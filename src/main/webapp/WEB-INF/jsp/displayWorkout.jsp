@@ -12,17 +12,20 @@
 
 <script language="Javascript" type="text/javascript">
 var counter = 1;
-var limit = 4;
+var limit = 8;
+var sets = 1;
 function addInput(divName){
 if (counter == limit) {
 alert("Reached adding limit" + counter + " inputs");
 }
 else {
 var newdiv = document.createElement('div');
-newdiv.innerHTML = "Entry " + (counter + 1) +
-	"<input type='number' name='reps[]'>";
+newdiv.innerHTML = "Set " + (counter + 1) +":"+
+"<input type='number' name='reps" + (counter + 1) + "'>";
+
 document.getElementById(divName).appendChild(newdiv);
 counter++;
+
 }
 } 
 
@@ -31,7 +34,7 @@ counter++;
  <p class="container"><strong>Hello, <c:out value="${currentUser.userName}" />! </strong>
  </br>
  </br>
- Please fill in your workout.</p>
+ Please fill in your workout</p>
  <section class="container centeredPanel">
 	
 	<form method="POST" action="${formAction}">
@@ -55,23 +58,24 @@ counter++;
 			</select>
 		
 			</div>
-			<div>Sets:<input type="number" name="sets"></div>
-			Reps per set:
+			<div>Sets: <input type="number" name="sets">   <%-- <input type="hidden" name="sets" value="${sets}"/> --%> </div>
+			<!-- Reps per set: -->
+
 			<div>
+			<!-- Set 1: <input type="number" name="reps1">  -->
+			<div id="dynamicInput">
 			Set 1: <input type="number" name="reps1"> 
-			</br>
-			Set 2: <input type="number" name="reps2"> 
-			</br>
-			Set 3: <input type="number" name="reps3" >
-			</br>
-			Set 4: <input type="number" name="reps4" >(optional) 
+			
 			</div>
+			
+			<div> <input type="button" value="Rep +" onClick="addInput('dynamicInput');"></div>
 	</br>
 			<div>Weight:<input type="number" name="weight"></div>
 			<input type="hidden" name="currentUserId" value="${currentUser.userId}" /> 
 			</br>
-			<button type="submit" class="btn btn-default">Submit this workout!</button>
-			</br>
+			<button type="submit" name="push" class="btn btn-default">Submit this workout!</button>
+			
+	
 		</div>
 		</form>
 		</section>    
@@ -143,6 +147,38 @@ counter++;
 				</c:otherwise>
 			</c:choose>
 			
+				<c:choose>
+				<c:when test="${getSetsAndReps.reps5 == 0}">	
+				<div></div>
+				</c:when>
+				<c:otherwise>
+					<div>Set 5:   <c:out value="${getSetsAndReps.reps5}" /> Repitions With <c:out value="${getSetsAndReps.weight}" /> LB</div>	
+				</c:otherwise>
+			</c:choose>
+				<c:choose>
+				<c:when test="${getSetsAndReps.reps6 == 0}">	
+				<div></div>
+				</c:when>
+				<c:otherwise>
+					<div>Set 6:   <c:out value="${getSetsAndReps.reps6}" /> Repitions With <c:out value="${getSetsAndReps.weight}" /> LB</div>	
+				</c:otherwise>
+			</c:choose>
+				<c:choose>
+				<c:when test="${getSetsAndReps.reps7 == 0}">	
+				<div></div>
+				</c:when>
+				<c:otherwise>
+					<div>Set 7:   <c:out value="${getSetsAndReps.reps7}" /> Repitions With <c:out value="${getSetsAndReps.weight}" /> LB</div>	
+				</c:otherwise>
+			</c:choose>
+				<c:choose>
+				<c:when test="${getSetsAndReps.reps8 == 0}">	
+				<div></div>
+				</c:when>
+				<c:otherwise>
+					<div>Set 8:   <c:out value="${getSetsAndReps.reps8}" /> Repitions With <c:out value="${getSetsAndReps.weight}" /> LB</div>	
+				</c:otherwise>
+			</c:choose>
 		
 			</div>
 </c:forEach>

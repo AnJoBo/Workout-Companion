@@ -4274,4 +4274,9 @@ color: #999;
 	.course_demo {
 		padding: 0 5%;
 	}
+	
+	.exercise-picture{
+		height: 400px;
+	    width: 400px;
+	}
 }
