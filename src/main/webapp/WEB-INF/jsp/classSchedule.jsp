@@ -1,19 +1,16 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ include file="include/header.jspf" %>
 
-
-
 <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
 
 <h1 style="text-align:center">Class Schedule</h1>
 
 <div>
-
-	<div><c:url var="EGC" value="/img/EGCal.png" />
+<%-- 	<div><c:url var="EGC" value="/img/EGCal.png" />
 	<img src="${EGC}" class="class-schedule"></div>
-
+	 --%>
+<iframe src="https://calendar.google.com/calendar/embed?src=r7h29625nk4b07peg37797vqtk%40group.calendar.google.com&ctz=America%2FNew_York" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
 </div>	
-
 
 <%@ include file="include/footer.jspf" %>
 
